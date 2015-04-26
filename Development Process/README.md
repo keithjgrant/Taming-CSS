@@ -7,3 +7,8 @@
   * ["Chapter 2: Intro to Preprocessors"](chapter2.md)
   * ["Chapter 3: Preprocessor Variables & Calculations"](chapter3.md)
   * ["Chapter 4: Preprocessor Loops"](chapter4.md)
+
+<!---
+Build process
+Minification
+-->

@@ -1,5 +1,7 @@
 # Taming CSS: Selectors & Specificity
 
+Note: I'm still unsure on the title of this book.  I like the alliteration of "Syntax, Selectors, & Specificity", but there's a little more here than those three topics.  Maybe just simply "The Basics".
+
 **Table of Contents**
 
   * [Preface](../preface.md)
@@ -9,8 +11,3 @@
   * [Chapter 4: Declarations](chapter4.md)
   * [Chapter 5: Pseudo-classes & Pseudo-elements](chapter5.md)
   * [Chapter 6: Browser Resets](chapter6.md)
-  * [Appendix A: Selector Performance](appendixA.md)
-
-<!---
-minification?
--->

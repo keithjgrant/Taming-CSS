@@ -16,16 +16,14 @@ Occasionally, I would ask what these people what they wanted to learn, and they 
 
 The other thing that intrigues me about this question is who often asked it: it was always web developers.  People who worked with the web every day.  People who, at least in my mind, already "knew" CSS.
 
-One of the main difficulties with CSS is it isn't just one monolithic technology you need to learn.  Instead, it is made up of countless little things which add up to the whole.  Positioning, browser quirks, fonts, and z-indexes.  Worst of all, there is no clear path through them.  There are some great resources out there for learning most of these elements individually, but suprisingly few of them are comprehensive.  There is no clear course map to learning CSS.  It is left up to the student of CSS to figure out what it is they don't know and learn it.  This ultimately leads to failure, frustration, and animated gifs mocking the complexities of CSS.
+One of the main difficulties with CSS is it isn't just one monolithic technology you need to learn.  Instead, it is made up of countless little things which add up to the whole.  Positioning, browser quirks, fonts, and z-indexes.  Worst of all, there is no clear path through them.  There are some great resources out there for learning most of these elements individually, but suprisingly few of them that put all the essentials together.  There is no clear course map to learning CSS.  It is left up to the student of CSS to figure out what it is they don't know and learn it.  This ultimately leads to failure, frustration, and animated gifs mocking the complexities of CSS.
 
 This series is my attempt to fix that.  I hope that this becomes a coherent, comprehensive course map to learning CSS.  I won't pretend to teach you everything there is to know, but at the end of this course, you will have a firm grasp on the technology.  And, perhaps more importantly, you will know what you don't know.
 
-If you have already been working with CSS, then chances are you are familiar with some of the elements I cover.  Feel free to skim or even skip those chapters, assuming you are familiar with the section titles and italicized key words.
+If you have already been working with CSS, then chances are you are familiar with some of the elements I cover, especially in the first book.  Feel free to skim or even skip chapters, assuming you are familiar with the section titles and bold key words.
 
 ## CSS is Awesome
 
 I love CSS.  I have been working with it since browsers first started supporting it in the mid-90s, and have enjoyed the explosion of new features we've seen in recent years with CSS3, as well as the wide array of novel approaches to code organization.
 
 When developers joke about the difficulty of CSS or write it off as inscrutible, part of me shakes my head.  I understand their pain, because I've wrestled through it before.  And yes, there a few complex corners to wrap your head around.  But CSS isn't the problem; lack of understanding of CSS is the problem.  It is a widespread problem, and one we need to fix.
-
-If you like making UIs, but struggle with implementing parts of the CSS, these books are for you.  If you find yourself looking for alternatives to stylesheets, these books are for you.  If you use CSS and hate it, these books are for you.

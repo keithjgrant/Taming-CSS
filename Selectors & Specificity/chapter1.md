@@ -3,7 +3,7 @@
 
 ## Why CSS?
 
-Let's start at the beginning.<!--- change -->  Often, in a technical book, "the beginning" means the fundamentals of a given technology, but in this case, I really mean the chronological beginning.
+We'll start at the beginning.  Often, in a technical book, "the beginning" means the basics of a given technology, but in this case, I really mean the chronological beginning.
 
 A lot of the quirky parts of CSS make more sense if you realize how and why they came about.  Things like the cascade, floats, and the box model originated for one purpose, only for web designers to discover other unforseen secondary purposes that they could accomplish.  Because of the interplay between browser developers, standards bodies like the W3C, and the constant need for backwards compatability, Internet technologies move slowly.  We can't just say, "I want to upgrade to version 3.0"; we need to consider what will happen in older browsers.  So often, it's easier to use an older--but more universally supported--tool than to use some cutting edge one that doesn't yet work in any browser.  It doesn't take long for these repurposed tools to become the de-facto standard for accomplishing something, even when that was not the originally intended purpose for that tool.  When something in CSS just doesn't seem to make any sense, it is often because you don't understand its original purpose.
 
@@ -17,7 +17,7 @@ But it had many downsides.  It didn't take much for the html to become riddled l
 
 In 1994, Håkon Wium Lie, a researcher at CERN, wrote a proposal for "Cascading HTML Style Sheets" to address this issue.  This introduced two important concepts.  First, it provided means of specifying look and feel separate from the content itself, so that you could edit the style without having to modify the content.
 
-Second, it introduced the concept of the *cascade*.  The cascade is the means by which one stylesheet could be applied on top of another in a given order.  Styles in later stylesheets can override those previously set.  Lie envisioned the author of an article providing a stylesheet, while the editor of the website provided one, and then yet a third would be supplied by the reader according to their preferences.
+Second, it introduced the concept of the **cascade**.  The cascade is the means by which one stylesheet could be applied on top of another in a given order.  Styles in later stylesheets can override those previously set.  Lie envisioned the author of an article providing a stylesheet, while the editor of the website provided one, and then yet a third would be supplied by the reader according to their preferences.
 
 This scenario feels a bit achaic today.  In fact, one of the first things we do when we start designing a website is implement a "browser reset"--effectively overriding all reader-supplied styles.  (We will cover browser resets in chapter 6.)  But the cascade is still important, and we use it to our advantage in many ways Lie probably didn't originally foresee.
 
@@ -31,13 +31,11 @@ On the Internet, this is not the case.  The user could have their browser at any
 
 This adds a layer of abstraction to CSS.  We can't just style an element according to one ideal context, we need to specify styles that will work in any context where that element could be placed.  This is especially important in the modern web.  Your page will likely need to render on a 4" phone screen as well as a 30" monitor.
 
-<!--- TODO: do I need to define "styles" sooner/more explicitly? -->
-
 For a long time, designers mitigated this complexity by focusing on "pixel-perfect" designs.  The would create a tightly-defined container, often a centered column, at or around 800 pixels wide.  Then, inside these known constraints, they could go about designing more or less like their predecessors did with native applications.
 
 This approach slowly started to break down as technology improved and computers introduced higher and higher resolution monitors.  At some point in the early 2000s, there was a lot of discussion whether we could safely design for 1024 pixels wide instead of 800.  Then 1280.  We had to make judgement calls whether it was better to make our site too wide for older computers or too narrow for new ones.
 
-Smartphones emerged and we were forced to stop pretending everyone could have the exact same experience on our site.  Whether we loved it or hated it, we had to abandon columns of some known number of pixels, and embrace *responsive design*. (We will cover responsive design in **Taming CSS: Layout**.)  We can no longer hide from the abstraction that comes with CSS.  We have to embrace it.
+Smartphones emerged and we were forced to stop pretending everyone could have the exact same experience on our site.  Whether we loved it or hated it, we had to abandon columns of some known number of pixels, and embrace **responsive design**. (We will cover this in *Taming CSS: Layout*.)  We can no longer hide from the abstraction that comes with CSS.  We have to embrace it.
 
 Added abstraction means added complexity.  If I give an element a width of 200px, how will that look when the window is smaller?  How will my inline menu look if it doesn't all fit on one line?  If the text of this label is user-defined, how will it appear if they enter long content?  As we write our CSS, we need to be able to think simultaneously in specifics as well as generalities.  If you are a programmer, you use a lot of abstract thought in your programming.  You consider different execution paths through your code; you try to anticipate odd edge cases; and you consider how your architecture can be expanded and maintained in the future.  Those skills need to be applied when you write CSS as well.
 
@@ -49,4 +47,4 @@ In the list of things a web developer needs to know, CSS is not a second-class c
 
 HTML, JavaScript, CSS.  These are the fundamentals.  You need to know these three.  Inside and out.  Everything else I listed above, and all the shiny new things that surface each week, are secondary.
 
-If you "know" CSS, but you don't **know** it... then it's time to change that.
+If you "know" CSS, but you don't *know* it... then it's time to change that.

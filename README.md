@@ -4,12 +4,12 @@ This is a book series taking a comprehensive look at how to write and maintain C
 
 ## Books
 
-* ["Selectors & Specificity"](Selectors & Specificity/README.md)
-* ["Layout"](Layout/README.md)
-* ["Organization"](Organization/README.md)
-* ["Development Process"](Development Process/README.md)
-* ["Styling"](Styling/README.md)
-* ["Advanced Styling"](Advanced Styling/README.md)
+* [Selectors & Specificity](Selectors & Specificity/README.md) (Draft in progress)
+* [Layout](Layout/README.md)
+* [Organization](Organization/README.md)
+* [Development Process](Development Process/README.md)
+* [Styling](Styling/README.md)
+* [Advanced Styling](Advanced Styling/README.md)
 
 Other chapters/appendices that still need to be categorized:
 

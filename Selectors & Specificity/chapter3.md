@@ -88,11 +88,15 @@ ul.main-nav {
 }
 ```
 
-Now, if both of these selectors targeted the same element, the color `#999` would be used.  `!important` even overrides an inline style.  However, if both declarations have an `!important`, then the regular specificity rules apply.
+Now, when both of these selectors target the same element, the color `#999` would be used.  `!important` even overrides an inline style.
 
-Be careful with `!important`, however, or you'll find you need to use it more and more to continue overriding declarations where you've already used it.
+Be careful with `!important`, however.  When two conflicting declarations both have an `!important`, then the regular specificity rules apply.  If you rely on it too much, you'll find you need to use it more and more to continue overriding declarations where you've already used it.
+
+Some people will go so far as to say you should never use `!important`.  If you are just starting out in CSS, this is very good advice, but don't cling to it forever.  I believe it has a place, specifically
 
 ## Pseudo-classes & Pseudo-elements
+
+
 
 ## Advanced Selectors
 

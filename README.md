@@ -1,6 +1,6 @@
 # Taming CSS
 
-This is a book series taking a comprehensive look at how to write and maintain CSS.
+This is a book series taking a comprehensive look at how to write and maintain CSS.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the [Preface](preface.md).
 
 ## Books
 
@@ -17,7 +17,7 @@ Other chapters/appendices that still need to be categorized:
 
 ## Publishing
 
-I am releasing these books here as drafts, free to read.  I would like to eventually publish them, but I need to first prove to myself I can stick with it through the end.  I have a long trail of unfinished side projects, and this is a side project.
+For now, I am releasing these books here as drafts, free to read.  I would like to eventually publish them, but I need to first prove to myself I can stick with it through the end.  I have a long trail of unfinished side projects.
 
 ## Contributing
 

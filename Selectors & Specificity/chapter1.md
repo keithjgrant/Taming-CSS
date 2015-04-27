@@ -11,7 +11,7 @@ To understand where CSS came from, let's first look at what came before it.  In 
 
 The upside of this approach was that it was explicit, all in one place.  When you saw `<font size="2" color="#000088">` in the markup, you knew exactly what you were going to get, and exactly how to change it if needed.
 
-But it had many downsides.  It didn't take much for the html to become riddled long `font` tags, often deeply nested within each other, and cumbersome to wade through.  This also meant there was a lot of repetition.  Any time you wanted to edit header colors, for instance, you had to find all the relevant `font` tags and edit them.  Furthermore, it meant the filesize was much larger, and took longer to download.  Another problem with this approach was that both the content and its presentation information were bound together.  If you wrote an article and wanted to post it on two different websites, it would have to be tediously edited to conform to the look and feel of each website.
+But it had many downsides.  It didn't take much for the html to become riddled with long `font` tags, often deeply nested within each other, and cumbersome to wade through.  This also meant there was a lot of repetition.  Any time you wanted to edit header colors, for instance, you had to find all the relevant `font` tags and edit them.  Furthermore, it meant the filesize was much larger, and took longer to download.  Another problem with this approach was that both the content and its presentation information were bound together.  If you wrote an article and wanted to post it on two different websites, it would have to be tediously edited to conform to the look and feel of each website.
 
 ## How We Got Here
 
@@ -31,7 +31,7 @@ On the Internet, this is not the case.  The user could have their browser at any
 
 This adds a layer of abstraction to CSS.  We can't just style an element according to one ideal context, we need to specify styles that will work in any context where that element could be placed.  This is especially important in the modern web.  Your page will likely need to render on a 4" phone screen as well as a 30" monitor.
 
-For a long time, designers mitigated this complexity by focusing on "pixel-perfect" designs.  The would create a tightly-defined container, often a centered column, at or around 800 pixels wide.  Then, inside these known constraints, they could go about designing more or less like their predecessors did with native applications.
+For a long time, designers mitigated this complexity by focusing on "pixel-perfect" designs.  They would create a tightly-defined container, often a centered column, at or around 800 pixels wide.  Then, inside these known constraints, they could go about designing more or less like their predecessors did with native applications.
 
 This approach slowly started to break down as technology improved and computers introduced higher and higher resolution monitors.  At some point in the early 2000s, there was a lot of discussion whether we could safely design for 1024 pixels wide instead of 800.  Then 1280.  We had to make judgement calls whether it was better to make our site too wide for older computers or too narrow for new ones.
 

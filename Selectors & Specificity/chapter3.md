@@ -32,6 +32,12 @@ This targets all elements with the `highlight` class that are *descendants* of a
 
 You are not limited to one combinator.  You can target items in nested lists with `ul li ul li` or links in navigation list items with `ul.nav li a`.
 
+<!---
+child >
+general sibling ~
+adjacent sibling +
+-->
+
 ### Universal Selector
 
 You can select all elements with the universal selector `*`.  At one point, it was a common practice to use this to do a "universal reset".
@@ -92,11 +98,65 @@ Now, when both of these selectors target the same element, the color `#999` woul
 
 Be careful with `!important`, however.  When two conflicting declarations both have an `!important`, then the regular specificity rules apply.  If you rely on it too much, you'll find you need to use it more and more to continue overriding declarations where you've already used it.
 
-Some people will go so far as to say you should never use `!important`.  If you are just starting out in CSS, this is very good advice, but don't cling to it forever.  I believe it has a place, specifically
+Some people will go so far as to say you should never use `!important`.  If you are just starting out in CSS, this is very good advice, but don't cling to it forever.  I believe it has a place, specifically in utility classes.  I've also had to use it occasionally to override inline styles added by a third-party JavaScript libary.
 
-## Pseudo-classes & Pseudo-elements
+This brings up an important point about specificity: if you are creating a package for distribution, I strongly urge you not to apply styles inline via JavaScript.  If you do, you are forcing developers using your package to either accept your styles exactly, or to use `!important` for every property they want to change.  Instead, include a stylesheet in your package.  If your component needs to make style changes dynamically, it is almost always preferable to use JavaScript to add and remove classes to the elements.  Then users can simply use your stylesheet, and they have the option to edit it however they like without battling specificity.
 
+## Attribute Selectors
 
+Apart from ids and classes, you can also target elements based on their other attributes.
 
-## Advanced Selectors
+```css
+input[disabled] {
+  background: lightgray;
+}
+```
 
+This will make the text of a disabled form input grey.
+
+<!---
+https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
+-->
+
+## Styling Links
+
+When starting a new project, one of the first thing you'll generally want to style are links.  These require a special type of selector called a **pseudo-selector**:
+
+```css
+a:link {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: darkblue;
+}
+a:active {
+  color: red;
+}
+```
+
+`a:link` refers to an `<a>` that has an href attribute.  `a:visited` refers to a link that the user has already been to before (i.e. its url is in the browser's history).  `a:hover` specifies styles to apply to the link when the user hovers their mouse cursor over it.  `a:active` styles the link after the user activates it, whether by clicking it with their mouse, tabbing to it with their keyboard and pressing enter, or tapping it on a touchscreen device.
+
+Note the order of these selectors.  Because they all have the same specificity, the cascade causes a later declaration to override an earlier one.  If a visited link is active, we want the active color to appear, so we put that selector later, etc.  For years, I knew the order of these mattered, but never stopped to think about why.  There's no deep voodoo to it; it's just the cascade doing what it does.  If you don't want to stop and reason through the cascade every time, though, a helpful acronym to remember this order is "LoVe HAte".
+
+The `:active` state is often overlooked.  We usually develop on fast computers with fast Internet connections.  When we click a link and the next page loads in an instant, we don't even notice that quick flicker of red text.  But on a slow connection--say, on a smartphone with a 3G connection--that red text means a lot.  It tells the user, for the two or three seconds after they tap a link but before anything else on the screen changes, that the page is loading, and they do not need to tap again.  Be sure to do something visually with the active state, even if it is very subtle.
+
+The `a:link` is a bit of an odd relic from early HTML.  Originally, there were two uses for the `<a>` tag.  The first was a standard link, using the `href` attribute.  The second was a named key point in your document such as `<a name="section-two">`.  Then you could link directly to that point on the page using `<a href="section-two">`.  This is where the name "anchor" comes from, as it was where one webpage was "anchored" to another via a hyperlink.
+
+The second use is no longer practiced much, and is in fact deprecated in HTML5.  You can obtain the same behavior by using an id instead, and you can put it on any type of element you want, not just an `<a>` (`<span id="section-two">`).
+
+In modern web applications, it is common to have anchors that activate functionality via JavaScript, and don't in fact link directly to another page.   This creates a bit of a problem, as we still want them to look and behave like a normal link.  To get this behavior, we often see `href="#"` or `href="javascript:void()"`, because there must be an `href` for the browser to treat it like a link.  Then, at least with `href="#"`, we have to be sure to call `event.preventDefault()` in the JavaScript handler to stop the browser from following the link.
+
+Another, less common, option is to omit the `href` attribute and style `a` instead of `a:link`.  The link behavior we lose when we do this the underline and the cursor behavior when mousing over the link.  Thankfully, we can easily replicate both of these with CSS:
+
+```css
+a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+```
+
+I'm not saying you should always take this approach, but it is worth considering, especially in a web app where you find yourself using a lot of `<a>` tags.  (That said, always add an `href` when there is a url that makes sense; that way, a ctrl-click will still open the url in a new window.)

@@ -2,9 +2,9 @@
 
 # Preface
 
-Web developers, in general, have a very poor understanding of CSS.  This should be inexcusable.  After all, it is one of the most fundamental tools we have at our disposal.  Sadly, this lack of understanding is so universal to our trade, we shrug it off: we make a joke; we blame older browsers; we blame the language.  "CSS is just bad".
+Web developers, in general, have a poor understanding of CSS.  This should be inexcusable.  After all, it is one of the most fundamental tools we have at our disposal.  Sadly, this lack of understanding is so universal to our trade, we shrug it off: we make a joke; we blame older browsers; we blame the language.  "CSS is just bad".
 
-CSS, like its cousin JavaScript, is one of more hated technologies out there.  Many developers view it as a necessary evil.  They consider it broken.  Some have even looking for ways to avoid using stylesheets entirely by moving styles into their JavaScript components instead.  Yes, it has some "bad" (i.e. confusing) parts that we all love to make fun of.  But the answer isn't simply to laugh at them, brute-force a fix that is "close enough", and try to never think about it again.  The answer is to understand them.
+CSS, like its cousin JavaScript, is one of more hated technologies out there.  Many developers view it as a necessary evil.  They consider it broken.  Some have even looked for ways to avoid using stylesheets entirely.  Yes, it has some "bad" (i.e. confusing) parts that we all love to make fun of.  But the answer isn't simply to laugh at them, brute-force a fix that is "close enough", and try to never think about it again.  The answer is to understand them.
 
 ## "How do I learn CSS?"
 

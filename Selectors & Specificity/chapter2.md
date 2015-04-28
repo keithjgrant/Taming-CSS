@@ -24,7 +24,7 @@ There are hundreds of various properties you can set.  They can specify everythi
 
 Before we look at more examples of rulesets, let's learn how to link the CSS to the HTML.  There are three ways to do this: inline, a `<style>` tag, and a `<link>` tag.
 
-With **inline** styles, declarations are applied directly to an HTML element using the `style` attribute.  For example: `<p style="color: red;">`.  Since this is done explicitly on an element, no selector is needed to target an element.  Typically, inline styles are not preferred, because they do not provide for code reuse.  They are also highly specific, meaning they are difficult to override (See chapter 3 for more on Specificity).  When you use JavaScript to dynamically add styles to the document, you will typically be adding inline styles.
+With **inline** styles, declarations are applied directly to an HTML element using the `style` attribute.  For example: `<p style="color: red;">`.  Since this is done explicitly on an element, no selector is needed to target an element.  Typically, inline styles are not preferred, because they do not provide for code reuse.  They are also highly specific, meaning they are difficult to override.
 
 A `<style>` tag is used to specify styles for the current document.  It should be placed inside of the `<head>`:
 

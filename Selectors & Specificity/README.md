@@ -9,5 +9,4 @@ Note: I'm still unsure on the title of this book.  I like the alliteration of "S
   * [Chapter 2: Syntax](chapter2.md)
   * [Chapter 3: Selectors](chapter3.md)
   * [Chapter 4: Declarations](chapter4.md)
-  * [Chapter 5: Pseudo-classes & Pseudo-elements](chapter5.md)
-  * [Chapter 6: Browser Resets](chapter6.md)
+  * [Chapter 5: Browser Resets](chapter5.md)

@@ -2,7 +2,7 @@
 
 This is a book series taking a comprehensive look at how to write and maintain CSS.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the [Preface](preface.md).
 
-## Books
+## Books/Sections
 
 * [Selectors & Specificity](Selectors & Specificity/README.md) (Draft in progress)
 * [Layout](Layout/README.md)
@@ -10,10 +10,6 @@ This is a book series taking a comprehensive look at how to write and maintain C
 * [Development Process](Development Process/README.md)
 * [Styling](Styling/README.md)
 * [Advanced Styling](Advanced Styling/README.md)
-
-Other chapters/appendices that still need to be categorized:
-
- * Browser Resets
 
 ## Publishing
 

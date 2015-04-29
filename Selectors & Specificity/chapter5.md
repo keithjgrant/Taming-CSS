@@ -1,7 +1,4 @@
 # Taming CSS: Selectors & Specificity
-# Chapter 5: Pseudo-classes & Pseudo-elements
+# Chapter 5: Browser Resets
 
-Pseudo-selectors target elements when they are in a special state.
-
-## Links Revisited
 

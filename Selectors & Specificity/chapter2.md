@@ -14,11 +14,42 @@ body {
 
 This is a ruleset.  It consists of a **selector** (`body`) and a declaration block (everything between the braces).  The declaration block contains any number of declarations, which are each in turn contain a **property** (`color` and `background`) and one or more **values** (`black` and `white`).  A colon goes between the property and the value, and a semi-colon goes after each declaration.
 
-The selector determines which elements to target with the declaration block.  This above selector is a tag selector; it targets the `<body>` tag.  It matches the name of the tag it is selecting.  We know there is only one `<body>` in a valid HTML document, but if we were to select another tag, such as the `<p>` tag, it would target all such tags on the page.
+The selector determines which elements to target with the declaration block.  Styles defined in the block will be applied to element(s) targeted by the selector.  This selector above is a tag selector; it matches the name of the tag it is selecting, thus this one targets the `<body>` tag.  We know there is only one `<body>` in a valid HTML document, but if we were to select another tag, such as the `<p>` tag, it would target all such tags on the page.  This would like like so:
 
-The declarations specify styles to set on the selected elements.  In the example above, we are using the `color` property, which specifies the text color of everything inside the selected element, and we are giving it the value `black`.  Then we are using the `background` property to set the background color to the value `white`.
+```css
+p {
+  color: blue;
+}
+```
+
+The declarations specify styles to set on the selected elements.  In the example above, we are using the `color` property, which specifies the text color of everything inside the selected element, and we are giving it the value `blue`.  The text of all `<p>` tags will now appear blue.
 
 There are hundreds of various properties you can set.  They can specify everything from adding drop shadows to specifying fonts to setting the position of an element on the page.  Don't let that overwhelm you, though, as you can get very far with just a small number of them, most of which are rather self-explanatory.  We will cover many of them as we go.
+
+Sometimes you want to apply the same set of styles to multiple elements that cannot be targeted with the same selector.
+
+```css
+input {
+  color: gray;
+  border: blue 1px solid;
+}
+textarea {
+  color: gray;
+  border: blue 1px solid;
+}
+```
+
+This is silly; we're repeating ourself.  Thankfully, there's a better way:
+
+```css
+input,
+textarea {
+  color: gray;
+  border: blue 1px solid;
+}
+```
+
+Any number of selectors can be used in the same rule set, each separated by a comma.  This saves you from duplicating a lot of code.
 
 ### Linking CSS to HTML
 

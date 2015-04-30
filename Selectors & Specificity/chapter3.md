@@ -5,7 +5,7 @@
 
 Selectors are perhaps the most important part of CSS.  Countless articles and books have been written examining selectors and the best way to construct and organize them.  We will examine this in detail in *Taming CSS: Organization*, but for now, let's look at the different ways to construct selectors.
 
-The three most basic selectors are the **tag selector** (also called a type selector), the **class selector**, and the **id selector**.  As we saw in chapter two, a tag selector looks like the name of the tag it is targeting: `p` to target all `<p>`, `h1` to target all `<h1>`.
+The three most simple selectors are the **tag selector** (also called a type selector), the **class selector**, and the **id selector**.  As we saw in chapter two, a tag selector looks like the name of the tag it is targeting: `p` to target all `<p>`, `h1` to target all `<h1>`.
 
 The class selector begins with a `.`: `.navmenu` targets `<ul class="navmenu">`, or any other elements with that class.  The tag name is irrelevant: `.foo` targets `<div class="foo">` as well as `<li class="foo bar">`.  Note that targeted elements may also have additional classes.
 
@@ -184,6 +184,8 @@ The attribute selectors can be useful in conjunction with HTML5 `data-*` attribu
 
 ## Pseudo-Classes
 
+### Links
+
 When starting a new project, one of the first thing you'll generally want to style are links.  These require a special type of selector called a **pseudo-classes**.  These are used to target elements when they are in a special state.
 
 ```css
@@ -236,36 +238,67 @@ I'm not saying you should always take this approach, but it is worth considering
 
 There are more advanced uses for this, which we will look at later; it can be used to do things like open dropdown menus or show a full-size image while hovering over a thumbnail.  Just be aware that the user cannot "hover" when using a touchscreen device, thoughsome devices will toggle the hover functionality when the user taps.
 
-<!--- TODO: smooth over this transition -->
+### Forms Input State
 
 There are several pseudo-classes for styling form elements in various states:
 
 `:checked`: Target selected checkboxes.
 
-`:disabled`: Target disabled elements.  This is effectively the same as using a `[disabled]` attribute selector.
-
-`:enabled`: Target enabled form elements.
-
 `:focus`: Target the form element that has focus, either by the user clicking it or tabbing to it.
-
-`:invalid`: HTML5 introduced several form validation features, such as email inputs that must be a valid email address, or a required field that must not be empty.  Use this to target any input with invalid content.
-
-`:valid`: Target form inputs with valid input.
 
 `:active`: Like links, this can also be for buttons, to style their appearance while being clicked or tapped.
 
-<!---
-:first-child   :last-child
-:first-of-type :last-of-type
-:nth-child()   :nth-last-child()
-:nth-of-type() :nth-last-of-type()
-:only-child
-:empty
+`:enabled` and `:disabled`: Target enabled or disabled elements.  `:disabled` is effectively the same as using a `[disabled]` attribute selector.
 
-:not()
+`:valid` and `:invalid`: HTML5 introduced several form validation features, such as email inputs that must be a valid email address, or a required field that must not be empty.  Use these to target any input with valid or invalid content.
 
-* there are others *
--->
+`:in-range` and `:out-of-range`: When inputs have `min` and/or `max` attributes, use this to target them when their current value is in or out of the specified range.
+
+
+We'll look at styling forms more in depth later on, but here's an example to give you an idea how these pseudo-classes can be used:
+
+```css
+/* Style a default border around inputs */
+input,
+textarea {
+  border: darkgray 1px solid;
+}
+
+/* Change the background to blue to highlight the current input */
+input:focus,
+textarea: focus {
+  border-color: blue;
+}
+
+/* Turn invalid form values red so the user can notice and correct it */
+input:invalid,
+textarea:invalid {
+  color: red;
+  border-color: red;
+}
+```
+
+### "Child" and "Nth" Selectors
+
+There are a series of pseudo-classes for targeting elements based on their position relative to sibling elements and in other contexts:
+
+`:first-child` and `:last-child`: Target elements that are the first or last child under their parent.
+
+`:first-of-type` and `:last-of-type`: Target elements that are the first or last child of a their tag type under their parent.  For example, if there are three `<span>`s followed by an `<input>` as children of a container, the first `<span>` and the `<input>` could be targeted with a selector using `:first-of-type`.
+
+`:nth-child(<formula>)` and `:nth-last-child(<formula>)`: Use a mathematical formula to target children based on their position under their parent.
+
+`:nth-of-type(<formula>)` and `:nth-last-of-type(<formula>)`: Use a mathematical formula to target children based on their position among other elements of the same type under their parent.
+
+`:only-child`: Target an element that is the only child of its parent.
+
+`:empty`: Target an element that has no children elements.
+
+`:not(<selector>)`: Target an element that does not meet the criteria of a given simple selector.  For example, `:not(div)` will target all elements but `<div>`s, and `p:not(.foo)` will target all `<p>` that do not have the class `foo`.
+
+
+
+There are some more pseudo-classes not mentioned here, but these are all of the most commonly-used ones.
 
 ## Pseudo-Elements
 
@@ -278,3 +311,5 @@ While pseudo-classes are used to select elements in a certain state, **pseudo-el
 ::after
 ::selection
 -->
+
+## That's a Lot of Selectors

@@ -3,9 +3,9 @@
 
 ## Why CSS?
 
-We'll start at the beginning.  Often, in a technical book, "the beginning" means the basics of a given technology, but in this case, I really mean the chronological beginning.
+CSS, like its cousin JavaScript, is one of more hated technologies out there.  Many developers view it as a necessary evil.  They consider it broken.  Some have even looked for ways to avoid using stylesheets entirely.  Yes, it has some "bad" (i.e. confusing) parts that we all love to make fun of.  But the answer isn't simply to laugh at them, brute-force a fix that is "close enough", and try to never think about it again.  The answer is to understand them.
 
-A lot of the quirky parts of CSS make more sense if you realize how and why they came about.  Things like the cascade, floats, and the box model originated for one purpose, only for web designers to discover other unforseen secondary purposes that they could accomplish.  Because of the interplay between browser developers, standards bodies like the W3C, and the constant need for backwards compatability, Internet technologies move slowly.  We can't just say, "I want to upgrade to version 3.0"; we need to consider what will happen in older browsers.  So often, it's easier to use an older--but more universally supported--tool than to use some cutting edge one that doesn't yet work in any browser.  It doesn't take long for these repurposed tools to become the de-facto standard for accomplishing something, even when that was not the originally intended purpose for that tool.  When something in CSS just doesn't seem to make any sense, it is often because you don't understand its original purpose.
+A lot of the quirky parts of CSS make more sense if you realize how and why they came about.  Things like the cascade, floats, and the box model originated for one purpose, only for web designers to discover other unforseen secondary purposes that they could accomplish.  Because of the interplay between browser developers, standards bodies like the W3C, and the constant need for backwards compatability, Internet technologies move slowly.  We can't just say, "I want to upgrade to version 3.0"; we need to consider what will happen in older browsers.  So often, it's easier to use an older--but more universally supported--tool than to use some cutting edge one that doesn't yet work in any browser.  It doesn't take long for these repurposed tools to become the de-facto standard for accomplishing something, even when that was not the originally intended purpose for that tool.  When something in CSS just doesn't seem to make any sense, it is often because we don't understand its original purpose.
 
 To understand where CSS came from, let's first look at what came before it.  In the early days of the Internet, web pages were just HTML.  It supported text, images, and links to other resources online.  To enhance the appearance of text, HTML used tags like `<center>` and `<font>`.
 
@@ -48,3 +48,4 @@ In the list of things a web developer needs to know, CSS is not a second-class c
 HTML, JavaScript, CSS.  These are the fundamentals.  You need to know these three.  Inside and out.  Everything else I listed above, and all the shiny new things that surface each week, are secondary.
 
 If you "know" CSS, but you don't *know* it... then it's time to change that.
+

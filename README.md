@@ -1,5 +1,7 @@
 # Taming CSS
 
+<img src="logo.png"/>
+
  This is a book taking a comprehensive look at how to write and maintain CSS.  It is written primarily for web developers, but I start with the basics so anybody should be able to pick up and follow along.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the [Preface](preface.md).
 
 ## Sections

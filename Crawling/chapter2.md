@@ -1,5 +1,5 @@
-# Taming CSS: Selectors & Specificity
-# Chapter 3: Selectors
+# Taming CSS
+# Chapter 2: Selectors
 
 ## Basic Selectors
 

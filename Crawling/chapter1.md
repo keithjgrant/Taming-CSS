@@ -1,9 +1,7 @@
-# Taming CSS: Selectors & Specificity
-# Chapter 2: Syntax
+# Taming CSS
+# Chapter 1: The Basics
 
 ## Rulesets
-
-It's the second chapter, and we haven't even looked at any CSS yet.  So let's get to it:
 
 ```css
 body {

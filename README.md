@@ -6,12 +6,10 @@
 
 ## Sections
 
-* [Selectors & Specificity](Selectors & Specificity/README.md) (initial draft in progress)
-* [Layout](Layout/README.md)
-* [Organization](Organization/README.md)
-* [Styling](Styling/README.md)
-* [Development Process](Development Process/README.md)
-* [Advanced Styling](Advanced Styling/README.md)
+* [Crawling](Crawling/README.md) (initial draft in progress)
+* Walking
+* Running
+* Flying
 
 ## Publishing
 

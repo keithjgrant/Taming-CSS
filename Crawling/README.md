@@ -6,4 +6,4 @@
 * [Styling Essentials](chapter3.md)
 * [The Box Model](chapter4.md)
 * [Display Property](chapter5.md)
-* [Dev Tools Basics](chapter6.md)
+* [Developer Tools Basics](chapter6.md)

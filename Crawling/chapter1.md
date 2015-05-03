@@ -1,7 +1,7 @@
 # Taming CSS
 # Chapter 1: The Basics
 
-## Rulesets
+## Declarations and Selectors
 
 ```css
 body {
@@ -145,22 +145,12 @@ Let's move on to the next declaration:
 
 We are already familiar with the `color` attribute.  This sets the color of the text to white.
 
+<!-- Change to named color -->
 ```css
   background: #336699;
 ```
 
-We are also familiar with the `background` attribute, but this value is something new.  This is a **hex color**, also known as hex notation.  "Hex" is short for "hexadecimal", which is a base-16 number system.
-
-Unlike our common decimal number system, which is base-10 and uses the ten digits 0 through 9, hexidecimal uses sixteen digits.  We represent these with 0 through 9 as well as A through F.  "A" represents the decimal value "10".  "B" represents "11", et. cetera up through "F" which represents "15".  Capitalization is ignored.
-
-If you were to add one to `F`, you get `10`.  Instead of a tens column, as with decimal numbers, we have a sixteens column.  `11` means 1 sixteen plus 1.  `2A` means 2 sixteens (decimal 32) plus A (decimal 10).  Don't worry too much about the conversion, though.  Suffice it to say, in hex, letters have higher values than numbers; they are kind of like the face cards in a deck of cards.
-
-You can easily get by with a general grasp of the concept.  Then you know that `B9` is larger than `9B`, and `A1` is much larger than `1A`.  Most often, you will be obtaining these values from a image editor or color picker, not writing them by hand off the top of your head.
-
-So how does this get us a color?  A CSS hex color is actually three distinct hexidecimal numbers t
-ogether, representing values for red, green, and blue.  In `#336699`, `33` is the amount of red, `66` is the amount of green, and `99` is the amount of blue.  Since blue is the largest value, so this color is primarily blue.  Because both digits in each value are equal, this number can be abbreviated as `#369`.
-
-Colors you will common use include `#ffffff` (or `#fff`), which is pure white, and `#000000` (or `#000`), which is pure black.  (We use additive color, which means the higher the value, the more light we are adding).
+<!--- TODO -->
 
 Let's look at the next declaration from our button:
 
@@ -191,30 +181,6 @@ So now let's look at our complete ruleset again:
 Now you can understand how these declarations work together to produce our blue button:
 
 <img src="figure1.png"/>
-
-## At-Rules
-
-Most of your CSS will be rulsets, but there is another structure called an **at-rule**.  Some at-rules are terminated with a semi-colon while others are followed by a block inside braces.
-
-One type of at-rule is an **import statement**:
-
-```css
-@import url('base.css');
-```
-
-This tells the brower to load another stylesheet into the current one.The `@import` must be placed before any rulesets in the stylsheet.  Imports should almost always be avoided, as it forces stylesheets to be loaded consecutively rather than concurrently.  This slows down the page load time in the browser.
-
-An important at-rule is a **media query**:
-
-```css
-@media print {
-  .navmenu {
-    display: none;
-  }
-}
-```
-
-The media query is followed by a block that contains rules.  These rules are applied only when the conditions of the media query are met.  In the example above, elements with the class `navmenu` are hidden when printing the page.  Media queries can also be used to apply styles conditionally based on the dimensions of the viewport window.
 
 ## Comments
 

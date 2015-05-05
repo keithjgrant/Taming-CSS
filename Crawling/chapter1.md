@@ -105,7 +105,7 @@ And add this inside the `<body>` tag of your html:
 <p id="bigred">Consectetur adipiscing elit.</p>
 ```
 
-Open up the page in your browser, and you should see the result:
+Save and oen up the page in your browser, and you should see the result:
 
 <img src="figure1.png"/>
 

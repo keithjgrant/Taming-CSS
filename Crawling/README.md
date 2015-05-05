@@ -1,6 +1,7 @@
 # Taming CSS
 # Crawling
 
+* [Introduction](introduction.md)
 * [The Basics](chapter1.md)
 * [Styling Essentials](chapter2.md)
 * [Cascade, Specificity, & Inheritance](chapter3.md)

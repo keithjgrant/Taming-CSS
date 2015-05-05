@@ -2,12 +2,12 @@
 * Crawling
   * syntax, simple selectors, linking to stylesheets
   * cascade, specificity, & inheritance
-  * common styles: hex colors, borders, etc
+  * common styles: links, hex colors, borders, etc
   * box model (transition from margin/padding in 'common styles')
   * display property (inline vs block, document flow, etc)
   * browser dev tools
 * Walking
-  * advanced selectors, pseudo-selectors
+  * selectors: combinators, pseudo-selectors
   * browser resets
   * floats
   * backgrounds
@@ -16,6 +16,7 @@
   * position-property
 * Running
   * inline-block
+  * pseudo-classes
   * organization
     * architecture methodologies: oocss, smacss, bem, (& itcss)
     * learning from OOP (SOLID, etc)
@@ -46,3 +47,4 @@ Other misc:
 * margin collapsing
 * overflow
 * submenus with :hover
+* CSS-first development

@@ -3,6 +3,26 @@
 
 ## Declarations and Selectors
 
+CSS syntax is very straightforward.  Let's look at an example:
+
+```css
+color: black;
+```
+
+This is a **declaration**.  It is made up of two parts: a **property** (`color`) and a **value** (`black`).  A colon goes between the property and the value, and a semi-colon ends the declaration.  Declarations are used to specify all sorts of styles.  This declaration, for example, sets the text color to black.
+
+There are hundreds of various properties you can set.  They can specify everything from adding drop shadows to setting fonts to determining the position of an element on the page.  Don't let that overwhelm you, though, as you can get very far with just a small number of them, most of which are rather self-explanatory.  We will cover many of the most common ones in the next few chapters.
+
+A declaration by itself isn't very useful (and in fact is not yet valid syntax).  We've set the text color to black, but what text color are we talking about?  To make it valid, need to specify which part of the document this style is intended for:
+
+```css
+body {
+  color: black;
+}
+```
+
+Now we've added a **selector**, `body`, and we've enclosed the declaration in braces to associate it with the selector.  This tells the browser to apply our declaration to the `<body>` tag.  Because all visible content is inside the `<body>`, this effectively gives the entire page black text.  We can also associate more declarations with the same selector.  Let's specify a white background:
+
 ```css
 body {
   color: black;
@@ -10,19 +30,90 @@ body {
 }
 ```
 
-This is a ruleset.  It consists of a **selector** (`body`) and a declaration block (everything between the braces).  The declaration block contains any number of declarations, which are each in turn contain a **property** (`color` and `background`) and one or more **values** (`black` and `white`).  A colon goes between the property and the value, and a semi-colon goes after each declaration.
+Simple enough, right?  A selector and any number of declarations: together, these are called a **ruleset**.  Rulesets can be very long, including any number of declarations (though, typically not more than a handful), and they can be very short, even empty.  `body {}` is a valid ruleset.  Although it has no effect, it can be useful as a placeholder during development when you know you will need to use it soon.
 
-The selector determines which elements to target with the declaration block.  Styles defined in the block will be applied to element(s) targeted by the selector.  This selector above is a tag selector; it matches the name of the tag it is selecting, thus this one targets the `<body>` tag.  We know there is only one `<body>` in a valid HTML document, but if we were to select another tag, such as the `<p>` tag, it would target all such tags on the page.  This would like like so:
+The vast majority of your CSS will be in rulesets.  There are just a few other parts to CSS syntax, which we will get to later on.
+
+### Linking CSS and HTML
+
+Now that we know how to write a little bit of CSS, let's learn how to apply it to some HTML so we can see it in action.  There are three ways to do this:
+
+First, **inline** styles may be used to apply style declarations directly to an HTML element using the `style` attribute.  For example: `<p style="color: red;">`.  Since this is done explicitly on an element, no selector is needed to target an element.  Typically, inline styles are not preferred, because they do not provide for code reuse.  They are also highly specific, meaning they are difficult to override.
+
+Second, a `<style>` tag can be used to specify styles for the current document.  It should be placed inside of the `<head>`:
+
+```html
+<head>
+  <style type="text/css">
+    body {
+      color: black;
+      background white;
+    }
+  </style>
+</head>
+```
+
+Third, a `<link>` tag can be used to link to an external CSS stylesheet.  This is generally the preferred way to use CSS.  It allows you to keep your CSS in a separate file from your HTML, and it allows you to reuse the same CSS on multiple different pages.  The `<link>` should be inside the document's `<head>`.
+
+Let's make a starter webpage and link it to a stylesheet.  Create a `demo.html` file, and copy the following into it:
+
+```html
+<!doctype html>
+<head>
+  <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+</body>
+```
+
+In the same directory, create a file named `style.css`.  Open `demo.html` in your browser.  Now, you can add CSS to your stylesheet and HTML to your webpage, and refresh your browser window to see the changes.
+
+As you work through this book, add to these files to see the examples in action.  Play around with different values, selectors, and markup to see how it changes things.  You will learn a lot more by seeing things in action, and by seeing immediate feedback as your changes affect things.
+
+## Basic Selectors
+
+So far, we've seen only selector, `body`.  This is an example of a **type selector** (sometimes called a tag selector).  This selector specifies the HTML tag name it targets.  You can target any HTML element: the selector `p` targets all `<p>` on the page, `h1` targets all `<h1>`, etc.
+
+We know there is only one `<body>` in a valid HTML document, so `body` only targets one element, but if we were to select another tag, such as the `<p>` tag, it would target all such tags on the page.
+
+Another type of selector is the **class selector**.  Class selectors begin with a `.` followed by the name of the class they target.  For instance, `.navmenu` targets `<ul class="navmenu">`, or any other elements with that class.  The tag name is irrelevant: `.foo` targets `<div class="foo">` as well as `<li class="foo bar">`.  Note that targeted elements may also have additional classes.
+
+**ID selectors** begin with a `#`.  `#sidebar` targets the element with that id, `<div id="sidebar">` for instance.  In HTML, ids must be unique, meaning only one element on the page may have a given id and each element may only have one id; if you need to put an identifier on multiple elements, use a class instead.
+
+Let's try these out in your demo page.  Add this to your stylesheet:
 
 ```css
 p {
   color: blue;
 }
+
+.tinygreen {
+  color: green;
+  font-size: 10px;
+}
+
+#bigred {
+  color: red;
+  font-size: 20px;
+}
 ```
 
-The declarations specify styles to set on the selected elements.  In the example above, we are using the `color` property, which specifies the text color of everything inside the selected element, and we are giving it the value `blue`.  The text of all `<p>` tags will now appear blue.
+And add this inside the `<body>` tag of your html:
 
-There are hundreds of various properties you can set.  They can specify everything from adding drop shadows to specifying fonts to setting the position of an element on the page.  Don't let that overwhelm you, though, as you can get very far with just a small number of them, most of which are rather self-explanatory.  We will cover many of them as we go.
+```html
+<p>Lorem ipsum dolor <span class="tinygreen">sit amet</span>.</p>
+<p id="bigred">Consectetur adipiscing elit.</p>
+```
+
+Open up the page in your browser, and you should see the result:
+
+<img src="figure1.png"/>
+
+You can do a lot with these three types of selectors, but sometimes you need to be more specific.  Selectors may be combined together to target more precisely.
+
+If you concatenate two or more basic selectors together, you define a selector that targets elements meeting *all* of the specified criteria: `p.foo` targets `<p class="foo">` but not `<p>` or `<div class="foo">`.  `#navmenu.is-open` targets the `#navmenu`, but only if it also has the class `is-open` applied.  `.bar.baz` targets elements that have both the `bar` and `baz` classes.
+
+<!--- WORKING HERE -->
 
 Sometimes you want to apply the same set of styles to multiple elements that cannot be targeted with the same selector.
 
@@ -48,42 +139,6 @@ textarea {
 ```
 
 Any number of selectors can be used in the same rule set, each separated by a comma.  This saves you from duplicating a lot of code.
-
-### Linking CSS to HTML
-
-Before we look at more examples of rulesets, let's learn how to link the CSS to the HTML.  There are three ways to do this: inline, a `<style>` tag, and a `<link>` tag.
-
-With **inline** styles, declarations are applied directly to an HTML element using the `style` attribute.  For example: `<p style="color: red;">`.  Since this is done explicitly on an element, no selector is needed to target an element.  Typically, inline styles are not preferred, because they do not provide for code reuse.  They are also highly specific, meaning they are difficult to override.
-
-A `<style>` tag is used to specify styles for the current document.  It should be placed inside of the `<head>`:
-
-```html
-<head>
-  <style type="text/css">
-    body {
-      color: black;
-      background white;
-    }
-  </style>
-</head>
-```
-
-A `<link>` tag is used to link to an external CSS stylesheet.  This is generally the preferred way to use CSS.  It allows you to keep your CSS in a separate file from your HTML, and it allows you to reuse the same CSS on multiple different pages.  As with `<style>`, `<link>` should be inside the document's `<head>`.
-
-Let's create a starter webpage and link it to a stylesheet.  Create an `index.html` file, and copy the following into it:
-
-```html
-<!doctype html>
-<head>
-  <link href="style.css" rel="stylesheet"/>
-</head>
-<body>
-</body>
-```
-
-In the same directory, create a file named `style.css`.  Open `index.html` in your browser.  Now, you can add CSS to your stylesheet and HTML to your webpage, and refresh your browser window to see the changes.
-
-As you work through these books, add to these files to see the examples in action.  Play around with different values, selectors, and markup to see how it changes things.  You will probably learn a lot more by seeing things in action, and by seeing immediate feedback as your changes affect things.
 
 ### Another Example
 

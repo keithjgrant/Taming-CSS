@@ -2,14 +2,47 @@
 
 <img src="logo.png"/>
 
- This is a book taking a comprehensive look at how to write and maintain CSS.  It is written primarily for web developers, but I start with the basics so anybody should be able to pick up and follow along.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the [Preface](preface.md).
+ This is a book taking a comprehensive look at how to write and maintain CSS.  It is written primarily for web developers, but I start with the basics so anybody should be able to pick up and follow along.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the Introduction.
 
-## Sections
+## Table of Contents
 
-* [Crawling](Crawling/README.md) (initial draft in progress)
+* [Introduction](introduction.md)
+* Crawling
+  * [Section Overview](Crawling/overview.md)
+  * [Chapter 1: Getting Started](Crawling/chapter1.md)
+  * Chapter 2: Styling Essentials (initial draft in progress)
+  * Chapter 3: Cascade, Specificity, & Inheritance
+  * Chapter 4: The Box Model
+  * Chapter 5: Display Property
+  * Chapter 6: Developer Tools Basics
 * Walking
+  * Section Overview
+  * Selectors: Combinators & Pseudo-Classes
+  * Floats
+  * Backgrounds
+  * Forms
+  * Lists
+  * Position Property
+  * Cross-Browser Development
 * Running
+  * Section Overview
+  * Inline-Block
+  * Pseudo-Elements
+  * Organizational Methodologies
+  * Learning from OOP
+  * Preprocessors
+  * Responsive Design
 * Flying
+  * Section Overview
+  * Colors in Depth
+  * Typography
+  * Advanced Styling
+  * Animation
+  * SVG
+  * Z-index & Stacking Contexts
+  * Flexbox layout
+
+(This is a very rough outline.  Chapters will certainly shift around as I work through the draft.)
 
 ## Publishing
 

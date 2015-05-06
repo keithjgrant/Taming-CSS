@@ -1,192 +1,110 @@
 # Taming CSS
-# Chapter 2: Selectors
+# Chapter 2: Basic Styling
 
-## Basic Selectors
 
-Selectors are perhaps the most important part of CSS.  Countless articles and books have been written examining selectors and the best way to construct and organize them.  We will examine this in detail in *Taming CSS: Organization*, but for now, let's look at the different ways to construct selectors.
 
-The three most simple selectors are the **tag selector** (also called a type selector), the **class selector**, and the **id selector**.  As we saw in chapter two, a tag selector looks like the name of the tag it is targeting: `p` to target all `<p>`, `h1` to target all `<h1>`.
 
-The class selector begins with a `.`: `.navmenu` targets `<ul class="navmenu">`, or any other elements with that class.  The tag name is irrelevant: `.foo` targets `<div class="foo">` as well as `<li class="foo bar">`.  Note that targeted elements may also have additional classes.
+### Style a Button
 
-ID selectors begin with a `#`.  `#sidebar` targets the element with that id, `<div id="sidebar">` for instance.  In HTML, ids must be unique, meaning only one element on the page may have a given id and each element may only have one id; if you need to put an identifier on multiple elements, use a class instead.
-
-### Combining Selectors
-
-Selectors may be combined to make them more specific.  `p.foo` targets `<p class="foo">` but not `<p>` or `<div class="foo">`.  `#navmenu.is-open` targets the `#navmenu`, but only if it has the class `is-open` applied.  `.bar.baz` targets elements that have both the `bar` and `baz` classes.
-
-A space between two selectors is a **descendant combinator**:
+Let's look at another example of a ruleset:
 
 ```css
-p .highlight {
-  color: red;
+.button {
+  padding: 5px 15px;
+  color: white;
+  background: #336699;
+  border-radius: 5px;
+  text-decoration: none;
 }
 ```
 
-This targets all elements with the `highlight` class that are *descendants* of a `<p>`.  For example, if we applied the CSS above to some HTML:
+This uses a different kind of selector.  The `.` indicates that `button` is a class name rather than a tag name.  This selector targets all elements on the page that have the class `button`.  If we paired it with the HTML
 
 ```html
-<p>This paragraph has <span class="highlight">three red words</span></p>
-<span class="highlight">But this text is not red.</span>
-<p class="highlight">Neither is this.</p>
+<a class="button" href="next.html">Next &raquo;</a>
 ```
 
-You are not limited to one combinator.  String many together to do things like target items in nested lists with `ul li ul li` or anchors in navigation list items with `ul.nav li a`.
+we would get a button that looked like this:
 
-There are some other types of combinators, too:
+<img src="figure1.png"/>
 
-A `>` is a **child combinator**.  This is used to target elements that are a *direct descendant* of another (`.parent > .child`).  While a descendant combinator selects a descendant element any number of elements deep, the child combinator selects only one level deep.  For example, given this CSS:
+Let's look at each of the attributes we set.
 
 ```css
-.foo .bar { /* descendant selector */
-  color: red;
-}
-
-.foo > .bar { /* child selector */
-  color: green;
-}
+padding: 5px 15px;
 ```
+`padding` puts space between the border of the element and its contents.  In this case, we specified `5px`, or five pixels, for the top and bottom padding, and `15px`, or 15 pixels, for the right and left padding.
 
-then
+This is actually a shorthand notation, which `padding` and many other attributes support.  The equivalent full notation would be `5px 15px 5px 15px`.  This sets the four sides in clockwise order: top, right, bottom, left.  If you find that order tough to remember, just think "TRouBLe", which includes the first let of each direction in the correct order.
 
-```html
-<div class="foo">
-  <p class="bar">This will be green</p>
-  <div>
-    <p class="bar">But this will be red</p>
-  </div>
-</div>
-```
+If the shorthand declaration stops before a side is given a value, that side takes its value from the opposite side: the left side value will match the right side; the bottom side will match the top.  If only one value is specified, that value is applied to all four sides.
 
-A `+` is an **adjacent sibling combinator**.  It is used to select an element that immediately follows another:
+Thus the following declarations are equivalent to one another:
 
 ```css
-.foo + span {
-  color: red;
-}
-```
-```html
-<div>
-  <span>Default text color</span>
-  <span class="foo">Default text color</span>
-  <span>Red text (adjacent sibling to foo)</span>
-  <span>Default text color</span>
-</div>
+padding: 5px 15px;
+padding: 5px 15px 5px;
+padding: 5px 15px 5px 15px;
 ```
 
-Finally, `~` is a **general sibling combinator**.  It is used to target *all* sibling elements that follow another:
+And the this set are equivalent to one another as well:
 
 ```css
-.foo + span {
-  color: blue;
-}
-```
-```html
-<div>
-  <span>Default text color (sibling, but before foo)</span>
-  <span class="foo">Default text color</span>
-  <span>Blue text (sibling of foo)</span>
-  <span>Blue text (also a sibling)</span>
-</div>
+padding: 5px;
+padding: 5px 5px;
+padding: 5px 5px 5px;
+padding: 5px 5px 5px 5px;
 ```
 
-You may have noticed there are not combinators for selecting previous siblings or parent/ancestor elements (e.g. there is no selector for "a `<p>` that has a child with class `foo`").  There has been discussion concerning these for a long time, but they are difficult to implement in the browser without hindering performance.  They may happen some day, but I wouldn't count on them being supported any time soon.
-
-### Universal Selector
-
-You can select all elements with the universal selector `*`.  At one point, it was a common practice to use this to do a "universal reset".
+Let's move on to the next declaration:
 
 ```css
-/* Don't do this */
-* {
-  margin: 0;
-  padding: 0;
-}
+  color: white;
 ```
 
-This reset all the browser's default margin and padding on all elements to make development across multiple browsers more uniform.  This is not a recommended practice, however, as it is more heavy-handed than you probably want.  Lists generally need a left padding, paragraphs and headers generally need a top and/or bottom margin, etc.  We will take a look at better ways to do browser resets in chapter five.
+We are already familiar with the `color` attribute.  This sets the color of the text to white.
 
-The universal selector can also be combined.  For example, `.foo *` targets all elements that descend from `.foo`; `.bar > *` selects all direct descendants of `.bar`.
+<!-- Change to named color -->
+```css
+  background: #336699;
+```
 
-You may hear that `*` should be avoided for performance reasons.  In truth, this is a holdover from IE6.  These days, it is generally fine to use in all modern browsers.
+<!--- TODO -->
 
-## Specificity
-
-A very important topic to understand is **specificity**.  Of everything we'll cover in this book, specificity is probably the most often missed as people learn the basics.  When giving job interviews, I always ask about specificity.
-
-Specificity is how the browser chooses between conflicting declarations.  When multiple different declarations need to be resolved, the one with the most specific selector is applied.  For instance, `.bar .bar`, with two class names, has a higher specificity than `.bar`, which has only one.
-
-The exact rules of specificity are as follows:  The selector with the most ids wins (i.e., it is more specific).  If that results in a tie, the selector with the most classes wins.  If that results in a tie, the selector with the most tag names wins.  If all three are equal, whichever one appears later in the stylesheet wins.
-
-A common way to write this is to count each of them up and separate the sums by commas.  So `#foo .bar p` has a specificity of 1,1,1.  `ul li` has a specificity of 0,0,2.  A specificity of 1,0,0 wins over a specificity of 0,2,2, and even over 0,0,10 (though I don't recommend ever writing selectors as long as one with 10 tags).
-
-Consider the following CSS:
+Let's look at the next declaration from our button:
 
 ```css
-#sidebar ul {
-  color: #000;
-}
-
-ul.main-nav {
-  background: #000;
-  color: #999;
-}
+  border-radius: 5px;
 ```
 
-It is a simple concept, but if you don't understand specificity, you can drive youself mad trying to figure out why your navigation menu has black text on a black background instead of the grey on black you specified.  Note that only the declarations in conflict are an issue.  Other declarations in the ruleset with the less-specific selector are still applied.
-
-There are two ways to get around specificity rules.  First, you can declare a style inline.  Inline styles are more specific than those applied via a selector.  Second, you can add **!important** to the end of the declaration:
+The `border-radius` attribute is used to round the element's corners.  When left undefined, the default value is `0`, which means normal squared corners.  The higher the value, the more gradual the curve, up to half of the element's size.
 
 ```css
-#sidebar ul {
-  color: #000;
-}
-
-ul.main-nav {
-  background: #000;
-  color: #999 !important;
-}
+  text-decoration: none;
 ```
 
-Now, when both of these selectors target the same element, the color `#999` would be used.  `!important` even overrides an inline style.
+The `text-decoration` attribute is used to do things like underline or strike through the text.  It supports values like `underline`, `overline`, and `line-through`, though in this case, we've set it to `none`.  We do this because browsers typically underline links by default, but we don't want the underline to appear in our button.  Our `none` value overrides the browser's default value.
 
-Be careful with `!important`, however.  When two conflicting declarations both have an `!important`, then the regular specificity rules apply.  If you rely on it too much, you'll find you need to use it more and more to continue overriding declarations where you've already used it.
-
-Some people will go so far as to say you should never use `!important`.  If you are just starting out in CSS, this is very good advice, but don't cling to it forever.  I believe it has a place, specifically in utility classes.  I've also had to use it occasionally to override inline styles added by a third-party JavaScript libary.
-
-This brings up an important point about specificity: if you are creating a package for distribution, I strongly urge you not to apply styles inline via JavaScript.  If you do, you are forcing developers using your package to either accept your styles exactly, or to use `!important` for every property they want to change.  Instead, include a stylesheet in your package.  If your component needs to make style changes dynamically, it is almost always preferable to use JavaScript to add and remove classes to the elements.  Then users can simply use your stylesheet, and they have the option to edit it however they like without battling specificity.
-
-## Attribute Selectors
-
-Apart from just ids and classes, you can also target elements based on any of their other attributes using **attribute selectors**.
+So now let's look at our complete ruleset again:
 
 ```css
-input[disabled] {
-  background: lightgray;
+.button {
+  padding: 5px 15px;
+  color: white;
+  background: #336699;
+  border-radius: 5px;
+  text-decoration: none;
 }
 ```
 
-This will make the text of disabled form inputs grey (`<input type="text" disabled="true">`).  It does not matter what the value of the attribute is, as long as it is present.  If you want to select based on the value of an attribute, you can use one of the following formats:
+Now you can understand how these declarations work together to produce our blue button:
 
-`[attr="value"]`: Selects elements where the specified attribute equals the specified value.  For example, `input[type="text"]` targets text inputs.
+<img src="figure1.png"/>
 
-`[attr~="value"]`: Selects elements where the specified attribute includes the specified value anywhere in a list of space separated values.  `div[class~="foo"]` is equivalent to `div.foo`.
 
-`[attr^="value"]`: Selects elements with the specified attribute whose value *begins with* the specified value.  For example, `*[id^="chapter"]` would select `<h2 id="chapter-one">` as well as `<h3 id="chapter-two">`, etc.
+## Links
 
-`[attr$="value"]`: Selects elements with the specified attribute whose value *ends with* the specified value.  For example, `a[href$=".pdf"]` targets links to PDFs.
-
-`[attr*="value"]`: Selects elements with the specified attribute whose value *includes* the specified value at least once.  For example `[class*="grid-"]` targets the classes `grid-1`, `grid-2`, etc.
-
-`[attr|="value"]`: Selects elements with the specified attribute whose value begins with the specified value, immediately followed by a dash (`-`).  This is commonly used for matching the language attribute: for example `[lang|="en"]` targets `<span lang="en-US">` and `<span lang="en-UK">`.
-
-The attribute selectors can be useful in conjunction with HTML5 `data-*` attributes.  Perhaps you have tag metadata on a series of articles (`<article data-tags="monday tuesday wednesday">`); you can use `[attr~="tuesday"]` to select all articles with the `tuesday` tag.
-
-## Pseudo-Classes
-
-### Links
-
-When starting a new project, one of the first thing you'll generally want to style are links.  These require a special type of selector called a **pseudo-classes**.  These are used to target elements when they are in a special state.
+When starting a new project, one of the first thing you'll generally want to style are links.  These require some special selectors:
 
 ```css
 a:link {
@@ -227,89 +145,3 @@ a {
 
 I'm not saying you should always take this approach, but it is worth considering, especially in a web app where you find yourself using a lot of `<a>` tags.  (That said, always add an `href` when there is a url that makes sense; that way, a ctrl-click will still open the url in a new window.)
 
-`:hover` can also be used to add hover styles to any element, not just links:
-
-<!--- better example? -->
-```css
-.foo:hover {
-  background: orange;
-}
-```
-
-There are more advanced uses for this, which we will look at later; it can be used to do things like open dropdown menus or show a full-size image while hovering over a thumbnail.  Just be aware that the user cannot "hover" when using a touchscreen device, thoughsome devices will toggle the hover functionality when the user taps.
-
-### Forms Input State
-
-There are several pseudo-classes for styling form elements in various states:
-
-`:checked`: Target selected checkboxes.
-
-`:focus`: Target the form element that has focus, either by the user clicking it or tabbing to it.
-
-`:active`: Like links, this can also be for buttons, to style their appearance while being clicked or tapped.
-
-`:enabled` and `:disabled`: Target enabled or disabled elements.  `:disabled` is effectively the same as using a `[disabled]` attribute selector.
-
-`:valid` and `:invalid`: HTML5 introduced several form validation features, such as email inputs that must be a valid email address, or a required field that must not be empty.  Use these to target any input with valid or invalid content.
-
-`:in-range` and `:out-of-range`: When inputs have `min` and/or `max` attributes, use this to target them when their current value is in or out of the specified range.
-
-
-We'll look at styling forms more in depth later on, but here's an example to give you an idea how these pseudo-classes can be used:
-
-```css
-/* Style a default border around inputs */
-input,
-textarea {
-  border: darkgray 1px solid;
-}
-
-/* Change the background to blue to highlight the current input */
-input:focus,
-textarea: focus {
-  border-color: blue;
-}
-
-/* Turn invalid form values red so the user can notice and correct it */
-input:invalid,
-textarea:invalid {
-  color: red;
-  border-color: red;
-}
-```
-
-### "Child" and "Nth" Selectors
-
-There are a series of pseudo-classes for targeting elements based on their position relative to sibling elements and in other contexts:
-
-`:first-child` and `:last-child`: Target elements that are the first or last child under their parent.
-
-`:first-of-type` and `:last-of-type`: Target elements that are the first or last child of a their tag type under their parent.  For example, if there are three `<span>`s followed by an `<input>` as children of a container, the first `<span>` and the `<input>` could be targeted with a selector using `:first-of-type`.
-
-`:nth-child(<formula>)` and `:nth-last-child(<formula>)`: Use a mathematical formula to target children based on their position under their parent.
-
-`:nth-of-type(<formula>)` and `:nth-last-of-type(<formula>)`: Use a mathematical formula to target children based on their position among other elements of the same type under their parent.
-
-`:only-child`: Target an element that is the only child of its parent.
-
-`:empty`: Target an element that has no children elements.
-
-`:not(<selector>)`: Target an element that does not meet the criteria of a given simple selector.  For example, `:not(div)` will target all elements but `<div>`s, and `p:not(.foo)` will target all `<p>` that do not have the class `foo`.
-
-
-
-There are some more pseudo-classes not mentioned here, but these are all of the most commonly-used ones.
-
-## Pseudo-Elements
-
-While pseudo-classes are used to select elements in a certain state, **pseudo-elements** are used to target certain parts of the page.
-
-<!---
-::first-letter
-::first-line
-::before
-::after
-::selection
--->
-
-## That's a Lot of Selectors

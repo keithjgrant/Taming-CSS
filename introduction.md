@@ -1,9 +1,7 @@
 # Taming CSS
-# Preface
+# Introduction
 
-## Why CSS?
-
-CSS, like its cousin JavaScript, is one of more hated technologies out there.  Many developers view it as a necessary evil.  They consider it broken.  Some have even looked for ways to avoid using stylesheets entirely.  Yes, it has some "bad" (i.e. confusing) parts that we all love to make fun of.  But the answer isn't simply to laugh at them, brute-force a fix that is "close enough", and try to never think about it again.  The answer is to understand them.
+CSS, like its cousin JavaScript, is one of more maligned technologies out there.  Many developers view it as a necessary evil.  They consider it broken.  Some have even looked for ways to avoid using stylesheets entirely.  Yes, it has some "bad" (i.e. confusing) parts that we all love to make fun of.  But the answer isn't simply to laugh at them, brute-force a fix that is "close enough", and try to never think about it again.  The answer is to understand them.
 
 A lot of the quirky parts of CSS make more sense if you realize how and why they came about.  Things like the cascade, floats, and the box model originated for one purpose, only for web designers to discover other unforseen secondary purposes that they could accomplish.  Because of the interplay between browser developers, standards bodies like the W3C, and the constant need for backwards compatability, Internet technologies move slowly.  We can't just say, "I want to upgrade to version 3.0"; we need to consider what will happen in older browsers.  So often, it's easier to use an older--but more universally supported--tool than to use some cutting edge one that doesn't yet work in any browser.  It doesn't take long for these repurposed tools to become the de-facto standard for accomplishing something, even when that was not the originally intended purpose for that tool.  When something in CSS just doesn't seem to make any sense, it is often because we don't understand its original purpose.
 
@@ -15,13 +13,13 @@ But it had many downsides.  It didn't take much for the html to become riddled w
 
 ## How We Got Here
 
-In 1994, Håkon Wium Lie, a researcher at CERN, wrote a proposal for "Cascading HTML Style Sheets" to address this issue.  This introduced two important concepts.  First, it provided means of specifying look and feel separate from the content itself, so that you could edit the style without having to modify the content.
+In 1994, Håkon Wium Lie, a researcher at CERN, wrote a proposal for "Cascading HTML Style Sheets" to address this issue (The "HTML" was eventually removed from the name, leaving us with just "Cascading Style Sheets", or CSS).  This introduced two important concepts.  First, it provided means of specifying look and feel separate from the content itself, so that you could edit the style without having to modify the content.
 
 Second, it introduced the concept of the **cascade**.  The cascade is the means by which one stylesheet could be applied on top of another in a given order.  Styles in later stylesheets can override those previously set.  Lie envisioned the author of an article providing a stylesheet, while the editor of the website provided one, and then yet a third would be supplied by the reader according to their preferences.
 
-This scenario feels a bit achaic today.  In fact, one of the first things we do when we start designing a website is implement a "browser reset"--effectively overriding all reader-supplied styles.  (We will cover browser resets in chapter 6.)  But the cascade is still important, and we use it to our advantage in many ways Lie probably didn't originally foresee.
+This scenario feels a bit achaic today.  In fact, one of the first things we do when we start designing a website is implement a "browser reset"--effectively overriding all browser-supplied styles.  But the cascade is still important, and we use it to our advantage in many ways Lie probably didn't originally foresee.
 
-## Late Binding
+## Complexity
 
 Although Lie's original proposal didn't mention it directly, it introduced one other thing: a late binding of styles to the content.
 
@@ -55,11 +53,9 @@ There are a lot of things to learn in CSS.  Some are large topics, and require a
 
 This book is my attempt to fix that.  I hope that this becomes a coherent, comprehensive course map to learning CSS.  I won't pretend to teach you everything there is to know, but at the end of this course, you will have a firm grasp on essential pieces of the technology and how to wield them.
 
-I think of CSS in four distinct topics: styling, layout, code organization, and developer tools, plus a few other odds and ends that don't fit cleanly into these four categories.  However, this book is not organized by topic.  Instead, we will cover things in order of importance.  We will first learn the most essential pieces of each.  Then we will layer on top more styling, a deeper understanding of layout, and so on.  Near the end of the book, we will tackle more advanced topics to flush out your toolset: stylistic rules of typography and color theory, transitions and animations, etc.
+This book is not organized by topic.  Instead, we will cover things in order of importance.  We will first learn the most essential pieces.  Then we will layer on top more styling, a deeper understanding of layout, and so on.  Near the end of the book, we will tackle more advanced topics to flush out your toolset: design principles, transitions and animations, etc.
 
-If you have already worked some with CSS, you will probably not need to start at the beginning.  Look at the chapter titles and skim the keywords in bold to make sure you are familiar with the concepts, and find the right place for you to start.  Because of the way I've structured this book, you should be able to find a good place to drop in regardless of your familiarity with CSS.
-
-If you're a beginner, don't worry.  We'll start at the beginning.  Maybe your a back-end developer and you want to start understanding the front-end; maybe you don't know a thing about programming.  If so, don't worry.  This book is for you, too.
+People often learn CSS in an ad-hoc fashion.  It's impossible for me to predict what you already know and start from there, so I'm going to cover everything essential (the only requirement is that you have a general understanding of HTML).  If you have already worked some with CSS, you will probably not need to start at the beginning.  Because of the way I've structured this book, you will likely be familiar with the concepts early on.  Look at the chapter titles and skim the keywords in bold to see where you are familiar with the concepts, and find the right place for you to start.  This may mean you'll end up rehashing some concepts you are already familiar with, but repetition is essential to learning, so don't be afraid.  Chances are, you'll pick up something new if you do.
 
 ## CSS is Awesome
 

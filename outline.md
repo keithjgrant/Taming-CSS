@@ -48,3 +48,7 @@ Other misc:
 * overflow
 * submenus with :hover
 * CSS-first development
+* refactoring!
+* cursors
+* grids?
+* negative margins

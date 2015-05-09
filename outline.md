@@ -1,7 +1,7 @@
 * Preface
 * Crawling
   * syntax, simple selectors, linking to stylesheets
-  * common styles: links, hex colors, borders, etc
+  * common styles: basic fonts, links, hex colors, borders, etc
   * cascade, specificity, & inheritance
   * box model (transition from margin/padding in 'common styles')
   * display property (inline vs block, document flow, etc)
@@ -52,3 +52,4 @@ Other misc:
 * cursors
 * grids?
 * negative margins
+* nav menus (l/r border, -1px margin size trick)

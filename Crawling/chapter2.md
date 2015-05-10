@@ -1,14 +1,80 @@
 # Taming CSS
-# Chapter 2: Basic Styling
+# Chapter 2: Styling Essentials
 
+Now that you know the syntax of CSS and know how to write selectors, let's get a little more familiar with some styling.  We have already seen a few common properties.  Let's take a closer look at them, as well as a few other useful ones.
 
-## Colors
+## Styling Text
+
+Let's do a little more with the text on our page.  Place these styles in your stylesheet:
+
+```css
+body {
+  color: slategray;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+}
+.incredible {
+  font-weight: bold;
+}
+```
+
+And in the body of your HTML:
+
+```html
+<p>My <span class="incredible">Incredible</span> Website</p>
+```
+
+In our browser, this gives us:
+
+<img src="figure2-1.png"/>
+
+The `color` property we are familiar with.  Here we've set it to the color "slategray".
+
+`font-family` specifies what typeface we want use.  You'll notice we specified three different values, separated by commas.  These specify fallback values, which is unique to this particular property.  Different users will have different fonts installed on their systems, so when the specified font is not available, the browser can look for through the list until it finds one that it can use.
+
+The final value, `sans-serif`, is a special generic font.  You should always include a generic font at the end of your list.  If none of the specified fonts are available, the browser can load the default font of the appropriate type.  `serif`, `sans-serif`, and `monospace` are typically want you will want to use for your fallback, though `cursive` and `fantasy` are also valid values.
+
+For a long time, fonts in CSS were limited to a short list fonts that are common to most systems; often they were paired up so a font common to Apple computers and one common to Windows computers were listed together.  This would ensure the user would have at least one of them.  In our example, these are Helvetica and Arial.  Other common sans-serif pairs included Impact and Charcoal, Geneva and Tahoma, or Geneva and Verdana.  Common serif pairs were Times and Times New Roman, Book Antiqua and Palatino Linotype, or Georgia (which is common to both operating systems).  These were called "web safe" fonts.  You could name a more exotic font, like "Helvetica Neue", but it would only work for users who happened to have that font installed.
+
+With CSS3, we can now use **web fonts**, which allow use a font that is hosted online.  Modern browsers can download this font and use it on the page.  This has opened up our options dramatically.  We will look at web fonts later on, but in the meantime, you can look for font services such as Google Fonts that provide a large library of fonts to select from and simple code snippets to use them.
+
+The next declaration in our example sets the `font-size`.  We specified our units in pixels, but there is actually an alarming number of options available to us.  We will look at them in depth later, but the two you'll want to be aware of for now are pixels (`px`) and ems (`em`).
+
+Specifying pixels does pretty much what it sounds like.  It tells the browser to make sure the font is displayed at a precise size, measured from the highest part of ascenders (the top of an "h") to the lowest part of descenders (the bottom of a "j").  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are a constant value.
+
+Ems, on the other hand, are a relative value.  Ems are a common measure used in typography, referring to the height of the letters (originally, a capital M, which is where it gets its name).  One em means the height of the current element's font-size, or perhaps more accurately, the height of parent element's font-size.  If the parent element's font is 16 pixels, then 1em equals 16 pixels, 1.2em equals 19.2 pixels.  This gets interesting is when elements using ems are nested multiple levels deep.
+
+```css
+body {
+  font-size: 16px;
+}
+ul {
+  font-size: .8em;
+}
+```
+
+Now, an un-ordered list will have a font size of 12.8px.  But if you have a nested list, the selector also targets that list, making its size relative to the parent list: 10.24px.  Then a third list would be 8.192px.  Our lists shrink as we go deeper.  This may be what we want; it may not.  Because of this, ems can be a bit difficult to keep track of, but they do have their benefits.
+
+<!--
+font, -size, -family, -weight (text-decoration in links section)
+background, -color, -image, -position, -repeat (shorthand section)
+border, -color, -style, -top, -left, etc.
+padding (briefly)
+height & width (defer to ch5 if possible)
+-->
+
+## Shorthand Properties
+
+## Units & Values
+
+<!--- keywords, strings, colors, numbers, lengths, percentages, uris -->
+### Colors
 
 ```css
   background: #336699;
 ```
 
-We are also familiar with the `background` attribute, but this value is something new.  This is a **hex color**, also known as hex notation.  "Hex" is short for "hexadecimal", which is a base-16 number system.
+We are also familiar with the `background` property, but this value is something new.  This is a **hex color**, also known as hex notation.  "Hex" is short for "hexadecimal", which is a base-16 number system.
 
 Unlike our common decimal number system, which is base-10 and uses the ten digits 0 through 9, hexidecimal uses sixteen digits.  We represent these with 0 through 9 as well as A through F.  "A" represents the decimal value "10".  "B" represents "11", et. cetera up through "F" which represents "15".  Capitalization is ignored.
 
@@ -44,16 +110,16 @@ This uses a different kind of selector.  The `.` indicates that `button` is a cl
 
 we would get a button that looked like this:
 
-<img src="figure2-1.png"/>
+<img src="figure2-2.png"/>
 
-Let's look at each of the attributes we set.
+Let's look at each of the properties we set.
 
 ```css
 padding: 5px 15px;
 ```
 `padding` puts space between the border of the element and its contents.  In this case, we specified `5px`, or five pixels, for the top and bottom padding, and `15px`, or 15 pixels, for the right and left padding.
 
-This is actually a shorthand notation, which `padding` and many other attributes support.  The equivalent full notation would be `5px 15px 5px 15px`.  This sets the four sides in clockwise order: top, right, bottom, left.  If you find that order tough to remember, just think "TRouBLe", which includes the first let of each direction in the correct order.
+This is actually a shorthand notation, which `padding` and many other properties support.  The equivalent full notation would be `5px 15px 5px 15px`.  This sets the four sides in clockwise order: top, right, bottom, left.  If you find that order tough to remember, just think "TRouBLe", which includes the first let of each direction in the correct order.
 
 If the shorthand declaration stops before a side is given a value, that side takes its value from the opposite side: the left side value will match the right side; the bottom side will match the top.  If only one value is specified, that value is applied to all four sides.
 
@@ -80,7 +146,7 @@ Let's move on to the next declaration:
   color: white;
 ```
 
-We are already familiar with the `color` attribute.  This sets the color of the text to white.
+We are already familiar with the `color` property.  This sets the color of the text to white.
 
 <!-- Change to named color -->
 ```css
@@ -95,13 +161,13 @@ Let's look at the next declaration from our button:
   border-radius: 5px;
 ```
 
-The `border-radius` attribute is used to round the element's corners.  When left undefined, the default value is `0`, which means normal squared corners.  The higher the value, the more gradual the curve, up to half of the element's size.
+The `border-radius` property is used to round the element's corners.  When left undefined, the default value is `0`, which means normal squared corners.  The higher the value, the more gradual the curve, up to half of the element's size.
 
 ```css
   text-decoration: none;
 ```
 
-The `text-decoration` attribute is used to do things like underline or strike through the text.  It supports values like `underline`, `overline`, and `line-through`, though in this case, we've set it to `none`.  We do this because browsers typically underline links by default, but we don't want the underline to appear in our button.  Our `none` value overrides the browser's default value.
+The `text-decoration` property is used to do things like underline or strike through the text.  It supports values like `underline`, `overline`, and `line-through`, though in this case, we've set it to `none`.  We do this because browsers typically underline links by default, but we don't want the underline to appear in our button.  Our `none` value overrides the browser's default value.
 
 So now let's look at our complete ruleset again:
 
@@ -117,7 +183,7 @@ So now let's look at our complete ruleset again:
 
 Now you can understand how these declarations work together to produce our blue button:
 
-<img src="figure2-1.png"/>
+<img src="figure2-2.png"/>
 
 
 ## Links

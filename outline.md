@@ -13,7 +13,7 @@
   * styling forms
   * styling lists
   * position-property
-  * dealing with cross-browser issues (incl. resets)
+  * Cross-browser development (incl. resets)
 * Running
   * inline-block
   * pseudo-elements
@@ -39,9 +39,8 @@ Other misc:
 
 * At-rules
 * Units
-* Values: keywords, strings, colors, numbers, lengths, percentages, URIs.
-* Browser support, prefixes
-* Shorthand properties. (move some out from ch1)
+* Values: keywords, strings, colors, numbers, lengths, percentages, URIs. (ch2)
+* Shorthand properties. (ch2)
 * build process
 * minification
 * margin collapsing

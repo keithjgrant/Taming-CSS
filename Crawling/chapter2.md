@@ -46,36 +46,46 @@ There are also a `font-style` and `text-decoration` properties.  `font-style` ac
 
 ## Backgrounds
 
-So far, we've used the `background` property to set background colors, but it can do more than that.  It can also be used to apply background images or color gradients.
+So far, we've used the `background` property to set background colors, but it can also be used to apply background images or color gradients.
 
 ```css
-.foo {
-  background: url(background.png) gray center no-repeat;
+.star-bg {
+  background: url(star.png) lightgray center no-repeat;
 }
 ```
 
-This declaration sets a background image and a background color.  `center` positions the background image in the element and `no-repeat` means the image will not tile or repeat to fill the element.  We could also position with "top", "bottom", "left", "right", or any valid combination of them such as `bottom right` or `center left`.  Likewise, we can specify tiling with `repeat`.   `repeat-x` or `repeat-y` may be used to tile only horizontally or vertically, respectively.
+<img src="figure2-2.png"/>
+
+This set a background image and a background color.  `center` positions the background image in the element and `no-repeat` means the image will not tile or repeat to fill the element.  We could also position with "top", "bottom", "left", "right", or any valid combination of them such as `bottom right` or `center left`.  Likewise, we can specify tiling with `repeat`.   `repeat-x` or `repeat-y` may be used to tile only horizontally or vertically, respectively.  You'll notice that the top and bottom of the image have been clipped off, because the element is not as tall as our background image; the background does not change the size of the element.  Here is an example with the image tiled:
+
+```css
+.star-bg-tiled {
+  background: url(star.png) lightgray top left repeat;
+}
+```
+
+<img src="figure2-3.png"/>
 
 `background` is an example of a **shorthand property**.  A shorthand property allows you to set the values several other properties at the same time.  `background` allows you to set values for `background-color`, `background-image`, `background-position`, `background-repeat` with one declaration.  Expressed the long way, the above ruleset is equivalent to this one:
 
 ```css
-.foo {
-  background-color: gray;
+.star-bg-tiled {
+  background-color: lightgray;
   background-image: url(background.png);
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: top left;
+  background-repeat: repeat;
 }
 ```
 
 This is a bit verbose.  You can see why we will generally favor a shorthand property when we can.  Not all of them are required in the shorthand.  We could just use `background: url(background.png) gray;`, if we wanted to use the default values for position and repeat ("top left" and "repeat").
 
-Often, if a series of property names are hyphenated and begin with the same word, there is a shorthand property to succinctly define them together.  `font` is another shorthand property, which defines `font-style`, `font-variant`, `font-weight`, `font-size`, `line-height`, and `font-family`.  `border`, `padding`, and `margin` are also shorthand properties.  The order you specify values often matters, so as you learn shorthand properties, it is important to make note of the order.
+Often, if a series of property names are hyphenated and begin with the same word, there is a shorthand property to succinctly define them together.  `font` is another shorthand property, which defines `font-style`, `font-variant`, `font-weight`, `font-size`, `line-height`, and `font-family`.  `border`, `padding`, and `margin` are some other common shorthand properties.  The order you specify values often matters, so as you learn shorthand properties, it is important to make note of the order.
 
 ## Borders
 
-You can put a border around an element using `border`.  We saw this briefly in chapter one with the declaration `border: blue 1px solid`.  This is a shorthand property, setting `border-color`, `border-width`, and `border-style`.  We can add it to our example from earlier to get something like this:
+You can put a border around an element using `border`.  We saw this briefly in chapter one with the declaration `border: blue 1px solid`.  This is a shorthand property, setting `border-color`, `border-width`, and `border-style`.  Here is an element with this border:
 
-<img src="figure2-2.png"/>
+<img src="figure2-4.png"/>
 
 Usually, you will want a `border-style` of `solid`, but other common values are `dotted`, `dashed`, and `none`.
 
@@ -91,7 +101,7 @@ Alternatively, may use `border-color`, `border-width`, or `border-style` to spec
 }
 ```
 
-<img src="figure2-3.png"/>
+<img src="figure2-5.png"/>
 
 Note the order of these values: top, right, bottom, left.  You will see this order for other attributes as well.  It is clockwise order, or if it is easier for you to remember, think "TRouBLe", which includes the first letter of each direction in the correct order.
 
@@ -114,15 +124,28 @@ border-width: 1px 1px 1px 1px;
 
 There are also border properties `border-top-width`, `border-left-style`, `border-bottom-color`, etc.  Needless to say, there are a lot of ways to mix and match these if you want to build a complicated border, but often the regular `border` attribute is enough.
 
-## Units & Values
+## Padding
 
-We have now seen the `px` unit a lot of these examples.  Let's take a closer look at that as well as some other important units.
+You will notice in our examples for both backgrounds and borders, the text appears right up against the edge of our element.  You can correct this with `padding`.  This adds space inside the element between its border and its contents.
 
-Specifying `px` ("pixels") does pretty much what it sounds like.  It tells the browser to make something display at a precise size.  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are an absolute value.
+```css
+.blue-border-padded {
+  border: blue 1px solid;
+  padding: 5px;
+}
+```
 
-Up until now, I have used `px` with font sizing for clarity, but this is generally not recommended.  Some browsers allow users set a default font size ("Smaller", "Small", "Large", etc).  If you use `px` sizing, this option will not work.  Since this function is vital to some users, particularly those who are vision impaired, it is worth learning to specify fonts with relative units.
+<img src="figure2-6.png"/>
 
-Ems are probably the most common relative unit.  Ems are a common measure used in typography, referring to the height of the letters (originally, a capital M, which is where it gets its name).  So in CSS, one em (`1em`) means the height of the current element's font-size.  This mean that it's exact value varies depending on the font size of the element we are applying it to.
+## Absolute vs. Relative Units
+
+We have now seen the `px` unit a lot of these examples.  This is short for "pixel", and is an example of an absolute unit.
+
+Specifying `px` ("pixels") does pretty much what it sounds like.  It tells the browser to make something display at a precise size.  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are an unchanging value.
+
+Up until now, I have used `px` with font sizing for clarity, but this is generally not recommended.  Some browsers allow users set a default font size ("Small", "Large", "Larger" etc).  If you use `px` sizing, these settings will not work.  Since this functionality is vital to some users, particularly those who are vision impaired, it is worth learning to specify fonts with relative units.
+
+"Em"s are the most common relative unit.  Ems are a measure used in typography, referring to the height of the letters (originally, a capital M, which is where it gets its name).  So in CSS, one em (`1em`) means the height of the current element's font-size.  This mean that it's exact value varies depending on the font size of the element we are applying it to.
 
 ```css
 .em-example {
@@ -138,8 +161,11 @@ These will set both the font size and the padding equal to 16 pixels.  This is m
   font-size: 1em;
   padding: 1em;
 }
+```
 
-Now both the font size and the padding are set to, well, we don't know.  The font-size is inherited from the parent element.  If the parent element's font is 16 pixels, then 1em equals 16 pixels, 1.2em equals 19.2 pixels.  This gets interesting is when elements using ems are nested multiple levels deep:
+Now both the font size and the padding are set to the same value... but we don't know exactly how big that value is.  The font-size is inherited from the parent element.  So, if the parent element's font is 16 pixels, then 1em equals 16 pixels.  2em equals 32px.  1.2em equals 19.2px.  0.8em equals 12.8px.
+
+This gets interesting is when elements using ems are nested multiple levels deep:
 
 ```css
 body {
@@ -150,11 +176,32 @@ ul {
 }
 ```
 
-Now, an un-ordered list will have a font size of 12.8px.  But if you have a nested list, the selector also targets that list, making its size relative to the parent list: 10.24px.  Then a third list would be 8.192px.  Our lists shrink as we go deeper.  This may be what we want; it may not.  Because of this, ems can be a bit difficult to keep track of.  We will use more examples of ems as we go.
+<img src="figure2-7.png"/>
 
+Our text is shrinking!  What happened?  Remember, our `ul` selector targets all `<ul>` on the page, so it sets each list to a font 0.8 times that of its parent.  This means that our first list has a font size of 12.8px, but the next one down is 10.24px (12.8px * 0.8), and the third level is 8.192px, and so on.  Similarly, if we specified a size larger than 1em, our text would be continually growing instead.  Here's how we fix this:
+
+```css
+ul {
+  font-size: .8em;
+}
+ul ul {
+  font-size: 1em;
+}
+```
+
+This second selector targets all unordered lists within an unordered list: all of them except the top level.  Nested lists now have a font size equal to their parents:
+
+<img src="figure2-8.png"/>
+
+Much better.  But it should be clear now that ems can get away from us if we're not careful.  You are best off using ems
+
+<!--- WORKING HERE -->
+
+<!---
 One other important unit is percent.  If a value is a horizontal value (such as `padding-left`) this means a certain perctage of the parent container's width.  If the value is a vertical value, it means a percentage of the parent container's height.  Finally, if you use percent to set a font size, it behaves much like ems; `100%` means equal to the parent container's font size.
+-->
 
-See Appendix B for a comprehensive list of units and data types.
+Pixels and Ems are two of the most common units in CSS, but there are many more.  See Appendix B for a comprehensive list.
 
 ### Colors
 
@@ -176,6 +223,49 @@ So how does this get us a color?  A CSS hex color is actually three distinct hex
 
 Colors you will common use include `#ffffff` (or `#fff`), which is pure white, and `#000000` (or `#000`), which is pure black.  (We use additive color, which means the higher the value, the more light we are adding).
 
+## Links
+
+When starting a new project, one of the first thing you'll generally want to style are links.  These require some special selectors:
+
+```css
+a:link {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: darkblue;
+}
+a:active {
+  color: red;
+}
+```
+
+`a:link` refers to an `<a>` that has an href attribute.  `a:visited` refers to a link that the user has already been to before (i.e. its url is in the browser's history).  `a:hover` specifies styles to apply to the link when the user hovers their mouse cursor over it.  `a:active` styles the link after the user activates it, whether by clicking it with their mouse, tabbing to it with their keyboard and pressing enter, or tapping it on a touchscreen device.
+
+Note the order of these selectors.  Because they all have the same specificity, the cascade causes a later declaration to override an earlier one.  If a visited link is active, we want the active color to appear, so we put that selector later, etc.  For years, I knew the order of these mattered, but never stopped to think about why.  There's no deep voodoo to it; it's just the cascade doing what it does.  If you don't want to stop and reason through the cascade every time, though, a helpful acronym to remember this order is "LoVe HAte".
+
+The `:active` state is often overlooked.  We usually develop on fast computers with fast Internet connections.  When we click a link and the next page loads in an instant, we don't even notice that quick flicker of red text.  But on a slow connection--say, on a smartphone with a 3G connection--that red text means a lot.  It tells the user, for the two or three seconds after they tap a link but before anything else on the screen changes, that the page is loading, and they do not need to tap again.  Be sure to do something visually with the active state, even if it is very subtle.
+
+The `a:link` is a bit of an odd relic from early HTML.  Originally, there were two uses for the `<a>` tag.  The first was a standard link, using the `href` attribute.  The second was a named key point in your document such as `<a name="section-two">`.  Then you could link directly to that point on the page using `<a href="#section-two">`.  This is where the name "anchor" comes from, as it was where one webpage was "anchored" to another via a hyperlink.
+
+The second use is no longer practiced much, and is in fact deprecated in HTML5.  You can obtain the same behavior by using an id instead, and you can put it on any type of element you want, not just an `<a>` (`<span id="section-two">`).
+
+In modern web applications, it is common to have anchors that activate functionality via JavaScript, and don't in fact link directly to another page.   This creates a bit of a problem, as we still want them to look and behave like a normal link.  To get this behavior, we often see `href="#"` or `href="javascript:void()"`, because there must be an `href` for the browser to treat it like a link.  Then, at least with `href="#"`, we have to be sure to call `event.preventDefault()` in the JavaScript handler to stop the browser from following the link.
+
+Another, less common, option is to omit the `href` attribute and style `a` instead of `a:link`.  The link behavior we lose when we do this the underline and the cursor behavior when mousing over the link.  Thankfully, we can easily replicate both of these with CSS:
+
+```css
+a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+```
+
+I'm not saying you should always take this approach, but it is worth considering, especially in a web app where you find yourself using a lot of `<a>` tags.  (That said, always add an `href` when there is a url that makes sense; that way, a ctrl-click will still open the url in a new window.)
+
 ### Real-world Example
 
 Let's put some of this together to style a button:
@@ -196,7 +286,7 @@ Let's put some of this together to style a button:
 
 These result in:
 
-<img src="figure2-4.png"/>
+<img src="figure2-x.png"/>
 
 Let's look at each of the properties we set.
 
@@ -256,49 +346,5 @@ So now let's look at our complete ruleset again:
 
 Now you can understand how these declarations work together to produce our blue button:
 
-<img src="figure2-4.png"/>
-
-
-## Links
-
-When starting a new project, one of the first thing you'll generally want to style are links.  These require some special selectors:
-
-```css
-a:link {
-  color: blue;
-  text-decoration: underline;
-}
-a:visited {
-  color: purple;
-}
-a:hover {
-  color: darkblue;
-}
-a:active {
-  color: red;
-}
-```
-
-`a:link` refers to an `<a>` that has an href attribute.  `a:visited` refers to a link that the user has already been to before (i.e. its url is in the browser's history).  `a:hover` specifies styles to apply to the link when the user hovers their mouse cursor over it.  `a:active` styles the link after the user activates it, whether by clicking it with their mouse, tabbing to it with their keyboard and pressing enter, or tapping it on a touchscreen device.
-
-Note the order of these selectors.  Because they all have the same specificity, the cascade causes a later declaration to override an earlier one.  If a visited link is active, we want the active color to appear, so we put that selector later, etc.  For years, I knew the order of these mattered, but never stopped to think about why.  There's no deep voodoo to it; it's just the cascade doing what it does.  If you don't want to stop and reason through the cascade every time, though, a helpful acronym to remember this order is "LoVe HAte".
-
-The `:active` state is often overlooked.  We usually develop on fast computers with fast Internet connections.  When we click a link and the next page loads in an instant, we don't even notice that quick flicker of red text.  But on a slow connection--say, on a smartphone with a 3G connection--that red text means a lot.  It tells the user, for the two or three seconds after they tap a link but before anything else on the screen changes, that the page is loading, and they do not need to tap again.  Be sure to do something visually with the active state, even if it is very subtle.
-
-The `a:link` is a bit of an odd relic from early HTML.  Originally, there were two uses for the `<a>` tag.  The first was a standard link, using the `href` attribute.  The second was a named key point in your document such as `<a name="section-two">`.  Then you could link directly to that point on the page using `<a href="#section-two">`.  This is where the name "anchor" comes from, as it was where one webpage was "anchored" to another via a hyperlink.
-
-The second use is no longer practiced much, and is in fact deprecated in HTML5.  You can obtain the same behavior by using an id instead, and you can put it on any type of element you want, not just an `<a>` (`<span id="section-two">`).
-
-In modern web applications, it is common to have anchors that activate functionality via JavaScript, and don't in fact link directly to another page.   This creates a bit of a problem, as we still want them to look and behave like a normal link.  To get this behavior, we often see `href="#"` or `href="javascript:void()"`, because there must be an `href` for the browser to treat it like a link.  Then, at least with `href="#"`, we have to be sure to call `event.preventDefault()` in the JavaScript handler to stop the browser from following the link.
-
-Another, less common, option is to omit the `href` attribute and style `a` instead of `a:link`.  The link behavior we lose when we do this the underline and the cursor behavior when mousing over the link.  Thankfully, we can easily replicate both of these with CSS:
-
-```css
-a {
-  text-decoration: underline;
-  cursor: pointer;
-}
-```
-
-I'm not saying you should always take this approach, but it is worth considering, especially in a web app where you find yourself using a lot of `<a>` tags.  (That said, always add an `href` when there is a url that makes sense; that way, a ctrl-click will still open the url in a new window.)
+<img src="figure2-x.png"/>
 

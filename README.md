@@ -43,6 +43,8 @@
   * SVG
   * Z-index & Stacking Contexts
   * Flexbox layout
+* Appendix A: Selectors
+* Appendix B: Units & Values
 
 (This is a very rough outline.  Chapters will certainly shift around as I work through the draft.)
 

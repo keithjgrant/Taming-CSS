@@ -38,11 +38,108 @@ For a long time, fonts in CSS were limited to a short list fonts that are common
 
 With CSS3, we can now use **web fonts**, which allow use a font that is hosted online.  Modern browsers can download this font and use it on the page.  This has opened up our options dramatically.  We will look at web fonts later on, but in the meantime, you can look for font services such as Google Fonts that provide a large library of fonts to select from and simple code snippets to use them.
 
-The next declaration in our example sets the `font-size`.  We specified our units in pixels, but there is actually an alarming number of options available to us.  We will look at them in depth later, but the two you'll want to be aware of for now are pixels (`px`) and ems (`em`).
+The next declaration in our example sets the `font-size`.  We specified our units in pixels, but there is actually an alarming number of other options available to us.  We will look at some of the common ones later in this chapter.
 
-Specifying pixels does pretty much what it sounds like.  It tells the browser to make sure the font is displayed at a precise size, measured from the highest part of ascenders (the top of an "h") to the lowest part of descenders (the bottom of a "j").  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are a constant value.
+The final property in our example is `font-weight`.  Common values for this are `normal` and `bold`.  You may also specify values from `100` through `900`, in increments of 100.  `400` is the equivalent of `normal` and `700` is the equivalent of `bold`.  The number values are particularly useful in conjunction with web fonts.  If, for example, you provide an "Ultra Light" or "Black" variant from the font family, you can specify these with `200` or `900`, respectively.  If the exact weight you specify is not available, the browser will use the closest value it can.
 
-Ems, on the other hand, are a relative value.  Ems are a common measure used in typography, referring to the height of the letters (originally, a capital M, which is where it gets its name).  One em means the height of the current element's font-size, or perhaps more accurately, the height of parent element's font-size.  If the parent element's font is 16 pixels, then 1em equals 16 pixels, 1.2em equals 19.2 pixels.  This gets interesting is when elements using ems are nested multiple levels deep.
+There are also a `font-style` and `text-decoration` properties.  `font-style` accepts the values `normal` and `italic`.  `text-decoration` accepts `underline`, `overline`, `line-through`, and `none`.
+
+## Backgrounds
+
+So far, we've used the `background` property to set background colors, but it can do more than that.  It can also be used to apply background images or color gradients.
+
+```css
+.foo {
+  background: url(background.png) gray center no-repeat;
+}
+```
+
+This declaration sets a background image and a background color.  `center` positions the background image in the element and `no-repeat` means the image will not tile or repeat to fill the element.  We could also position with "top", "bottom", "left", "right", or any valid combination of them such as `bottom right` or `center left`.  Likewise, we can specify tiling with `repeat`.   `repeat-x` or `repeat-y` may be used to tile only horizontally or vertically, respectively.
+
+`background` is an example of a **shorthand property**.  A shorthand property allows you to set the values several other properties at the same time.  `background` allows you to set values for `background-color`, `background-image`, `background-position`, `background-repeat` with one declaration.  Expressed the long way, the above ruleset is equivalent to this one:
+
+```css
+.foo {
+  background-color: gray;
+  background-image: url(background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+```
+
+This is a bit verbose.  You can see why we will generally favor a shorthand property when we can.  Not all of them are required in the shorthand.  We could just use `background: url(background.png) gray;`, if we wanted to use the default values for position and repeat ("top left" and "repeat").
+
+Often, if a series of property names are hyphenated and begin with the same word, there is a shorthand property to succinctly define them together.  `font` is another shorthand property, which defines `font-style`, `font-variant`, `font-weight`, `font-size`, `line-height`, and `font-family`.  `border`, `padding`, and `margin` are also shorthand properties.  The order you specify values often matters, so as you learn shorthand properties, it is important to make note of the order.
+
+## Borders
+
+You can put a border around an element using `border`.  We saw this briefly in chapter one with the declaration `border: blue 1px solid`.  This is a shorthand property, setting `border-color`, `border-width`, and `border-style`.  We can add it to our example from earlier to get something like this:
+
+<img src="figure2-2.png"/>
+
+Usually, you will want a `border-style` of `solid`, but other common values are `dotted`, `dashed`, and `none`.
+
+Sometimes, you will want different border styles on different sides of an element.  You can specify one side at a time with `border-top`, `border-right`, `border-bottom`, and `border-left`.  These follow the same shorthand pattern of color, width, and style.
+
+Alternatively, may use `border-color`, `border-width`, or `border-style` to specify values for each of the four sides independently:
+
+```css
+.crazy-border {
+  border-color: blue red orange green;
+  border-width: 2px 5px 4px 1px;
+  border-style: solid dotted solid dashed;
+}
+```
+
+<img src="figure2-3.png"/>
+
+Note the order of these values: top, right, bottom, left.  You will see this order for other attributes as well.  It is clockwise order, or if it is easier for you to remember, think "TRouBLe", which includes the first letter of each direction in the correct order.
+
+Properties whose values follow this pattern all support some shorter notations.  If the declaration ends before one of the four sides is given a value, that side takes its value from the opposite side.  Specify only three values, and the left and right side will both use the second one.  Specify only two values, and the top and bottom will use the first one.  If you specify only one value, it will apply to all four sides.  Thus the following declarations are all equivalent to one another:
+
+```css
+border-width: 1px 2px;
+border-width: 1px 2px 1px;
+border-width: 1px 2px 1px 2px;
+```
+
+And the this set are equivalent to one another as well:
+
+```css
+border-width: 1px;
+border-width: 1px 1px;
+border-width: 1px 1px 1px;
+border-width: 1px 1px 1px 1px;
+```
+
+There are also border properties `border-top-width`, `border-left-style`, `border-bottom-color`, etc.  Needless to say, there are a lot of ways to mix and match these if you want to build a complicated border, but often the regular `border` attribute is enough.
+
+## Units & Values
+
+We have now seen the `px` unit a lot of these examples.  Let's take a closer look at that as well as some other important units.
+
+Specifying `px` ("pixels") does pretty much what it sounds like.  It tells the browser to make something display at a precise size.  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are an absolute value.
+
+Up until now, I have used `px` with font sizing for clarity, but this is generally not recommended.  Some browsers allow users set a default font size ("Smaller", "Small", "Large", etc).  If you use `px` sizing, this option will not work.  Since this function is vital to some users, particularly those who are vision impaired, it is worth learning to specify fonts with relative units.
+
+Ems are probably the most common relative unit.  Ems are a common measure used in typography, referring to the height of the letters (originally, a capital M, which is where it gets its name).  So in CSS, one em (`1em`) means the height of the current element's font-size.  This mean that it's exact value varies depending on the font size of the element we are applying it to.
+
+```css
+.em-example {
+  font-size: 16px;
+  padding: 1em;
+}
+```
+
+These will set both the font size and the padding equal to 16 pixels.  This is more interesting when we also set the font size using ems:
+
+```css
+.em-example-2 {
+  font-size: 1em;
+  padding: 1em;
+}
+
+Now both the font size and the padding are set to, well, we don't know.  The font-size is inherited from the parent element.  If the parent element's font is 16 pixels, then 1em equals 16 pixels, 1.2em equals 19.2 pixels.  This gets interesting is when elements using ems are nested multiple levels deep:
 
 ```css
 body {
@@ -53,28 +150,21 @@ ul {
 }
 ```
 
-Now, an un-ordered list will have a font size of 12.8px.  But if you have a nested list, the selector also targets that list, making its size relative to the parent list: 10.24px.  Then a third list would be 8.192px.  Our lists shrink as we go deeper.  This may be what we want; it may not.  Because of this, ems can be a bit difficult to keep track of, but they do have their benefits.
+Now, an un-ordered list will have a font size of 12.8px.  But if you have a nested list, the selector also targets that list, making its size relative to the parent list: 10.24px.  Then a third list would be 8.192px.  Our lists shrink as we go deeper.  This may be what we want; it may not.  Because of this, ems can be a bit difficult to keep track of.  We will use more examples of ems as we go.
 
-<!--
-font, -size, -family, -weight (text-decoration in links section)
-background, -color, -image, -position, -repeat (shorthand section)
-border, -color, -style, -top, -left, etc.
-padding (briefly)
-height & width (defer to ch5 if possible)
--->
+One other important unit is percent.  If a value is a horizontal value (such as `padding-left`) this means a certain perctage of the parent container's width.  If the value is a vertical value, it means a percentage of the parent container's height.  Finally, if you use percent to set a font size, it behaves much like ems; `100%` means equal to the parent container's font size.
 
-## Shorthand Properties
+See Appendix B for a comprehensive list of units and data types.
 
-## Units & Values
-
-<!--- keywords, strings, colors, numbers, lengths, percentages, uris -->
 ### Colors
 
+So far, we have been using named colors like "black", "slategray", and "orange".  There are about 150 named colors like these that are valid, but it's still fairly limiting.  Thankfully, there is a way we can specify any color we want:
+
 ```css
-  background: #336699;
+  background-color: #3366aa;
 ```
 
-We are also familiar with the `background` property, but this value is something new.  This is a **hex color**, also known as hex notation.  "Hex" is short for "hexadecimal", which is a base-16 number system.
+This is a **hex color**, also known as hex notation.  "Hex" is short for "hexadecimal", which is a base-16 number system.
 
 Unlike our common decimal number system, which is base-10 and uses the ten digits 0 through 9, hexidecimal uses sixteen digits.  We represent these with 0 through 9 as well as A through F.  "A" represents the decimal value "10".  "B" represents "11", et. cetera up through "F" which represents "15".  Capitalization is ignored.
 
@@ -82,15 +172,13 @@ If you were to add one to `F`, you get `10`.  Instead of a tens column, as with 
 
 You can easily get by with a general grasp of the concept.  Then you know that `B9` is larger than `9B`, and `A1` is much larger than `1A`.  Most often, you will be obtaining these values from a image editor or color picker, not writing them by hand off the top of your head.
 
-So how does this get us a color?  A CSS hex color is actually three distinct hexidecimal numbers t
-ogether, representing values for red, green, and blue.  In `#336699`, `33` is the amount of red, `66` is the amount of green, and `99` is the amount of blue.  Since blue is the largest value, so this color is primarily blue.  Because both digits in each value are equal, this number can be abbreviated as `#369`.
+So how does this get us a color?  A CSS hex color is actually three distinct hexidecimal numbers together, representing values for red, green, and blue.  In `#336699`, `33` is the amount of red, `66` is the amount of green, and `99` is the amount of blue.  Since blue is the largest value, so this color is primarily blue.  Because both digits in each value are equal, this number can be abbreviated as `#369`.
 
 Colors you will common use include `#ffffff` (or `#fff`), which is pure white, and `#000000` (or `#000`), which is pure black.  (We use additive color, which means the higher the value, the more light we are adding).
 
+### Real-world Example
 
-### Style a Button
-
-Let's look at another example of a ruleset:
+Let's put some of this together to style a button:
 
 ```css
 .button {
@@ -102,15 +190,13 @@ Let's look at another example of a ruleset:
 }
 ```
 
-This uses a different kind of selector.  The `.` indicates that `button` is a class name rather than a tag name.  This selector targets all elements on the page that have the class `button`.  If we paired it with the HTML
-
 ```html
 <a class="button" href="next.html">Next &raquo;</a>
 ```
 
-we would get a button that looked like this:
+These result in:
 
-<img src="figure2-2.png"/>
+<img src="figure2-4.png"/>
 
 Let's look at each of the properties we set.
 
@@ -125,20 +211,7 @@ If the shorthand declaration stops before a side is given a value, that side tak
 
 Thus the following declarations are equivalent to one another:
 
-```css
-padding: 5px 15px;
-padding: 5px 15px 5px;
-padding: 5px 15px 5px 15px;
-```
 
-And the this set are equivalent to one another as well:
-
-```css
-padding: 5px;
-padding: 5px 5px;
-padding: 5px 5px 5px;
-padding: 5px 5px 5px 5px;
-```
 
 Let's move on to the next declaration:
 
@@ -183,7 +256,7 @@ So now let's look at our complete ruleset again:
 
 Now you can understand how these declarations work together to produce our blue button:
 
-<img src="figure2-2.png"/>
+<img src="figure2-4.png"/>
 
 
 ## Links

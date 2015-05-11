@@ -2,6 +2,7 @@
 * Crawling
   * syntax, simple selectors, linking to stylesheets
   * common styles: basic fonts, links, hex colors, borders, etc
+  * units
   * cascade, specificity, & inheritance
   * box model (transition from margin/padding in 'common styles')
   * display property (inline vs block, document flow, etc)
@@ -12,7 +13,7 @@
   * backgrounds
   * styling forms
   * styling lists
-  * position-property
+  * position-property (warning: fixed on mobile)
   * Cross-browser development (incl. resets)
 * Running
   * inline-block
@@ -25,7 +26,7 @@
   * responsive layout
 * Flying
   * colors & color theory
-  * typography & webfonts
+  * typography & webfonts (fibonacci-like 6 7 8 9 10 11 12 14 16 18 21 24 36 48 60 72)
   * advanced styling:
     * shadows
     * transitions
@@ -35,15 +36,14 @@
   * z-index & stacking contexts
   * flexbox
 
-Other misc:
+Other misc to sort:
 
 * At-rules
 * Units
-* Values: keywords, strings, colors, numbers, lengths, percentages, URIs. (ch2)
-* Shorthand properties. (ch2)
+* Values: keywords, strings, colors, numbers, lengths, percentages, URIs. (Appendix B)
 * build process
 * minification
-* margin collapsing
+* margin collapsing (ch4)
 * overflow
 * submenus with :hover
 * CSS-first development

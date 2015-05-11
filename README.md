@@ -13,6 +13,7 @@
   * [Section Overview](Crawling/overview.md)
   * [Chapter 1: Getting Started](Crawling/chapter1.md)
   * Chapter 2: Styling Essentials (initial draft in progress)
+  * Chapter 3: Units & Data Types
   * Chapter 3: Cascade, Specificity, & Inheritance
   * Chapter 4: The Box Model
   * Chapter 5: Display Property

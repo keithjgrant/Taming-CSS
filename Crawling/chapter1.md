@@ -107,7 +107,7 @@ And add this inside the `<body>` tag of your html:
 
 Save and open up the page in your browser, and you should see the result:
 
-<img src="figure1-1.png"/>
+<img src="images/figure1-1.png"/>
 
 Sometimes you want to apply the same set of styles to multiple elements that cannot be targeted with the same selector.
 

@@ -26,7 +26,7 @@ And in the body of your HTML:
 
 In our browser, this gives us:
 
-<img src="figure2-1.png"/>
+<img src="images/figure2-1.png"/>
 
 The `color` property we are familiar with.  Here we've set it to the color "slategray".
 
@@ -54,7 +54,7 @@ So far, we've used the `background` property to set background colors, but it ca
 }
 ```
 
-<img src="figure2-2.png"/>
+<img src="images/figure2-2.png"/>
 
 This set a background image and a background color.  `center` positions the background image in the element and `no-repeat` means the image will not tile or repeat to fill the element.  We could also position with "top", "bottom", "left", "right", or any valid combination of them such as `bottom right` or `center left`.  Likewise, we can specify tiling with `repeat`.   `repeat-x` or `repeat-y` may be used to tile only horizontally or vertically, respectively.  You'll notice that the top and bottom of the image have been clipped off, because the element is not as tall as our background image; the background does not change the size of the element.  Here is an example with the image tiled:
 
@@ -64,7 +64,7 @@ This set a background image and a background color.  `center` positions the back
 }
 ```
 
-<img src="figure2-3.png"/>
+<img src="images/figure2-3.png"/>
 
 `background` is an example of a **shorthand property**.  A shorthand property allows you to set the values several other properties at the same time.  `background` allows you to set values for `background-color`, `background-image`, `background-position`, `background-repeat` with one declaration.  Expressed the long way, the above ruleset is equivalent to this one:
 
@@ -85,7 +85,7 @@ Often, if a series of property names are hyphenated and begin with the same word
 
 You can put a border around an element using `border`.  We saw this briefly in chapter one with the declaration `border: blue 1px solid`.  This is a shorthand property, setting `border-color`, `border-width`, and `border-style`.  Here is an element with this border:
 
-<img src="figure2-4.png"/>
+<img src="images/figure2-4.png"/>
 
 Usually, you will want a `border-style` of `solid`, but other common values are `dotted`, `dashed`, and `none`.
 
@@ -101,7 +101,7 @@ Alternatively, may use `border-color`, `border-width`, or `border-style` to spec
 }
 ```
 
-<img src="figure2-5.png"/>
+<img src="images/figure2-5.png"/>
 
 Note the order of these values: top, right, bottom, left.  You will see this order for other attributes as well.  It is clockwise order, or if it is easier for you to remember, think "TRouBLe", which includes the first letter of each direction in the correct order.
 
@@ -135,7 +135,7 @@ You will notice in our examples for both backgrounds and borders, the text appea
 }
 ```
 
-<img src="figure2-6.png"/>
+<img src="images/figure2-6.png"/>
 
 ## Absolute vs. Relative Units
 
@@ -176,7 +176,7 @@ ul {
 }
 ```
 
-<img src="figure2-7.png"/>
+<img src="images/figure2-7.png"/>
 
 Our text is shrinking!  What happened?  Remember, our `ul` selector targets all `<ul>` on the page, so it sets each list to a font 0.8 times that of its parent.  This means that our first list has a font size of 12.8px, but the next one down is 10.24px (12.8px * 0.8), and the third level is 8.192px, and so on.  Similarly, if we specified a size larger than 1em, our text would be continually growing instead.  Here's how we fix this:
 
@@ -191,7 +191,7 @@ ul ul {
 
 This second selector targets all unordered lists within an unordered list: all of them except the top level.  Nested lists now have a font size equal to their parents:
 
-<img src="figure2-8.png"/>
+<img src="images/figure2-8.png"/>
 
 Much better.  But it should be clear now that ems can get away from us if we're not careful.  You are best off using ems
 
@@ -286,7 +286,7 @@ Let's put some of this together to style a button:
 
 These result in:
 
-<img src="figure2-x.png"/>
+<img src="images/figure2-x.png"/>
 
 Let's look at each of the properties we set.
 
@@ -346,5 +346,5 @@ So now let's look at our complete ruleset again:
 
 Now you can understand how these declarations work together to produce our blue button:
 
-<img src="figure2-x.png"/>
+<img src="images/figure2-x.png"/>
 

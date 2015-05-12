@@ -12,12 +12,12 @@
 * Crawling
   * [Section Overview](Crawling/overview.md)
   * [Chapter 1: Getting Started](Crawling/chapter1.md)
-  * Chapter 2: Styling Essentials (initial draft in progress)
-  * Chapter 3: Data Types & Units
-  * Chapter 3: Cascade, Specificity, & Inheritance
-  * Chapter 4: The Box Model
-  * Chapter 5: Display Property
-  * Chapter 6: Developer Tools Basics
+  * [Chapter 2: Styling Essentials](Crawling/chapter2.md)
+  * Chapter 3: Data Types & Units -- draft in progress
+  * [Chapter 4: Cascade, Specificity, & Inheritance](Crawling/chapter4.md)
+  * Chapter 5: The Box Model
+  * Chapter 6: Display Property
+  * Chapter 7: Developer Tools Basics
 * Walking
   * Section Overview
   * Selectors: Combinators & Pseudo-Classes

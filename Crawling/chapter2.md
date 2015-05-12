@@ -1,7 +1,7 @@
 # Taming CSS
 # Chapter 2: Styling Essentials
 
-Now that you know the syntax of CSS and know how to write selectors, let's get a little more familiar with some styling.  We have already seen a few common properties.  Let's take a closer look at them, as well as a few other useful ones.
+Now that you know the syntax of CSS and know how to write selectors, let's get a little more familiar with some styling.  We have already seen a few common properties.  Let's take a closer look at them, as well as some other useful ones.
 
 ## Styling Text
 
@@ -32,9 +32,9 @@ The `color` property we are familiar with.  Here we've set it to the color "slat
 
 `font-family` specifies what typeface we want use.  You'll notice we specified three different values, separated by commas.  These specify fallback values, which is unique to this particular property.  Different users will have different fonts installed on their systems, so when the specified font is not available, the browser can look for through the list until it finds one that it can use.
 
-The final value, `sans-serif`, is a special generic font.  You should always include a generic font at the end of your list.  If none of the specified fonts are available, the browser can load the default font of the appropriate type.  `serif`, `sans-serif`, and `monospace` are typically want you will want to use for your fallback, though `cursive` and `fantasy` are also valid values.
+The final value, `sans-serif`, is a special generic font.  You should always include a generic font at the end of your list.  If none of the specified fonts are available, the browser can load the default font of the appropriate type.  `serif`, `sans-serif`, and `monospace` are typically want you will want to use for your fallback, though `cursive` and `fantasy` are also valid fallbacks.
 
-For a long time, fonts in CSS were limited to a short list fonts that are common to most systems; often they were paired up so a font common to Apple computers and one common to Windows computers were listed together.  This would ensure the user would have at least one of them.  In our example, these are Helvetica and Arial.  Other common sans-serif pairs included Impact and Charcoal, Geneva and Tahoma, or Geneva and Verdana.  Common serif pairs were Times and Times New Roman, Book Antiqua and Palatino Linotype, or Georgia (which is common to both operating systems).  These were called "web safe" fonts.  You could name a more exotic font, like "Helvetica Neue", but it would only work for users who happened to have that font installed.
+For a long time, fonts in CSS were limited to a short list of ones that are common to most systems; often they were paired up so a font common to Apple computers and one common to Windows computers were listed together.  This would ensure the user would have at least one of them.  In our example, these are Helvetica and Arial.  Other common sans-serif pairs included Impact and Charcoal, Geneva and Tahoma, or Geneva and Verdana.  Common serif pairs were Times and Times New Roman, Book Antiqua and Palatino Linotype, or Georgia (which is common to both operating systems).  These were called "web safe" fonts.  You could name a more exotic font, like "Helvetica Neue", but it would only work for users who happened to have that font installed.
 
 With CSS3, we can now use **web fonts**, which allow use a font that is hosted online.  Modern browsers can download this font and use it on the page.  This has opened up our options dramatically.  We will look at web fonts later on, but in the meantime, you can look for font services such as Google Fonts that provide a large library of fonts to select from and simple code snippets to use them.
 

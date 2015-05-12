@@ -66,7 +66,7 @@ This set a background image and a background color.  `center` positions the back
 
 <img src="images/figure2-3.png"/>
 
-`background` is an example of a **shorthand property**.  A shorthand property allows you to set the values several other properties at the same time.  `background` allows you to set values for `background-color`, `background-image`, `background-position`, `background-repeat` with one declaration.  Expressed the long way, the above ruleset is equivalent to this one:
+`background` is an example of a **shorthand property**.  A shorthand property allows you to set the values of several properties at the same time.  `background` allows you to set values for `background-color`, `background-image`, `background-position`, `background-repeat` with one declaration.  Expressed the long way, the above ruleset is equivalent to this one:
 
 ```css
 .star-bg-tiled {
@@ -137,91 +137,7 @@ You will notice in our examples for both backgrounds and borders, the text appea
 
 <img src="images/figure2-6.png"/>
 
-## Absolute vs. Relative Units
-
-We have now seen the `px` unit a lot of these examples.  This is short for "pixel", and is an example of an absolute unit.
-
-Specifying `px` ("pixels") does pretty much what it sounds like.  It tells the browser to make something display at a precise size.  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are an unchanging value.
-
-Up until now, I have used `px` with font sizing for clarity, but this is generally not recommended.  Some browsers allow users set a default font size ("Small", "Large", "Larger" etc).  If you use `px` sizing, these settings will not work.  Since this functionality is vital to some users, particularly those who are vision impaired, it is worth learning to specify fonts with relative units.
-
-"Em"s are the most common relative unit.  Ems are a measure used in typography, referring to the height of the letters (originally, a capital M, which is where it gets its name).  So in CSS, one em (`1em`) means the height of the current element's font-size.  This mean that it's exact value varies depending on the font size of the element we are applying it to.
-
-```css
-.em-example {
-  font-size: 16px;
-  padding: 1em;
-}
-```
-
-These will set both the font size and the padding equal to 16 pixels.  This is more interesting when we also set the font size using ems:
-
-```css
-.em-example-2 {
-  font-size: 1em;
-  padding: 1em;
-}
-```
-
-Now both the font size and the padding are set to the same value... but we don't know exactly how big that value is.  The font-size is inherited from the parent element.  So, if the parent element's font is 16 pixels, then 1em equals 16 pixels.  2em equals 32px.  1.2em equals 19.2px.  0.8em equals 12.8px.
-
-This gets interesting is when elements using ems are nested multiple levels deep:
-
-```css
-body {
-  font-size: 16px;
-}
-ul {
-  font-size: .8em;
-}
-```
-
-<img src="images/figure2-7.png"/>
-
-Our text is shrinking!  What happened?  Remember, our `ul` selector targets all `<ul>` on the page, so it sets each list to a font 0.8 times that of its parent.  This means that our first list has a font size of 12.8px, but the next one down is 10.24px (12.8px * 0.8), and the third level is 8.192px, and so on.  Similarly, if we specified a size larger than 1em, our text would be continually growing instead.  Here's how we fix this:
-
-```css
-ul {
-  font-size: .8em;
-}
-ul ul {
-  font-size: 1em;
-}
-```
-
-This second selector targets all unordered lists within an unordered list: all of them except the top level.  Nested lists now have a font size equal to their parents:
-
-<img src="images/figure2-8.png"/>
-
-Much better.  But it should be clear now that ems can get away from us if we're not careful.  You are best off using ems
-
-<!--- WORKING HERE -->
-
-<!---
-One other important unit is percent.  If a value is a horizontal value (such as `padding-left`) this means a certain perctage of the parent container's width.  If the value is a vertical value, it means a percentage of the parent container's height.  Finally, if you use percent to set a font size, it behaves much like ems; `100%` means equal to the parent container's font size.
--->
-
-Pixels and Ems are two of the most common units in CSS, but there are many more.  See Appendix B for a comprehensive list.
-
-### Colors
-
-So far, we have been using named colors like "black", "slategray", and "orange".  There are about 150 named colors like these that are valid, but it's still fairly limiting.  Thankfully, there is a way we can specify any color we want:
-
-```css
-  background-color: #3366aa;
-```
-
-This is a **hex color**, also known as hex notation.  "Hex" is short for "hexadecimal", which is a base-16 number system.
-
-Unlike our common decimal number system, which is base-10 and uses the ten digits 0 through 9, hexidecimal uses sixteen digits.  We represent these with 0 through 9 as well as A through F.  "A" represents the decimal value "10".  "B" represents "11", et. cetera up through "F" which represents "15".  Capitalization is ignored.
-
-If you were to add one to `F`, you get `10`.  Instead of a tens column, as with decimal numbers, we have a sixteens column.  `11` means 1 sixteen plus 1.  `2A` means 2 sixteens (decimal 32) plus A (decimal 10).  Don't worry too much about the conversion, though.  Suffice it to say, in hex, letters have higher values than numbers; they are kind of like the face cards in a deck of cards.
-
-You can easily get by with a general grasp of the concept.  Then you know that `B9` is larger than `9B`, and `A1` is much larger than `1A`.  Most often, you will be obtaining these values from a image editor or color picker, not writing them by hand off the top of your head.
-
-So how does this get us a color?  A CSS hex color is actually three distinct hexidecimal numbers together, representing values for red, green, and blue.  In `#336699`, `33` is the amount of red, `66` is the amount of green, and `99` is the amount of blue.  Since blue is the largest value, so this color is primarily blue.  Because both digits in each value are equal, this number can be abbreviated as `#369`.
-
-Colors you will common use include `#ffffff` (or `#fff`), which is pure white, and `#000000` (or `#000`), which is pure black.  (We use additive color, which means the higher the value, the more light we are adding).
+`padding` is also a shorthand property for top, right, bottom, and left values.  You can also use `padding-top`, `padding-right`, etc. to set them one at a time.
 
 ## Links
 
@@ -264,87 +180,37 @@ a {
 }
 ```
 
-I'm not saying you should always take this approach, but it is worth considering, especially in a web app where you find yourself using a lot of `<a>` tags.  (That said, always add an `href` when there is a url that makes sense; that way, a ctrl-click will still open the url in a new window.)
+I'm not saying you should always take this approach, but it is worth considering, especially in a web app where you find yourself using a lot of `<a>` tags.  (That said, I always add an `href` when there is a url that is relevant; that way, a ctrl-click will still open the url in a new window.)
 
 ### Real-world Example
 
-Let's put some of this together to style a button:
+Let's put this to use.  Here are some styles for button:
 
 ```css
 .button {
-  padding: 5px 15px;
   color: white;
-  background: #336699;
-  border-radius: 5px;
+  background-color: steelblue;
+  border: darkblue 1px solid;
+  padding: 5px 15px;
   text-decoration: none;
+}
+.button:hover {
+  background-color: darkblue;
 }
 ```
 
 ```html
-<a class="button" href="next.html">Next &raquo;</a>
+<a class="button" href="next.html">Click me</a>
 ```
 
 These result in:
 
-<img src="images/figure2-x.png"/>
+<img src="images/figure2-9.png"/>
 
-Let's look at each of the properties we set.
+Which, when we hover our cursor over it, becomes:
 
-```css
-padding: 5px 15px;
-```
-`padding` puts space between the border of the element and its contents.  In this case, we specified `5px`, or five pixels, for the top and bottom padding, and `15px`, or 15 pixels, for the right and left padding.
+<img src="images/figure2-10.png"/>
 
-This is actually a shorthand notation, which `padding` and many other properties support.  The equivalent full notation would be `5px 15px 5px 15px`.  This sets the four sides in clockwise order: top, right, bottom, left.  If you find that order tough to remember, just think "TRouBLe", which includes the first let of each direction in the correct order.
+Try some new things with these declarations.  Make the padding different on one side.  Change the border color and observe how it no longer blends in on the hover state.  Change the font or add a background image.
 
-If the shorthand declaration stops before a side is given a value, that side takes its value from the opposite side: the left side value will match the right side; the bottom side will match the top.  If only one value is specified, that value is applied to all four sides.
-
-Thus the following declarations are equivalent to one another:
-
-
-
-Let's move on to the next declaration:
-
-```css
-  color: white;
-```
-
-We are already familiar with the `color` property.  This sets the color of the text to white.
-
-<!-- Change to named color -->
-```css
-  background: #336699;
-```
-
-<!--- TODO -->
-
-Let's look at the next declaration from our button:
-
-```css
-  border-radius: 5px;
-```
-
-The `border-radius` property is used to round the element's corners.  When left undefined, the default value is `0`, which means normal squared corners.  The higher the value, the more gradual the curve, up to half of the element's size.
-
-```css
-  text-decoration: none;
-```
-
-The `text-decoration` property is used to do things like underline or strike through the text.  It supports values like `underline`, `overline`, and `line-through`, though in this case, we've set it to `none`.  We do this because browsers typically underline links by default, but we don't want the underline to appear in our button.  Our `none` value overrides the browser's default value.
-
-So now let's look at our complete ruleset again:
-
-```css
-.button {
-  padding: 5px 15px;
-  color: white;
-  background: #336699;
-  border-radius: 5px;
-  text-decoration: none;
-}
-```
-
-Now you can understand how these declarations work together to produce our blue button:
-
-<img src="images/figure2-x.png"/>
-
+When you are starting to feel comfortable with these attributes, add another button to the page with different styles.  Add a paragraph before or after the button and see how they look together.  If you play around with them long enough, you might even start to come up with new questions about why behave a certain way or how to do something new.  That's good!  You're learning, and there's plenty more to learn still.

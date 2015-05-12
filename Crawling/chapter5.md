@@ -1,2 +1,3 @@
 # Taming CSS
-# Chapter 5: Display Property
+# Chapter 4: The Box Model
+

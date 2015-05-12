@@ -13,7 +13,7 @@ By now you know how to apply some styling to the page.  You can set colors, styl
 </p>
 ```
 
-We want this to be the start of our page.  It has a heading and our main navigation, consisting of a list of links.  In this list, we have a featured link, which we want to make orange to it stands out.  So let's put together some CSS:
+We want this to be the start of our page.  It has a heading and our main navigation, consisting of a list of links.  In this list, we have a featured link, which we want to make orange so it stands out.  So let's put together some CSS:
 
 ```css
 body {
@@ -43,7 +43,7 @@ a:link {
 
 Load it up, and we get this:
 
-<img src="figure3-1.png"/>
+<img src="images/figure3-1.png"/>
 
 Hmm.  That didn't work out quite like we pictured.  It turns out, three different selectors target out featured link.  The default link color is blue.  We were able to change that in the nav to have white text on a blue background.  However, our featured link didn't turn orange.  Why could we override one style but not another?
 
@@ -188,7 +188,7 @@ For now, I don't think that's what I want to do, so I'm going to stick with fix 
 
 Now that we're happy with our fix, let's take a look at the result:
 
-<img src="figure3-2.png"/>
+<img src="images/figure3-2.png"/>
 
 As you can see from these examples, specificity tends to become a sort of arms race, especially on large projects.  It is generally best to keep it low when you can, so when you need to override something, your options are open.
 

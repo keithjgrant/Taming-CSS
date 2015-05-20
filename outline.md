@@ -2,8 +2,8 @@
 * Crawling
   * syntax, simple selectors, linking to stylesheets
   * common styles: basic fonts, links, hex colors, borders, etc
-  * units
   * cascade, specificity, & inheritance
+  * units
   * box model (transition from margin/padding in 'common styles')
   * display property (inline vs block, document flow, etc)
   * browser dev tools
@@ -52,3 +52,4 @@ Other misc to sort:
 * grids?
 * negative margins
 * nav menus (l/r border, -1px margin size trick)
+* bootstrap, et al.

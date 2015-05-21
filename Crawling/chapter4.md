@@ -31,7 +31,7 @@ These units are generally less commonly used than `px`, but they can be useful a
 
 Up until now, I have used `px` with `font-size` for simplicity, but this is generally not recommended to use absolute units for font size.  Browsers allow users set a default font size ("Small", "Large", "Larger" etc).  If you define absolute font sizes, you will be overriding this setting.  This is distinct than the "zoom" feature most browsers provide, which will resize absolutely sized fonts, as well as everything else on the page.  Since a default font size is vital to some users, particularly those who are vision impaired, it is worth learning to specify fonts with **relative units**.
 
-### Em
+### Relative Units
 
 "Em"s are the most common relative unit.  Ems are a measure used in typography, referring to the size of the letters, originally the width of a capital M (hence the name "em").  So in CSS, one em (written `1em`) means the font size of *the current element*.  Its exact value varies depending on the element we are applying it to.
 
@@ -46,7 +46,7 @@ These will set both the font size and the padding equal to 16 pixels.  Setting t
 
 Using ems can be a very convenient when setting properties such as `padding`, `height`, `width`, or `border-radius`, because these will scale evenly with the element if it inherits different font sizes or the user changes their font settings.
 
-So if ems are defined by the font size, let see what happens when we use them to set the `font-size`:
+As I mentioned above, we should use a relative unit for font size, let see what happens when we use ems:
 
 ```css
 .em-example-2 {
@@ -57,7 +57,9 @@ So if ems are defined by the font size, let see what happens when we use them to
 
 Now we've set the padding equal to 1.2 times the font size, and the font size equal to 1.2 times... itself?  Obviously, this doesn't make any sense.  When it comes to ems, `font-size` behaves a little differently: instead of ems being relative to the current element's font size, they are relative to the *inherited* font size.  So, if the parent element's font is 16 pixels, then a font-size of `1.2em` equals 19.2 pixels.  Then, we can calculate the current padding as 1.2 times that, giving us 23.04px.  Remember, for any property other than `font-size`, ems refer to the font-size of the current element, after the font size is calculated.
 
-This gets interesting is when elements using ems are nested multiple levels deep:
+A simple formula to help calculate how many ems you need.  Divide your desired pixel size by the parent pixels size.  If you want 10px font and your element is inheriting 12px font &mdash; 10 &divide; 12 = 0.8333.  If you want 16px font and the parent font is 12px &mdash; 16 &divide; 12 = 1.3333.
+
+Ems interesting is when elements using ems are nested multiple levels deep:
 
 ```css
 body {
@@ -85,9 +87,49 @@ This second selector targets all unordered lists within an unordered list: all o
 
 <img src="images/figure2-8.png"/>
 
-Much better.  Though this feels a little hacky.  It should be clear now that ems can get away from us if we're not careful.  Thankfully, there is a better options, rems.
+Much better.  Though this feels a little hacky.  It should be clear now that ems can get away from us if we're not careful.  Thankfully, there is a better option: rems.
 
 "Rem" is short for "root em".  Instead of being relative to the current element, rems are relative to the root element, the `<html>` tag.
+
+```css
+html {
+  /* use the browser default size of 16px (unless user setting changes that) */
+  font-size: 1em;
+}
+.parent {
+  font-size: .75em;
+}
+.parent .child {
+  font-size: 1.2em;
+}
+```
+
+In this example, our `.parent` element has a font size equal to 12px (16px * .75), and our `.child` has a font size of 19.2px (16px * 1.2); the child's font size is no longer related to the parent's, but rather to the document root.  This still gives us the benefit of being a relative unit.  If the user bumps up their default font size, our font will increase with it.
+
+Another nice benefit of using relative font sizes is that we can also change fonts globally on the page ourselves.  If we changed the first ruleset to set the root element's font to `1.1em`, it would change the calculation of all relative fonts on the page.  Our `.parent` would now be equal to 13.2px and our `.child` would be equal to 21.12px.  Again, these would all still remain subject to the user's font settings.
+
+As you can see, rems simplify a lot of the complexities involved with ems.  But that doesn't mean you should abandon ems altogether.  Instead, use ems when you want to be relative to the current element's font (for `padding` and `border-radius`), and rems for `font-size`.
+
+It can be very easy to get bogged down obsessing over exact pixel font sizes.  You will drive yourself mad dividing and multiplying em values as you go.  Instead, I challenge you to try to forget about the pixel equivalents.  Embrace ems (or rems).  It can take some practice, especially if you are already accustomed to using pixels.  To help you get familiar with them, I will be using ems and rems throughout the rest of this book, especially with fonts.
+
+There is still a place for absolute length units, so I'm not saying abondon them altogether.  I still use pixels for borders, particularly when I want a nice fine line.
+
+Two other font-relative units are `ex` and `ch`.  Ex refers to the "x-height", which is generally the height of a lowercase "x" (typically equal to 0.5em).  Ch refers to the width of the "0" (zero) character of the font.  These are rarely used.
+
+There also units for defining lengths relative to the browser's viewport:
+
+ * `vh`: 1/100th of the viewport height
+ * `vw`: 1/100th of the viewport width
+ * `vmin`: 1/100th of the smaller dimension, height or width
+ * `vmax`: 1/100th of the larger dimension, height or width
+
+These are not very commonly used, but they can be handy.  They are a newer feature to most browsers, so there are a few odd bugs when you use them in particular situations, especially vmin and vmax.
+
+## Percentage
+
+
+
+<!-- can't use % on border -->
 
 <!-- comment on html { font-size: 62.5%; } -->
 <!--- WORKING HERE -->

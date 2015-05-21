@@ -32,7 +32,7 @@
     * transitions
     * animations
     * transformations
-    * svg
+    * clip
   * z-index & stacking contexts
   * flexbox
 

@@ -6,3 +6,5 @@ IE8, not supported:
 * pseudo-elements `:` vs `::`
 * border-radius
 * SVG
+* opacity (filter hack)
+* transform (also IE9)

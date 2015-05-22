@@ -207,11 +207,11 @@ Let's put all this to use.  Here are some styles for button:
 
 These result in:
 
-<img src="images/figure2-9.png"/>
+<img src="images/figure2-7.png"/>
 
 Which, when we hover our cursor over it, becomes:
 
-<img src="images/figure2-10.png"/>
+<img src="images/figure2-8.png"/>
 
 Try some new things with these declarations.  Make the padding different on one side.  Change the border color and observe how it no longer blends in on the hover state.  Change the font or add a background image.
 

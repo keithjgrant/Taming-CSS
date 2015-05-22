@@ -5,16 +5,6 @@ We've seen a number of various types of declaration values now: keywords like "t
 
 ## Lengths
 
-<!---
-keywords
-strings
-colors
-numbers
-lengths (px, em, etc)
-percentages
-uris
--->
-
 A **length** in CSS is used to denote a distance measurement.  It is a number followed by a length unit, such as `5px`.
 
 We have now seen the `px` unit a lot of these examples.  This is short for "pixel".  Specifying `px` does pretty much what it sounds like: it tells the browser to make something display at a precise size.  On a stardard resolution display, this means one pixel on screen.  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are an unchanging value.  The browser tries to define the pixel as 1/96th of an inch.  This is also true when printing a webpage.  Printers typically print at a much higher resolution, usually around 300 dpi, so one CSS "pixel" will generally equate to several dots of ink.  Because of this, pixels are known as an **absolute** length unit.
@@ -70,7 +60,7 @@ ul {
 }
 ```
 
-<img src="images/figure2-7.png"/>
+<img src="images/figure4-1.png"/>
 
 Our text is shrinking!  What happened?  Remember, our `ul` selector targets all `<ul>` on the page, so it sets each list to a font 0.8 times that of its parent.  This means that our first list has a font size of 12.8px, but the next one down is 10.24px (12.8px * 0.8), and the third level is 8.192px, and so on.  Similarly, if we specified a size larger than 1em, our text would be continually growing instead.  Here's how we fix this:
 
@@ -85,9 +75,9 @@ ul ul {
 
 This second selector targets all unordered lists within an unordered list: all of them except the top level.  Nested lists now have a font size equal to their parents:
 
-<img src="images/figure2-8.png"/>
+<img src="images/figure4-2.png"/>
 
-Much better.  Though this feels a little hacky.  It should be clear now that ems can get away from us if we're not careful.  Thankfully, there is a better option: rems.
+Much better, though this feels a little hacky.  It should be clear now that ems can get away from us if we're not careful.  Thankfully, there is a better option: rems.
 
 "Rem" is short for "root em".  Instead of being relative to the current element, rems are relative to the root element, the `<html>` tag.
 
@@ -125,23 +115,67 @@ There also units for defining lengths relative to the browser's viewport:
 
 These are not very commonly used, but they can be handy.  They are a newer feature to most browsers, so there are a few odd bugs when you use them in particular situations, especially vmin and vmax.
 
-## Percentage
+## Percent
 
+**Percentages** are another data type.  It are very similar to a length, in that it is a number followed by a unit (e.g. `50%`), and it behaves very much like a relative length unit.  Strictly speaking, though, it is not considered one, as there are some places where lengths are a legal value but percentages are not (such as `border-width`).
 
+Percent refers to the size of the containing block.  If the property it specifies is horizontal in nature, like `padding-left`, it refers to the container's width; if horizontal in nature, like `padding-top`, it refers to the container's height.  Percent are particularly useful for sizing blocks according to their parent container:
 
-<!-- can't use % on border -->
+```css
+.container {
+    width: 200px;
+    height: 200px;
+    background-color: lightgray;
+}
+.child {
+    width: 50%;
+    height: 50%;
+    background-color: darkblue;
+}
+```
+```html
+<div class="container">
+  <div class="child"></div>
+</div>
+```
 
-<!-- comment on html { font-size: 62.5%; } -->
-<!--- WORKING HERE -->
+These yield:
 
-<!---
-One other important unit is percent.  If a value is a horizontal value (such as `padding-left`) this means a certain perctage of the parent container's width.  If the value is a vertical value, it means a percentage of the parent container's height.  Finally, if you use percent to set a font size, it behaves much like ems; `100%` means equal to the parent container's font size.
--->
+<img src="images/figure4-3.png"/>
 
+Once again, `font-size` is an exception to the rule.  When applied to font size, percent behave just like ems.  `100%` equals the inherited font size, or `1em`; `80%` equals `0.8em`, etc.
+
+One practice that has been common for a number of years is to add `body { font-size: 62.5%; }` near the beginning of a stylesheet.  This scales the root font down to 10px (with default user settings), and makes the math simpler for working with relative font sizes: `1.2rem` equals `12px`, etc.  You can do this if you find it helpful.  Ideally, though, you should set your root font to the primary font size you want on your page, so you don't have to override it all over the place.  Again, I encourage you to try to ignore the exact pixels values, and think in more relative terms.
+
+## Unitless Numbers
+
+Some properties allow for **unitless** values.  We saw this with `font-weight: 400`.  `line-height` and `z-index` also accept unitless values.  You may also use the unitless value `0` anywhere a unit is typically required, because in this case the unit does not matter.
+
+`line-height` is peculiar in that it accepts both units and unitless values.  The preferred method is to use unitless numbers, because they are inherited differently.  When units are specified, their value is calculated, and that calculated value is passed down to any inheriting children.  For instance, `line-height: 1.2em` may be calculated as a 19.2px line height based on a 16px font size.  Then, a child element with a font size set to 24px will have lines of text overlapping one another, because their baselines are only 19.2px apart.  If, instead of ems, we specified `line-height: 1.2`, this child element's line height would be re-calculated based on the larger font size, and the line height would scale as we probably expect.
+
+## URLs
+
+**URLs** are used to refer to another resource outside the stylesheet.  These are most commonly used for setting background images:
+
+```css
+.my-background {
+  background-image: url(background.jpg);
+}
+```
+
+The url may be absolute or relative.  If a relative url is specified, it refers to a path *relative to the stylesheet*, not relative to the page.  The url inside the parentheses may optionally be quoted with single- or double-quotes.
+
+These may also be used with the `cursor` property to specify a custom cursor icon or the `list-style` property to use a custom bullet point in a list.  They are also used to specify web fonts, which we will cover in a later chapter.
+
+## Keywords
+
+Some properties accept various keywords.  A keyword is a special value, often particular to a given property.  It is not enclosed in quotation marks.  Some examples are `font-weight: bold`, `text-decoration: underline`, or `color: black`.
 
 ## Colors
 
-So far, we have been using named colors like "blue", "slategray", and "orange".  There are about 150 named colors like these that are valid, but it's still fairly limiting.  Thankfully, there is a way we can specify any color we want:
+So far, we have been using named colors with keywords like `blue`, `slategray`, and `orange`.  There are about 150 named colors like these that are valid, but it's still fairly limiting.  Thankfully, there are a number of ways we can specify any color we want.
+
+### Hex Colors
 
 ```css
 background-color: #3366aa;
@@ -151,11 +185,28 @@ This is a **hex color**, also known as hex notation.  "Hex" is short for "hexade
 
 Unlike our common decimal number system, which is base-10 and uses the ten digits 0 through 9, hexidecimal uses sixteen digits.  We represent these with 0 through 9 as well as A through F.  "A" represents the decimal value "10".  "B" represents "11", et. cetera up through "F" which represents "15".  Capitalization is ignored.
 
-If you were to add one to `F`, you get `10`.  Instead of a tens column, as with decimal numbers, we have a sixteens column.  `11` means 1 sixteen plus 1.  `2A` means 2 sixteens (decimal 32) plus A (decimal 10).  Don't worry too much about the conversion, though.  Suffice it to say, in hex, letters have higher values than numbers; they are kind of like the face cards in a deck of cards.
+If you were to add one to `F`, you get `10`.  Instead of a tens column, as with decimal numbers, we have a sixteens column.  `11` means 1 sixteen plus 1.  `2a` means 2 sixteens (decimal 32) plus A (decimal 10).  Don't worry too much about the conversion, though.  Suffice it to say, in hex, letters have higher values than numbers; they are kind of like the face cards in a deck of cards.
 
-You can easily get by with a general grasp of the concept.  Then you know that `B9` is larger than `9B`, and `A1` is much larger than `1A`.  Most often, you will be obtaining these values from a image editor or color picker, not writing them by hand off the top of your head.
+You can easily get by with a general grasp of the concept.  Then you know that `b9` is larger than `9b`, and `a1` is much larger than `1a`.  Most often, you will be obtaining these values from a image editor or color picker, not writing them by hand off the top of your head.
 
-So how does this get us a color?  A CSS hex color is actually three distinct hexidecimal numbers together, representing values for red, green, and blue.  In `#336699`, `33` is the amount of red, `66` is the amount of green, and `99` is the amount of blue.  Since blue is the largest value, so this color is primarily blue.  Because both digits in each value are equal, this number can be abbreviated as `#369`.
+So how does this get us a color?  A CSS hex color is actually three distinct hexidecimal numbers together, representing values for red, green, and blue.  In `#336699`, `33` is the amount of red, `66` is the amount of green, and `99` is the amount of blue.  In this example, blue is the largest value, so this color is primarily blue.  Because both digits in each value are equal, this number can be abbreviated as `#369`.
 
-Colors you will common use include `#ffffff` (or `#fff`), which is pure white, and `#000000` (or `#000`), which is pure black.  (We use additive color, which means the higher the value, the more light we are adding).
+CSS colors are *additive*, which means the higher the value, the more light we are adding.  This is in contrast to *subtractive* color like paint&mdash;the more dye you add, the darker paint gets.  Because of additive color, `#ffffff` (or `#fff`) is pure white, and `#000000` (or `#000`) is pure black.  Likewise, any other color where the red, green, and blue values are the same or nearly the same will appear as a shade of gray.
 
+### RGB & RGBA
+
+Hex colors are nice because they are very succinct; one short value tells you everything you need to know to identify a precise color.  The downside is that they are a bit cryptic.  You may find it easier to work instead with **RGB** colors, which look like this:
+
+```css
+color: rgb(255, 255, 255);
+```
+
+Instead of three hexidecimal numbers, we use three numbers in our familiar decimal system, each representing red, green, and blue.  Each number must be between 0 and 255 (Hexidecimal "ff" equals decimal 255).  In this example, we have defined pure white.  Another benefit of using RGB colors is we can add transparency without much trouble, by changing to "rgba" and adding an **alpha** value:
+
+```css
+color: rgba(255, 255, 255, 0.5);
+```
+
+The alpha value must be between 0 and 1.  The lower it is, the more transparent the resulting color, from 1 (completely opaque) to 0 (completely transparent).
+
+### HSL & HSLA

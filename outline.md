@@ -50,6 +50,7 @@ Other misc to sort:
 * refactoring!
 * cursors
 * grids?
+* opacity
 * negative margins
 * nav menus (l/r border, -1px margin size trick)
 * bootstrap, et al.

@@ -210,3 +210,61 @@ color: rgba(255, 255, 255, 0.5);
 The alpha value must be between 0 and 1.  The lower it is, the more transparent the resulting color, from 1 (completely opaque) to 0 (completely transparent).
 
 ### HSL & HSLA
+
+Another way we can define colors is with **HSL** values.  This stands for "Hue, Saturation, Lightness", which are the three values we specify to define a color.  The first value, hue, is a number between 0 and 359.  This represents the 360 degrees of the color circle, transitioning evenly through red (0), yellow (60), green (120), cyan (180), blue (240), magenta (300), and back to red.  The second value, saturation, is a percentage representing the insensity of the color.  100% makes the color very vivid; 0% means no color is present, resulting in a shade of gray.  The third value, lightness, is a percentage representing how light (or dark) the color is.  A lightness of 50% provides for the most vivid colors;  setting it higher makes the color lighter, with 100% resulting in pure white; setting it low; 100% produces white.  Here is an example of an HSL color:
+
+```css
+color: hsl(200, 70%, 75%);
+```
+
+This defines a pale, sky blue.  We can see the hue is somewhere between cyan and blue, the saturation is rather high, but the brightness is also high which washes it out a bit.
+
+It takes a little getting used to, but this method can be a lot easier to work with at a glance, especially for predicting the difference between two colors before seeing them rendered in the browser.  It especially helpful when you want to create several shades of the same color, because you can set the hue the same and just adjust the other two values.
+
+The relationship between hue, saturation, and lightness is quite different than RGB colors.  If saturation is 0%, the hue is irrelevant.  `hsl(0, 0%, 50%)` and `hsl(180, 0%, 50%)` are both the exact same medium gray.  Similarly, if lightness is 0% or 100%, the saturation is irrelevant.  When the lightness is closer to these values, say 10% or 90%, the saturation has some effect, but less so than with a lightness of 50%.
+
+We can also use HSLA color, adding an alpha channel that behaves the same as the RGBA alpha channel:
+
+```css
+/* this color is now 50% transparent */
+color: hsla(200, 70%, 75%, 0.5);
+```
+
+Here are several named CSS colors and their equivalents in hex, rgb, and hsl:
+
+Name     | Hex     | RGB                | HSL
+---------|---------|--------------------|--------------------
+blue     | #0000ff | rgb(0, 0, 255)     | hsl(240, 100%, 50%)
+lavender | #e6e6fa | rgb(230, 230, 250) | hsl(240, 67%, 94%)
+coral    | #ff7f50 | rgb(255, 127, 80)  | hsl(16, 100%, 66%)
+gold     | #ffd700 | rgb(255, 215, 0)   | hsl(51, 100%, 50%)
+green    | #008000 | rgb(0, 128, 0)     | hsl(120, 100%, 25%)
+tan      | #d2b48c | rgb(210, 180, 140) | hsl(34, 44%, 69%)
+
+If this is a bit confusing, that is okay.  It will come with practice.  When I starting coding in colors on a new design, I usually just take a stab at it, and then adjust it using the graphical color picker in Photoshop or my browser developer tools.  You are trying these out in your browser, right?  Copy these into your test page to make it easier, then experiment with changing the color values and adding alpha values:
+
+```html
+<div class="box color-one"></div>
+<div class="box color-two"></div>
+<div class="box color-three"></div>
+```
+
+```
+.box {
+  height: 10em;
+  width: 10em;
+}
+.color-one {
+  background: #fa6a64;
+}
+.color-two {
+  background: rgb(122, 78, 72);
+}
+.color-three {
+  background: hsl(159, 26%, 70%);
+}
+```
+
+There are two final special keyword colors: `transparent` and `currentColor`.  Transparent sets a fully transparent color.  It is useful for overriding solid colors or adding an invisible border for the "off" state of a border that you want to toggle on and off in different circumstances.  This way the size of the element does not change as you add and remove the border.
+
+The `currentColor` keyword can be used to apply an elements calculated (or inherited) `color` value to other properies.  For instance, `border: 1px solid currentColor` will give an element a border that matches its text color.

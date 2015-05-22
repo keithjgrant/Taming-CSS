@@ -7,4 +7,6 @@ IE8, not supported:
 * border-radius
 * SVG
 * opacity (filter hack)
-* transform (also IE9)
+* transform
+* transition (also IE9)
+* animation (also IE9)

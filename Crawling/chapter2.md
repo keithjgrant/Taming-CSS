@@ -38,9 +38,9 @@ For a long time, fonts in CSS were limited to a short list of ones that are comm
 
 With CSS3, we can now use **web fonts**, which allow use a font that is hosted online.  Modern browsers can download this font and use it on the page.  This has opened up our options dramatically.  We will look at web fonts later on, but in the meantime, you can look for font services such as Google Fonts that provide a large library of fonts to select from and simple code snippets to use them.
 
-The next declaration in our example sets the `font-size`.  We specified our units in pixels, but there is actually an alarming number of other options available to us.  We will look at some of the common ones in the next chapter.
+The next declaration in our example sets the `font-size`.  We specified our units in pixels, but there is actually an alarming number of other options available to us.  We will look at some of the common ones a little later on.
 
-The final property in our example is `font-weight`.  Common values for this are `normal` and `bold`.  You may also specify values from `100` through `900`, in increments of 100.  `400` is the equivalent of `normal` and `700` is the equivalent of `bold`.  The number values are particularly useful in conjunction with web fonts.  If, for example, you provide an "Ultra Light" or "Black" variant from the font family, you can specify these with `200` or `900`, respectively.  If the exact weight you specify is not available, the browser will use the closest value it can.
+The final property in our example is `font-weight`.  Common values for this are `normal` and `bold`.  You may also specify values from `100` through `900`, in increments of 100.  `400` is the equivalent of `normal` and `700` is the equivalent of `bold`.  The number values are particularly useful in conjunction with web fonts.  If, for example, you provide an "Ultra Light" or "Black" variant from the font family, you can specify these with `100` or `900`, respectively.  If the exact weight you specify is not available, the browser will use the closest value it can.
 
 There are also a `font-style` and `text-decoration` properties.  `font-style` accepts the values `normal` and `italic`.  `text-decoration` accepts `underline`, `overline`, `line-through`, and `none`.
 

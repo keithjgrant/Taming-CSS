@@ -45,7 +45,7 @@ Load it up, and we get this:
 
 <img src="images/figure3-1.png"/>
 
-Hmm.  That didn't work out quite like we pictured.  It turns out, three different selectors target out featured link.  The default link color is blue.  We were able to change that in the nav to have white text on a blue background.  However, our featured link didn't turn orange.  Why could we override one style but not another?
+This looks pretty good.  We have our header, and buttons... but what about the orange button we wanted?  That didn't work out quite like we pictured.  It turns out, three different selectors target our featured link.  The default link color is blue.  We were able to change that in the nav to have white text on a blue background.  However, our featured link didn't turn orange.  Why could we override one style but not another?
 
 If you are paying close enough attention, you may have also noticed another odd thing happened: the browser put a gap between our heading and the nav.  We didn't specify any margins, so why is that there?  What if we want those to be closer together?
 
@@ -59,11 +59,11 @@ The cascade refers to the set of rules the browser uses to resolve any ambiguity
 
 Believe it or not, the stylesheets you add to your webpage are not the only ones the browser applies.  Browsers also add their own set of default styles, known as the *user agent* stylesheet.  These vary from browser to browser, but generally they do the same common things: headings (`<h1>` through `<h6>`) and `<p>` are given a top and bottom margin, lists (`<ol>` and `<ul>`) are given a left padding, and default font sizes are set.
 
-In our page, this is the source of the mysterious gap below our heading.  For each element on the page, the browser first looks in your stylesheets (known as *author* stylesheets) and uses the attributes specified there.  Then it looks for any in the user agent stylesheet, and applies any properties specified there which have not already been specified in the author stylesheet.  Thankfully, the user agent styles set things we typically want, so they don't do anything entirely unexpected.  When you don't like what they do to a certain property, you simply have to set your own value in your stylesheet.
+In our page, this is the source of the mysterious gap below our heading.  The browser looks here first for styles to apply to the page.  Then, it applies your stylesheets (known as *author* stylesheets) and allows attributes you specify to override those set by the user agent stylesheet.  Thankfully, the user agent styles set things we typically want, so they don't do anything entirely unexpected.  When you don't like what they do to a certain property, you simply have to set your own value in your stylesheet.
 
 There is a third type of stylesheet, called the *user* stylesheet.  These are styles specified by the user to be applied to the page.  These are extremely uncommon, however, and some modern browsers have actually removed this functionality entirely.  You typically do not need to concern yourself with these, but for the sake of completeness, I will explain how the browser applies them.
 
-These are applied between the author styles and the user agent styles, with one exception: any declarations that have `!important` added at the end of them in the user stylesheet are taken over styles in the author stylesheet.  This is true even if the author stylesheet also specifies an `!important` value for that property!  So the overall order of preference is this:
+These are applied after the user agent styles, but before the author styles, with one exception: any declarations that have `!important` added at the end of them in the user stylesheet are taken over styles in the author stylesheet.  This is true even if the author stylesheet also specifies an `!important` value for that property.  So the overall order of preference is this:
 
 * User Agent declarations
 * User declarations

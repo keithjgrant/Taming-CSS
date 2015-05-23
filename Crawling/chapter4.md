@@ -7,7 +7,7 @@ We've seen a number of various types of declaration values now: keywords like "t
 
 A **length** in CSS is used to denote a distance measurement.  It is a number followed by a length unit, such as `5px`.
 
-We have now seen the `px` unit a lot of these examples.  This is short for "pixel".  Specifying `px` does pretty much what it sounds like: it tells the browser to make something display at a precise size.  On a stardard resolution display, this means one pixel on screen.  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are an unchanging value.  The browser tries to define the pixel as 1/96th of an inch.  This is also true when printing a webpage.  Printers typically print at a much higher resolution, usually around 300 dpi, so one CSS "pixel" will generally equate to several dots of ink.  Because of this, pixels are known as an **absolute** length unit.
+We have now seen the `px` unit a lot of these examples.  This is short for "pixel".  Specifying `px` does pretty much what it sounds like: it tells the browser to make something display at a precise size.  On a stardard resolution display, this typically means one pixel on screen.  Devices with high resolution screens, such as a Retina Display, will scale these up, so a CSS "pixel" may actually translate to more than one pixel on the screen, but as far as we are concerned, they are an unchanging value.  The browser tries to define the pixel as 1/96th of an inch.  This is also true when printing a webpage.  Printers typically print at a much higher resolution, usually around 300 dpi, so one CSS "pixel" will generally equate to several dots of ink.  Because of this, pixels are known as an **absolute** length unit.
 
 Other absolute units are:
 
@@ -47,7 +47,7 @@ As I mentioned above, we should use a relative unit for font size, let see what 
 
 Now we've set the padding equal to 1.2 times the font size, and the font size equal to 1.2 times... itself?  Obviously, this doesn't make any sense.  When it comes to ems, `font-size` behaves a little differently: instead of ems being relative to the current element's font size, they are relative to the *inherited* font size.  So, if the parent element's font is 16 pixels, then a font-size of `1.2em` equals 19.2 pixels.  Then, we can calculate the current padding as 1.2 times that, giving us 23.04px.  Remember, for any property other than `font-size`, ems refer to the font-size of the current element, after the font size is calculated.
 
-A simple formula to help calculate how many ems you need.  Divide your desired pixel size by the parent pixels size.  If you want 10px font and your element is inheriting 12px font &mdash; 10 &divide; 12 = 0.8333.  If you want 16px font and the parent font is 12px &mdash; 16 &divide; 12 = 1.3333.
+A simple formula to help calculate how many ems you need.  Divide your desired pixel size by the parent pixels size.  If you want 10px font and your element is inheriting 12px font, 10 &divide; 12 = 0.8333.  If you want 16px font and the parent font is 12px, 16 &divide; 12 = 1.3333.
 
 Ems interesting is when elements using ems are nested multiple levels deep:
 

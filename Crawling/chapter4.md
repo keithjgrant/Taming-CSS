@@ -116,13 +116,13 @@ There also units for defining lengths relative to the browser's viewport:
  * `vmin`: 1/100th of the smaller dimension, height or width
  * `vmax`: 1/100th of the larger dimension, height or width
 
-These are not very commonly used, but they can be handy.  They are a newer feature to most browsers, so there are a few odd bugs when you use them in particular situations, especially vmin and vmax.
+These are only recently becoming common.  They are a newer feature to most browsers, so there are a few odd bugs when you use them in particular situations, especially vmin and vmax.
 
 ## Percent
 
 **Percentages** are another data type.  It are very similar to a length, in that it is a number followed by a unit (e.g. `50%`), and it behaves very much like a relative length unit.  Strictly speaking, though, it is not considered one, as there are some places where lengths are a legal value but percentages are not (such as `border-width`).
 
-Percent refers to the size of the containing block.  If the property it specifies is horizontal in nature, like `padding-left`, it refers to the container's width; if horizontal in nature, like `padding-top`, it refers to the container's height.  Percent are particularly useful for sizing blocks according to their parent container:
+Percent refers to the size of the containing block.  If the property it specifies is horizontal in nature, like `padding-left`, it refers to the container's width; if vertical in nature, like `padding-top`, it refers to the container's height.  Percent are particularly useful for sizing blocks according to their parent container:
 
 ```css
 .container {
@@ -214,7 +214,7 @@ The alpha value must be between 0 and 1.  The lower it is, the more transparent 
 
 ### HSL & HSLA
 
-Another way we can define colors is with **HSL** values.  This stands for "Hue, Saturation, Lightness", which are the three values we specify to define a color.  The first value, hue, is a number between 0 and 359.  This represents the 360 degrees of the color circle, transitioning evenly through red (0), yellow (60), green (120), cyan (180), blue (240), magenta (300), and back to red.  The second value, saturation, is a percentage representing the insensity of the color.  100% makes the color very vivid; 0% means no color is present, resulting in a shade of gray.  The third value, lightness, is a percentage representing how light (or dark) the color is.  A lightness of 50% provides for the most vivid colors;  setting it higher makes the color lighter, with 100% resulting in pure white; setting it low; 100% produces white.  Here is an example of an HSL color:
+Another way we can define colors is with **HSL** values.  This stands for "Hue, Saturation, Lightness", which are the three values we specify to define a color.  The first value, hue, is a number between 0 and 359.  This represents the 360 degrees of the color circle, transitioning evenly through red (0), yellow (60), green (120), cyan (180), blue (240), magenta (300), and back to red.  The second value, saturation, is a percentage representing the insensity of the color.  100% makes the color very vivid; 0% means no color is present, resulting in a shade of gray.  The third value, lightness, is a percentage representing how light (or dark) the color is.  A lightness of 50% provides for the most vivid colors;  setting it higher makes the color lighter, with 100% resulting in pure white; setting it low makes the color darker, with 0% resulting in black.  Here is an example of an HSL color:
 
 ```css
 color: hsl(200, 70%, 75%);
@@ -270,4 +270,4 @@ If this is a bit confusing, that is okay.  It will come with practice.  When I s
 
 There are two final special keyword colors: `transparent` and `currentColor`.  Transparent sets a fully transparent color.  It is useful for overriding solid colors or adding an invisible border for the "off" state of a border that you want to toggle on and off in different circumstances.  This way the size of the element does not change as you add and remove the border.
 
-The `currentColor` keyword can be used to apply an elements calculated (or inherited) `color` value to other properies.  For instance, `border: 1px solid currentColor` will give an element a border that matches its text color.
+The `currentColor` keyword can be used to apply an element's calculated (or inherited) `color` value to other properies.  For instance, `border: 1px solid currentColor` will give an element a border that matches its text color.

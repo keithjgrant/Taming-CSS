@@ -83,20 +83,23 @@ Much better, though this feels a little hacky.  It should be clear now that ems 
 
 ```css
 html {
-  /* use the browser default size of 16px (unless user setting changes that) */
+  /*
+    use the browser default size of 16px
+    (unless user setting changes that)
+  */
   font-size: 1em;
 }
 .parent {
-  font-size: .75em;
+  font-size: .75rem;
 }
 .parent .child {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 ```
 
 In this example, our `.parent` element has a font size equal to 12px (16px * .75), and our `.child` has a font size of 19.2px (16px * 1.2); the child's font size is no longer related to the parent's, but rather to the document root.  This still gives us the benefit of being a relative unit.  If the user bumps up their default font size, our font will increase with it.
 
-Another nice benefit of using relative font sizes is that we can also change fonts globally on the page ourselves.  If we changed the first ruleset to set the root element's font to `1.1em`, it would change the calculation of all relative fonts on the page.  Our `.parent` would now be equal to 13.2px and our `.child` would be equal to 21.12px.  Again, these would all still remain subject to the user's font settings.
+Another nice benefit of using relative font sizes is that we can also change fonts globally on the page ourselves.  If we changed the first ruleset to set the root element's font to `1.1em`, it would change the calculation of all relative fonts on the page.  Our `.parent` would now be equal to 13.2px and our `.child` would be equal to 21.12px.  If your client decides they fonts on the site you built are too small, you can change them globally by only touching one line of code.  Again, these would all still remain subject to the user's font settings.
 
 As you can see, rems simplify a lot of the complexities involved with ems.  But that doesn't mean you should abandon ems altogether.  Instead, use ems when you want to be relative to the current element's font (for `padding` and `border-radius`), and rems for `font-size`.
 

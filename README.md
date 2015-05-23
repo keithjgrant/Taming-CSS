@@ -16,7 +16,7 @@
   * [Chapter 3: Cascade, Specificity, & Inheritance](Crawling/chapter3.md)
   * [Chapter 4: Data Types & Units](Crawling/chapter4.md)
   * Chapter 5: The Box Model
-  * Chapter 6: Display Property
+  * Chapter 6: Document Flow
   * Chapter 7: Developer Tools Basics
 * Walking
   * Section Overview

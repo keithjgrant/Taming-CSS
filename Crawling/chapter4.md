@@ -19,7 +19,7 @@ Other absolute units are:
 
 These units are generally less commonly used than `px`, but they can be useful at times.  They are all defined in terms of one another, so they are completely interchangable, as long as you feel like working out the math (96px = 25.4mm = 2.54cm = 1in = 72pt = 6pc).
 
-Up until now, I have used `px` with `font-size` for simplicity, but this is generally not recommended to use absolute units for font size.  Browsers allow users set a default font size ("Small", "Large", "Larger" etc).  If you define absolute font sizes, you will be overriding this setting.  This is distinct than the "zoom" feature most browsers provide, which will resize absolutely sized fonts, as well as everything else on the page.  Since a default font size is vital to some users, particularly those who are vision impaired, it is worth learning to specify fonts with **relative units**.
+Up until now, I have used `px` with `font-size` for simplicity, but it is generally not recommended to use absolute units for font size.  Browsers allow users set a default font size ("Small", "Large", "Larger" etc).  If you define absolute font sizes, you will be overriding this setting.  This is distinct from the "zoom" feature most browsers also provide, which will resize absolutely sized fonts, as well as everything else on the page.  Since a default font size is vital to some users, particularly those who are vision impaired, it is worth learning to specify fonts with **relative units**.
 
 ### Relative Units
 

@@ -1,2 +1,2 @@
 # Taming CSS
-# Chapter 5: Display Property
+# Chapter 6: Document Flow

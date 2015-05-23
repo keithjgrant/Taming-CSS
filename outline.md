@@ -4,7 +4,7 @@
   * common styles: basic fonts, links, hex colors, borders, etc
   * cascade, specificity, & inheritance
   * units
-  * box model (transition from margin/padding in 'common styles')
+  * box model
   * display property (inline vs block, document flow, etc)
   * browser dev tools
 * Walking
@@ -39,16 +39,10 @@
 Other misc to sort:
 
 * At-rules
-* Units
-* Values: keywords, strings, colors, numbers, lengths, percentages, URIs. (Appendix B)
-* build process
-* minification
-* margin collapsing (ch4)
-* overflow
+* build process & minification
 * submenus with :hover
 * CSS-first development
 * refactoring!
-* cursors
 * grids?
 * opacity
 * negative margins

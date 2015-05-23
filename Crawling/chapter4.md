@@ -49,7 +49,7 @@ Now we've set the padding equal to 1.2 times the font size, and the font size eq
 
 A simple formula to help calculate how many ems you need.  Divide your desired pixel size by the parent pixels size.  If you want 10px font and your element is inheriting 12px font, 10 &divide; 12 = 0.8333.  If you want 16px font and the parent font is 12px, 16 &divide; 12 = 1.3333.
 
-Ems interesting is when elements using ems are nested multiple levels deep:
+When elements using ems are nested multiple levels deep, we can see some odd behavior:
 
 ```css
 body {

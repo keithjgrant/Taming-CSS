@@ -124,6 +124,8 @@ border-width: 1px 1px 1px 1px;
 
 There are also border properties `border-top-width`, `border-left-style`, `border-bottom-color`, etc.  Needless to say, there are a lot of ways to mix and match these if you want to build a complicated border, but often the regular `border` attribute is enough.
 
+One last border property that can be convenient is `border-radius`.  This is used to make the corners of our element round.  `border-radius: 3px;` gives an element slightly rounded corners, while a higher value such as `15px` rounds them off much more.  If the element has equal height and width, a border radius equals to half its height will change the element's shape into a circle.
+
 ## Padding
 
 You will notice in our examples for both backgrounds and borders, the text appears right up against the edge of our element.  You can correct this with `padding`.  This adds space inside the element between its border and its contents.
@@ -138,8 +140,6 @@ You will notice in our examples for both backgrounds and borders, the text appea
 <img src="images/figure2-6.png"/>
 
 `padding` is also a shorthand property for top, right, bottom, and left values.  You can also use `padding-top`, `padding-right`, etc. to set them one at a time.
-
-One last border property that can be convenient is `border-radius`.  This is used to make the corners of our element round.  `border-radius: 3px;` gives an element slightly rounded corners, while a higher value such as `15px` rounds them off much more.  If the element has equal height and width, a border radius equals to half its height will change the element's shape into a circle.
 
 ## Links
 

@@ -1,2 +1,8 @@
 # Taming CSS
-# Chapter 6: Document Flow
+# Chapter 6: The Box Model
+
+<!--
+margin collapsing
+overflow
+negative margins
+-->

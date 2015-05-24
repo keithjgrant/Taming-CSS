@@ -15,8 +15,8 @@
   * [Chapter 2: Styling Essentials](Crawling/chapter2.md)
   * [Chapter 3: Cascade, Specificity, & Inheritance](Crawling/chapter3.md)
   * [Chapter 4: Data Types & Units](Crawling/chapter4.md)
-  * Chapter 5: The Box Model
-  * Chapter 6: Document Flow
+  * Chapter 5: Document Flow -- draft in progress
+  * Chapter 6: The Box Model
   * Chapter 7: Developer Tools Basics
 * Walking
   * Section Overview

@@ -7,7 +7,7 @@ Think about the last webpage you visited.  Perhaps it had a navigational bar acr
 
 Layout is one of your first major design concerns when designing a new site.  It can also become very complex, depending on what you wish to do.  Most questions I get about CSS concern troubles with layout.  There are countless ways to position and size elements on the page, and dozens of ways they can interact with each other.  Needless to say, it is essential to understand the parts of CSS that have to do with layout, and your knowledge of them needs to be thorough enough that you can understand and predict how they will interact with one another when mixed and matched in different ways.
 
-Some of the main tools we use to layout pages are positioning, floats, and sizing.  But before we get to those, we need to understand how the page behaves by default.  We can not effectively change things from their default state if we don't understand what the default state is and how it behaves.  This default state is called the **normal document flow**.
+Some of the main tools we use to layout pages are positioning, floats, and sizing.  But before we get to those, we need to understand how the page behaves by default.  We can not effectively change things from their default state if we don't understand what the default state is and how it behaves.  Even if we understand what we are changing an element to, we need to also understand how the elements around it will behave.  This default state is called the **normal document flow**.
 
 The browser displays content in the order it appears in the HTML markup, starting at the top of the page, and works downward as far as it needs to until all content is displayed.  Text will fill the full width of the screen, line wrapping as necessary when it reaches the end.  It looks like this:
 
@@ -31,13 +31,13 @@ The behavior is caused by the `vertical-align` property.  The default vertical a
 
 <img src="images/figure5-4.png"/>
 
-We can also align by `top` or `middle`.  However we align the span, the browser will make room above or below the rest of the affected line of text to accomodate the larger font.  We also see similar behavior if the span had a different `line height`.
+We can also align by `top` or `middle`.  However we align the span, the browser will make room above or below the rest of the affected line of text to accomodate the larger font.  We also see similar behavior if the span had a different `line-height`.
 
-In our original example with the image, there were no descenders, so it aligned the bottom of the image on the baseline and only had to make room above the text.  A vertical alignment of `bottom` would have the same result, since the bottom and the baseline of an image are the same.  A vertical alignment of `top` would align the top of the image with the top of the text, making room below the text to accomadate the extra space.
+In our original example with the image, there were no descenders, so it aligned the bottom of the image on the baseline and only had to make room above the text.  A vertical alignment of `bottom` would have the same result, since the bottom and the baseline of an image are the same.  A vertical alignment of `top` would align the top of the image with the top of the text, making room below the text to accomodate the extra space.
 
-### Inline vs Block-level elements
+## Inline vs Block-level elements
 
-This behavior belongs to **inline** elements.  Inline elements flow inline with the text of the page, almost as if they themselves are text (and often, they are).  By default, the following elements are inline:
+This behavior belongs to **inline** elements.  Inline elements flow inline with the text of the page, almost as if they themselves are text (and usually, they are).  By default, the following elements are inline:
 
  * span
  * a
@@ -53,7 +53,7 @@ On the other hand, most other elements are **block-level** elements.  Let's see 
 
 ```html
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-eget <div style="background: #aaa">aliquet lectum.</div>  Ut
+eget <div class="block-example">aliquet lectum.</div>  Ut
 sem sem, varius elementum massa nec, blandit ultricies magna.
 Vestibulum eu rutrum massa. Mauris at pretium mauris. Nam
 dolor neque, tristique eget nisi sit amet, bibendum commodo
@@ -64,13 +64,47 @@ magna.
 
 A block-level element appears on its own line, with a newline started both before and after.  It also fills the width of its container.  We can change the size of a block-level element using `height` and `width`, but it will still remain on its own line:
 
+```css
+.block-example {
+  height: 3em;
+  width: 50%;
+}
+```
+
 <img src="images/figure5-6.png"/>
 
-Because it is always on its own line, setting the `vertical-align` property on a block-level element has no effect.  Likewise, setting `height` or `width` on an inline element has no effect.
+Because a block-level element is always on its own line, setting the `vertical-align` property on one has no effect.  Likewise, setting `height` or `width` on an inline element has no effect.
 
-<!--
-float & clear ?
+As we start nesting elements in the page, a block-level element can be used to constrain the bounds of its descendant elements:
+
+<img src="images/figure5-7.png"/>
+
+In this example, I have given the `<div>` a width of 50%, constraining document flow within.  I could also give the element a padding, further constraining the width of the inner content.
+
+## Floats
+
+The normal document flow is limiting.  Sometimes we want our text on one side of the screen and a block-level element beside it.  Sometimes we want more than one block-level element beside one another.  One way we can accomplish this is with **floats**.
+
+Before we start building any fancy layouts with floats, we need to understand what they are, and exactly how they behave.  Countless developers have seen that floats are the most common tool for laying out webpages, and started using them, only to find themselves helpless down the road when things don't behave like they expect.
+
+<img src="images/figure5-8.png"/>
+
+We can float an element in either direction: `float: left` or `float: right`.  This takes the element out of the document flow and shifts it to the edge of the current line of text.  If the element is inline, it is changed to be block-level.  Now in its new location, a space is carved out of the normal document flow where the element is, so content will not overlap with the floated element.
+
+Notice that once the text reaches the bottom of the floated element, the document flow extends once again to the edge of its container.  Sometimes we design with shorter content and do not see this behavior until we add more content or work with a smaller browser window.  We need to be aware of it, especially when floating to the left, or we can wind up with oddly-placed words that can be distruptive to the reader:
+
+<img src="images/figure5-9.png"/>
+
+This is probably not the behavior we want, especially if we are trying to make our element its own column with the main content in another column of its own.  The solution to this is to
+
+<!---
+stacking floats horizontally
+splitting floats in both direction
+extending into another block-level
+clearing
 -->
+
+## The Display Property
 
 Sometimes, we want to force an element to behave as inline or block when it normally behaves as the opposite.  We can do this with the `display` property:
 

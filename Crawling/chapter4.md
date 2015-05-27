@@ -244,7 +244,7 @@ gold     | #ffd700 | rgb(255, 215, 0)   | hsl(51, 100%, 50%)
 green    | #008000 | rgb(0, 128, 0)     | hsl(120, 100%, 25%)
 tan      | #d2b48c | rgb(210, 180, 140) | hsl(34, 44%, 69%)
 
-If this is a bit confusing, that is okay.  It will come with practice.  When I starting coding in colors on a new design, I usually just take a stab at it, and then adjust it using the graphical color picker in Photoshop or my browser developer tools.  You are trying these out in your browser, right?  Copy these into your test page to make it easier, then experiment with changing the color values and adding alpha values:
+If this is a bit confusing, that is okay.  It will come with practice.  When I start coding in colors on a new design, I usually just take a stab at it, and then adjust it using the graphical color picker in Photoshop or my browser developer tools.  You are trying these out in your browser, right?  Copy these into your test page to make it easier, then experiment with changing the color values and adding alpha values:
 
 ```html
 <div class="box color-one"></div>
@@ -268,6 +268,4 @@ If this is a bit confusing, that is okay.  It will come with practice.  When I s
 }
 ```
 
-There are two final special keyword colors: `transparent` and `currentColor`.  Transparent sets a fully transparent color.  It is useful for overriding solid colors or adding an invisible border for the "off" state of a border that you want to toggle on and off in different circumstances.  This way the size of the element does not change as you add and remove the border.
-
-The `currentColor` keyword can be used to apply an element's calculated (or inherited) `color` value to other properies.  For instance, `border: 1px solid currentColor` will give an element a border that matches its text color.
+There are two final special keyword colors: `transparent` and `currentColor`.  Transparent sets a fully transparent color.  It is useful for overriding solid colors.  The `currentColor` keyword can be used to apply an element's calculated (or inherited) `color` value to other properies.  For instance, `border: 1px solid currentColor` will give an element a border that matches its text color.

@@ -91,18 +91,11 @@ Before we start building any fancy layouts with floats, we need to understand wh
 
 We can float an element in either direction: `float: left` or `float: right`.  This takes the element out of the document flow and shifts it to the edge of the current line of text.  If the element is inline, it is changed to be block-level.  Now in its new location, a space is carved out of the normal document flow where the element is, so content will not overlap with the floated element.
 
-Notice that once the text reaches the bottom of the floated element, the document flow extends once again to the edge of its container.  Sometimes we design with shorter content and do not see this behavior until we add more content or work with a smaller browser window.  We need to be aware of it, especially when floating to the left, or we can wind up with oddly-placed words that can be distruptive to the reader:
+If we float multiple elements, they will stack up alongside one another.  Here are two elements floated left:
 
 <img src="images/figure5-9.png"/>
 
-This is probably not the behavior we want, especially if we are trying to make our element its own column with the main content in another column of its own.  The solution to this is to
-
-<!---
-stacking floats horizontally
-splitting floats in both direction
-extending into another block-level
-clearing
--->
+If we were to put all of our content into two containers, we could float both containers and set their sizes appropriately to create a two-column layout for our page.  Go ahead and try this yourself.  We will look at an example of this in depth in the next chapter.
 
 ## The Display Property
 

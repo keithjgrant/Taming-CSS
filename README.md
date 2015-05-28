@@ -54,11 +54,11 @@ For now, I am releasing these books here as drafts, free to read.  I would like 
 
 ## Contributing
 
+Use [the issues page](https://github.com/keithjgrant/Taming-CSS/issues) to give feedback or find ways to help.
+
 Any contributions you would like to make are certainly welcome.  I welcome help editing, correcting typos, or making improvements to the examples.
 
 If you have content to contribute, you may, though note that in doing so, you are giving me a non-exclusive license to use that content should I publish these books.  Also know that I may edit or rephase it as necessary to fit the voice of the rest of the book.  My overall outline is also subject to change as the project continues, especially in these earlier stages... so, your contribution may be moved, split into separate sections, or even altogether cut.  Regardless, I will certainly mention you by name in the thank-yous!
-
-Check [the issues page](issues.md) for a list of specific things that need doing.
 
 ## License & Copyright
 

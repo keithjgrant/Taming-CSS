@@ -43,8 +43,9 @@ Other misc to sort:
 * submenus with :hover
 * CSS-first development
 * refactoring!
-* grids?
+* grid layouts
 * opacity
 * negative margins
 * nav menus (l/r border, -1px margin size trick)
 * bootstrap, et al.
+* advanced units: angles (deg, grad, rad, turn), time (s, ms), resolution (dpi, dpcm, dppx), frequency (hz, khz)

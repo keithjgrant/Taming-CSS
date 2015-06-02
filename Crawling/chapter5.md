@@ -7,9 +7,9 @@ Think about the last webpage you visited.  Perhaps it had a navigational bar acr
 
 Layout is one of your first major design concerns when designing a new site.  It can also become very complex, depending on what you wish to do.  Most questions I get about CSS concern troubles with layout.  There are countless ways to position and size elements on the page, and dozens of ways they can interact with each other.  Needless to say, it is essential to understand the parts of CSS that have to do with layout, and your knowledge of them needs to be thorough enough that you can understand and predict how they will interact with one another when mixed and matched in different ways.
 
-Some of the main tools we use to layout pages are positioning, floats, and sizing.  But before we get to those, we need to understand how the page behaves by default.  We can not effectively change things from their default state if we don't understand what the default state is and how it behaves.  Even if we understand what we are changing an element to, we need to also understand how the elements around it will behave.  This default state is called the **normal document flow**.
+Some of the main tools we use to layout pages are positioning, floats, and sizing.  But before we get to those, we need to understand how the page behaves by default.  We can not effectively change things from their default state if we don't understand what the default state is and how it behaves.  When we change an element from its default state, we need to also understand how the elements around it will behave.  This default state is called the **normal document flow**.
 
-The browser displays content in the order it appears in the HTML markup, starting at the top of the page, and works downward as far as it needs to until all content is displayed.  Text will fill the full width of the screen, line wrapping as necessary when it reaches the end.  It looks like this:
+The browser displays content in the order it appears in the HTML markup, starting at the top of the page, and works downward as far as it needs to until all content is displayed.  Text will fill the full width of its container, line wrapping as necessary when it reaches the end.  It looks like this:
 
 <img src="images/figure5-1.png"/>
 
@@ -79,7 +79,7 @@ As we start nesting elements in the page, a block-level element can be used to c
 
 <img src="images/figure5-7.png"/>
 
-In this example, I have given the `<div>` a width of 50%, constraining document flow within.  I could also give the element a padding, further constraining the width of the inner content.
+In this example, I have given the `<div>` a width of 50%, constraining document flow within.  I could also give the element a padding, further constraining the width of the inner content.  When we talk about the "container" of an element, we typically mean the nearest block-level ancestor.  The content inside our block here follows normal document flow, but it is constrained to the container's size.
 
 ## Floats
 
@@ -99,7 +99,7 @@ If we were to put all of our content into two containers, we could float both co
 
 ## The Display Property
 
-Sometimes, we want to force an element to behave as inline or block when it normally behaves as the opposite.  We can do this with the `display` property:
+Floating implicitly changes inline elements to be block-level, but sometimes we want to do this explicitly.  We can do this with the `display` property:
 
 ```css
 .inline {
@@ -109,6 +109,47 @@ Sometimes, we want to force an element to behave as inline or block when it norm
   display: block;
 }
 ```
+
+Typically, you should use a `<span>` when you need a generic inline element, and `<div>` when you need a generic block-level element.  With meaningful elements, we can't just swap for another, so we can use this to change their layout.
+
+A few chapters ago, we created a nav menu with a series of links.  At the time, we just used a series of anchors in a `<p>` tag, but now that we know how to change the `display` property, we can use a different element, and explicitly change its display to `inline` so the links align horizontally.  Since we want to show a list of links, the most symantically correct element is an unordered list.
+
+```html
+<ul class="nav">
+  <li><a href="/">Home</a></li>
+  <li><a href="/widgets">Widgets</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/special" class="nav-featured">Special</a></li>
+</ul>
+```
+
+...and the css:
+
+```css
+.nav {
+  padding-left: 0; /* override browser default */
+}
+
+.nav li {
+  display: inline;
+  list-style: none; /* remove bullets */
+}
+
+.nav a {
+  color: #fff;
+  background-color: hsl(210, 60%, 40%);
+  padding: .3em .5em;
+  border-radius: .4em;
+  text-decoration: none;
+}
+
+.nav a.nav-featured {
+  background: hsl(30, 80%, 50%);
+}
+```
+
+<img src="images/figure5-10.png"/>
+
 
 <!--
 other display settings:

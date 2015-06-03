@@ -112,7 +112,7 @@ Floating implicitly changes inline elements to be block-level, but sometimes we 
 
 Typically, you should use a `<span>` when you need a generic inline element, and `<div>` when you need a generic block-level element.  With meaningful elements, we can't just swap for another, so we can use this to change their layout.
 
-A few chapters ago, we created a nav menu with a series of links.  At the time, we just used a series of anchors in a `<p>` tag, but now that we know how to change the `display` property, we can use a different element, and explicitly change its display to `inline` so the links align horizontally.  Since we want to show a list of links, the most symantically correct element is an unordered list.
+A few chapters ago, we created a horizontal nav menu with a series of buttons.  At the time, we just used anchors in a `<p>` tag, but now that we know how to change the `display` property, we can use a different element, and explicitly change its display to `inline` so the links align horizontally.  Since we want to show a list of links, the most symantically correct element is an unordered list.  Let's rework the markup a bit to use `<li>`s for each button:
 
 ```html
 <ul class="nav">
@@ -128,11 +128,11 @@ A few chapters ago, we created a nav menu with a series of links.  At the time, 
 ```css
 .nav {
   padding-left: 0; /* override browser default */
+  list-style: none; /* remove list bullets */
 }
 
 .nav li {
   display: inline;
-  list-style: none; /* remove bullets */
 }
 
 .nav a {
@@ -143,13 +143,85 @@ A few chapters ago, we created a nav menu with a series of links.  At the time, 
   text-decoration: none;
 }
 
-.nav a.nav-featured {
+.nav .nav-featured {
   background: hsl(30, 80%, 50%);
 }
 ```
 
+You may notice I put the colors and padding on the `<a>` tag inside the `<li>`.  I like to do that, because the anchor tag is the what the user must click to trigger the link.  If, instead, we put the padding and background color on the `<li>`, there would be an area around the `<a>` that looks like a button but does not behave like one.  This way, the `<a>` fills up the entire volume of the `<li>`, and is in fact is what determines the size of the `<li>`.
+
+I also made a few other updates based on things we've learned.  I changed to hex and HSL colors, as well as em units on the padding and border-radius.
+
 <img src="images/figure5-10.png"/>
 
+The result here looks very much like before, but we are now using more symantically correct markup and we have the added bonus that the padding and border radius will scale with the font size if the user changes that.
+
+### Hiding an element
+
+The `display` property has other values as well.  An important one is `none`, which will hide an element completely, removing it from the document flow.  This is useful for elements you want to show and hide with JavaScript, by toggling this value.  But you don't always need JavaScript to get your desired behavior like this.  We can show and hide an element by selecting on the `:hover` state of its parent.  Let's try this out by creating a dropdown menu.
+
+Let's create a container and give it the class "dropdown".  It will have two children.  The first, "dropdown-label" will be the portion that is always visible, which we can hover over.  The second, the "dropdown-menu" will be portion that we will show and hide.
+
+```html
+<div class="dropdown">
+  <div class="dropdown-label">Menu</div>
+  <ul class="dropdown-menu">
+    <li><a href="/one">One</a></li>
+    <li><a href="/two">Two</a></li>
+    <li><a href="/three">Three</a></li>
+  </ul>
+</div>
+```
+
+```css
+.dropdown {
+  border: 1px solid #666;
+  width: 10em;
+}
+
+.dropdown-menu {
+  display: none;
+  padding-left: 0;
+  margin: 0; /* override browser default top/bottom margin */
+  list-style: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+```
+
+Now the "dropdown-menu" is hidden by default, but it's `display` value will change when the container is moused over.  Let's see how it looks:
+
+<img src="images/figure5-11.png"/>
+
+...and when we mouse over:
+
+<img src="images/figure5-12.png"/>
+
+It works!  It looks a little plain, though, so let's make it look a little nicer.
+
+
+
+```css
+.dropdown-label {
+    padding: .3em;
+}
+
+.dropdown-menu {
+    width: 10em;
+    padding-left: 0; /* override browser default */
+    margin: 0; /* override browser default top & bottom margin */
+    list-style: none; /* remove list bullets */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: .3em;
+    border-top: 1px solid #666;
+    background: #eee;
+}
+```
 
 <!--
 other display settings:

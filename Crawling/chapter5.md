@@ -181,8 +181,10 @@ Let's create a container and give it the class "dropdown".  It will have two chi
 
 .dropdown-menu {
   display: none;
+
+  /* override the browser's default list styles: */
   padding-left: 0;
-  margin: 0; /* override browser default top/bottom margin */
+  margin: 0;
   list-style: none;
 }
 
@@ -199,20 +201,45 @@ Now the "dropdown-menu" is hidden by default, but it's `display` value will chan
 
 <img src="images/figure5-12.png"/>
 
-It works!  It looks a little plain, though, so let's make it look a little nicer.
-
-
+It works!  It's far from perfect, though.  If we want to select an item from the menu, we have to hover directly over the text of the link.  The links are inline elements, so they take up as much space as the text needs.  That's easy enough to change, with `display: block`.  And while we're in there, let's a little padding and some colors.
 
 ```css
+.dropdown-menu a {
+    display: block;
+    padding: .3em;
+    border-top: 1px solid #666;
+    color: #333;
+    background: #eee;
+    text-decoration: none; /* remove link underline */
+}
+.dropdown-label {
+  padding: .3em;
+}
+```
+
+<img src="images/figure5-13.png"/>
+
+That's better.  Now the links are block-level, so they fill the width of the menu.  The addition of a border between each makes it especially clear to the user where they can click to select an item.  It still feels a little flat, so I'll add a hover state to each list item as well.  Here's the final css:
+
+```css
+.dropdown {
+    border: 1px solid #666;
+    width: 10em;
+}
+
 .dropdown-label {
     padding: .3em;
 }
 
 .dropdown-menu {
-    width: 10em;
-    padding-left: 0; /* override browser default */
-    margin: 0; /* override browser default top & bottom margin */
-    list-style: none; /* remove list bullets */
+    display: none; /* hidden by default */
+    padding-left: 0;
+    margin: 0; /* override browser default top/bottom margin */
+    list-style: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* show the menu when hovering */
 }
 
 .dropdown-menu a {
@@ -220,12 +247,80 @@ It works!  It looks a little plain, though, so let's make it look a little nicer
     padding: .3em;
     border-top: 1px solid #666;
     background: #eee;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    color: #fff;
+    background-color: hsl(200, 50%, 50%);
 }
 ```
 
+And the result, while the cursor hovers over the first item:
+
+<img src="images/figure5-14.png"/>
+
+There is a fair bit of styling here that I slipped in here to make things look nice.  Don't worry too much about that, as we will walk through that more in later chapters.  For now, just make sure you understand why we put the three `display` declarations where we did.  You can remove every other declaration but those three, and still have a functional dropdown menu (try it!).
+
+### Inline-block
+
+Another important display values is `inline-block`.  This makes an element into a sort of hybrid between inline and block-level.  The element will flow inline and its vertical-alignment can be set like an inline element, but you can also set its height and width like a block-level element.
+
+Inline block elements are a common alternative to floats for creating multi-column layouts.
+
+```css
+.left,
+.right {
+    display: inline-block;
+    vertical-align: top;
+}
+.left {
+    width: 30%;
+    background-color: #eee;
+}
+.right {
+    width: 50%;
+    background-color: #ccc;
+}
+```
+
+<img src="images/figure5-15.png"/>
+
+Just be aware that, because they flow inline with the text, any white space between inline-block elements is treated the same as between inline elements; it collapses to a single space.  You can see this gap in the screenshot above.  That means if two inline-block elements add up to 100% width, they will typically only fit on the same line if there is no white space between them.  Often, HTML is formatted with line breaks and indentation, so this will render as a space character.
+
+There are a few ways to get around this.  One is to remove the whitespace when it is unwanted, including newlines, beginning one element immediately following the other.  You can also fill this space with an HTML comment:
+
+```html
+<div class="container">
+  <div class="left">
+    ...
+  </div><!--
+  --><div class="right">
+    ...
+  </div>
+</div>
+```
+
+A third option is to set the text-size to zero on the containing element and then re-set it to the desired size on the inline-block elements.
+
+```css
+.container {
+  font-size: 0;
+}
+.left,
+.right {
+  font-size: 1rem;
+}
+```
+
+This only works if you know that the inline-block elements are the only children of the container.  It also means you cannot use ems for the font size, since any em value would be multiplied by zero, resulting in zero.
+
+All three of these approaches are fragile for various reasons.  Using inline-block for multi-column layouts is tempting, but you should beware the difficulties you will run into when you do so.
+
+### Other Display Values
+
 <!--
-other display settings:
-none
 inline-block
 table, table-row, table-cell
 -->

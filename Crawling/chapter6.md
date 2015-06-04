@@ -12,4 +12,5 @@ width problem (w/ floats)
 margin collapsing
 overflow
 negative margins
+element size (based on children, etc.)
 -->

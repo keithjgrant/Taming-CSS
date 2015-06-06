@@ -11,7 +11,7 @@ color: black;
 
 This is a **declaration**.  It is made up of two parts: a **property** ("color") and a **value** ("black").  A colon goes between the property and the value, and a semi-colon ends the declaration.  Declarations are used to specify all sorts of styles.  This declaration, for example, sets the text color to black.
 
-There are hundreds of various properties.  They can specify everything from adding drop shadows to setting fonts to determining the position of an element on the page.  Don't let that overwhelm you, though, as you can get very far with just a small number of them, most of which are rather self-explanatory.  We will cover many of the most common ones in the next few chapters.
+There are hundreds of various properties.  They can specify everything from adding drop shadows to setting fonts to determining the position of an element on the page.  Don't let that overwhelm you, though, as you can get very far with just a small number of them, most of which are rather self-explanatory.  We will come across many of the most common ones in the next few chapters.
 
 A declaration by itself isn't very useful.  We've set the text color to black, but what text color are we talking about?  To make it valid, need to specify which part of the document this style is intended for:
 
@@ -38,9 +38,9 @@ The vast majority of your CSS will be rulesets.  There are only a few other vali
 
 Now that we know how to write a little bit of CSS, let's learn how to apply it to some HTML so we can see it in action.  There are three ways to do this:
 
-First, **inline** styles may be used to apply style declarations directly to an HTML element using the `style` attribute.  For example: `<p style="color: red;">`.  Since this is done explicitly on an element, no selector is needed to target an element.  Typically, inline styles are not preferred, because they do not provide for code reuse.  They are also highly specific, meaning they are difficult to override.
+First, **inline** styles may be used to apply style declarations directly to an HTML element using the `style` attribute.  For example: `<p style="color: red;">`.  Since this is done explicitly on an element, no selector is needed to target an element.  Typically, you should avoid inline styles, because they do not provide for code reuse.  They are also highly specific, meaning they are difficult to override.
 
-Second, a `<style>` tag can be used to specify styles for the current document.  It should be placed inside of the `<head>`:
+Second, a `<style>` tag can be used to specify styles for the current document.  Place these inside of the `<head>`:
 
 ```html
 <head>
@@ -53,7 +53,7 @@ Second, a `<style>` tag can be used to specify styles for the current document. 
 </head>
 ```
 
-Third, a `<link>` tag can be used to link to an external CSS stylesheet.  This is generally the preferred way to use CSS.  It allows you to keep your CSS in a separate file from your HTML, and it allows you to reuse the same CSS on multiple different pages.  The `<link>` should be inside the document's `<head>`.
+Third, a `<link>` tag can be used to link to an external CSS stylesheet.  This is generally the best way to use CSS.  It allows you to keep your CSS in a separate file from your HTML, and it allows you to reuse the same CSS on multiple different pages.  We place the `<link>` inside the document's `<head>`.
 
 Let's make a starter webpage and link it to a stylesheet.  Create a `demo.html` file, and copy the following into it:
 
@@ -146,7 +146,7 @@ You can select all elements with the **universal selector** `*`.  At one point, 
 }
 ```
 
-This resets all the browser's default margin and padding on all elements to make development across multiple browsers more uniform.  This is not a recommended practice, however, as it is more heavy-handed than you probably want.  Lists generally need a left padding, paragraphs and headers generally need a top and/or bottom margin, etc.  We will take a look at better ways to do browser resets later on.
+This resets all the browser's default margin and padding on all elements to make development across multiple browsers more uniform.  This practice is becoming less common, however, as it is more heavy-handed than you probably want.  Lists generally need a left padding, paragraphs and headers generally need a top and/or bottom margin, etc.  We will take a look at better ways to do browser resets later on.
 
 You may hear that `*` should be avoided for performance reasons.  In truth, this is a holdover from Internet Explorer 6.  These days, it is generally fine to use in all modern browsers.
 
@@ -176,7 +176,16 @@ This targets all elements with the `highlight` class that are *descendants* of a
 <p class="highlight">Neither is this.</p>
 ```
 
-You can string together several selectors like this to do things such as target items in nested lists with `ul li ul li` or anchors in navigation list items with `ul.nav li a`.
+You can mix and match multiple selectors to be more and more specific.  For example, consider the following markup:
+
+```html
+<ul class="nav">
+  <li><a href="/index">Home</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+```
+
+We can use the selector `ul.nav li a` to target all of the links inside the nav.  We could also target these with something less specific, such as `li a`.
 
 ## Comments
 

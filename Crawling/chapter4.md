@@ -118,6 +118,8 @@ There also units for defining lengths relative to the browser's viewport:
 
 These are only recently becoming common.  They are a newer feature to most browsers, so there are a few odd bugs when you use them in particular situations, especially vmin and vmax.
 
+The viewport-relative lengths are great for things like making a large hero image fill the screen.  Your hero image can be inside a very long container, but `100vh` will make it exactly the height of the viewport.  These will also be useful when we get to the topic of responsive design.
+
 ## Percent
 
 **Percentages** are another data type.  It are very similar to a length, in that it is a number followed by a unit (e.g. `50%`), and it behaves very much like a relative length unit.  Strictly speaking, though, it is not considered one, as there are some places where lengths are a legal value but percentages are not (such as `border-width`).

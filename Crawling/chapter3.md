@@ -81,7 +81,7 @@ If conflicting declarations are found from the same origin, the browser then tri
 
 Specificity is determined by the selectors of the conflicting declarations.  For instance, `.bar .bar`, with two class names, has a higher specificity than `.bar`, which has only one.  The exact rules of specificity are as follows:  If a style is inline, it wins.  Otherwise, the selector with the most ids wins (i.e., it is more specific).  If that results in a tie, the selector with the most classes wins.  If that results in a tie, the selector with the most tag names wins.
 
-A common way to write this is to count each of them up and separate the sums by commas.  So `#foo .bar p` has a specificity of 1,1,1.  `ul li` has a specificity of 0,0,2.  A specificity of 1,0,0 wins over a specificity of 0,2,2, and even over 0,0,10 (though I don't recommend ever writing selectors as long as one with 10 tags).
+A common way to write this is to count each of them up and separate the amounts by commas.  So `#foo .bar p`, with one id, one class, and one tag, has a specificity of "1,1,1".  `ul li`, with two tags but no ids or classes, has a specificity of 0,0,2.  Then it is a simple matter of comparing the numbers to determine which selector is more specific.  A specificity of 1,0,0 wins over a specificity of 0,2,2, and even over 0,0,10 (though I don't recommend ever writing selectors as long as one with 10 tags) because the first number (ids) is of the most importance.
 
 Let's look back at part of our CSS from earlier:
 
@@ -148,7 +148,7 @@ Let's find a better way.  Instead of trying to get around the rules of selector 
 
 This works.  Now, our selector has one id and one class, giving it a specificity of 1,1,0, which is higher than `#nav a`, which has a specificity of 1,0,1.
 
-We can still make this better, though.  Instead of *raising* the specificity of the second selector, let's see if we can *lower* the specificity of the first.  Does "nav" really need to be an id?  Perhaps--maybe we are using that id in our JavaScript to find that element on the page--but that doesn't mean we have to use it in our CSS.  Let's give it a class as well: `<p id="nav" class="nav">`.  Then we can change our CSS a bit:
+We can still make this better, though.  Instead of *raising* the specificity of the second selector, let's see if we can *lower* the specificity of the first.  Does "nav" really need to be an id?  Perhaps&mdash;maybe we are using that id in our JavaScript to find that element on the page&mdash;but that doesn't mean we have to use it in our CSS.  Let's give it a class as well: `<p id="nav" class="nav">`.  Then we can change our CSS a bit:
 
 ```css
 /* fix 3 */
@@ -192,7 +192,13 @@ Now that we're happy with our fix, let's take a look at the result:
 
 As you can see from these examples, specificity tends to become a sort of arms race, especially on large projects.  It is generally best to keep it low when you can, so when you need to override something, your options are open.
 
-Two common rules of thumb you may hear are, first, to never use ids in your selectors, and second, never use `!important`.  While you are just starting out in CSS, these can be good advice, but don't cling to them forever.  I believe both have a place.  Specifically, `!important` can be useful in utility classes.  I've also had to use it occasionally to override inline styles added by a third-party JavaScript libary.
+There are two common rules of thumb you may hear that can be helpful:
+
+First, never use ids in your selector.  Even one id ratchets up the specificity a lot, and when you need to override it you often don't have another meaningful id you can use, so you wind up having to just copy the original selector and adding a new class somewhere to distinguish it from the one you are trying to override.
+
+Second, never use `!important`.  This is even more difficult to override than an id, and once you use it, you will need to add it every time you want to everride the original declaration&mdash;and then you still have to deal with the specificity.
+
+While you are just starting out in CSS, these two rules can be good advice, but don't cling to them forever.  I believe both have a place.  Specifically, `!important` can be useful in something called utility classes.  I've also had to use it occasionally to override inline styles added by a third-party JavaScript libary.
 
 This brings up an important point about specificity: if you are creating a package for distribution, I strongly urge you not to apply styles inline via JavaScript.  If you do, you are forcing developers using your package to either accept your styles exactly, or to use `!important` for every property they want to change.  Instead, include a stylesheet in your package.  If your component needs to make style changes dynamically, it is almost always preferable to use JavaScript to add and remove classes to the elements.  Then users can simply use your stylesheet, and they have the option to edit it however they like without battling specificity.
 
@@ -204,7 +210,7 @@ There is one last way that an element can receive styles: through **inheritance*
 
 Not all attributes are inherited, however.  Only certain ones are.  In general, these are the attributes you will *want* to be inherited.  This is primarily attributes pertaining to text: `color`, `font`, `font-family`, `font-size`, `font-weight`, `font-variant`, `font-style`, `line-height`, `letter-spacing`, `text-align`, `text-indent`, `text-transform`, `white-space`, `word-spacing`.
 
-A few others such as the list attributes `list-style`, `list-style-type`, `list-style-position`, and `list-style-image`.  The table border attributes `border-collapse` and `border-spacing` inherit, as well; note that these are the attributes that control table border behavior, not the more commonly used attributes for specifying borders for non-table elements.  We wouldn't want a `<div>` passing its border down to every descendant element!  This is not quite a comprehensive list, but very nearly.
+A few others inherit as well, such as the list attributes `list-style`, `list-style-type`, `list-style-position`, and `list-style-image`.  The table border attributes `border-collapse` and `border-spacing` are also inherited; note that these are the attributes that control border behavior of tables, not the more commonly used attributes for specifying borders for non-table elements.  We wouldn't want a `<div>` passing its border down to every descendant element!  This is not quite a comprehensive list, but very nearly.
 
 Again, you will find these to come naturally.  If you inherently expect something to inherit, it probably will.
 
@@ -215,7 +221,8 @@ Again, you will find these to come naturally.  If you inherently expect somethin
 ```
 ```html
 <div class="parent">
-  <div class="child">This font will be bold, because the value is inherited from the parent</div>
+  <div class="child">This font will be bold, because the value is
+  inherited from the parent</div>
 </div>
 ```
 

@@ -7,7 +7,7 @@ Think about the last webpage you visited.  Perhaps it had a navigational bar acr
 
 Layout is one of your first major design concerns when designing a new site.  It can also become very complex, depending on what you wish to do.  Most questions I get about CSS concern troubles with layout.  There are countless ways to position and size elements on the page, and dozens of ways they can interact with each other.  Needless to say, it is essential to understand the parts of CSS that have to do with layout, and your knowledge of them needs to be thorough enough that you can understand and predict how they will interact with one another when mixed and matched in different ways.
 
-Some of the main tools we use to layout pages are positioning, floats, and sizing.  But before we get to those, we need to understand how the page behaves by default.  We can not effectively change things from their default state if we don't understand what the default state is and how it behaves.  When we change an element from its default state, we need to also understand how the elements around it will behave.  This default state is called the **normal document flow**.
+Some of the main tools we use to layout pages are positioning, floats, and sizing.  But before we dive too deep into to those, we need to understand how the page behaves by default.  We can not effectively change things from their default state if we don't understand what the default state is and how it behaves.  When we change an element from its default state, we need to also understand how the elements around it will behave.  This default state is called the **normal document flow**.
 
 The browser displays content in the order it appears in the HTML markup, starting at the top of the page, and works downward as far as it needs to until all content is displayed.  Text will fill the full width of its container, line wrapping as necessary when it reaches the end.  It looks like this:
 
@@ -62,7 +62,7 @@ magna.
 
 <img src="images/figure5-5.png"/>
 
-A block-level element appears on its own line, with a newline started both before and after.  It also fills the width of its container.  We can change the size of a block-level element using `height` and `width`, but it will still remain on its own line:
+A block-level element appears on its own line, with a newline started both before and after.  By default, it fills the width of its container.  We can change the size of a block-level element using `height` and `width`, but it will still remain on its own line:
 
 ```css
 .block-example {
@@ -73,7 +73,7 @@ A block-level element appears on its own line, with a newline started both befor
 
 <img src="images/figure5-6.png"/>
 
-Because a block-level element is always on its own line, setting the `vertical-align` property on one has no effect.  Likewise, setting `height` or `width` on an inline element has no effect.
+Because a block-level element is always on its own line, setting the `vertical-align` property on one has no effect.  Correspondingly, setting `height` or `width` on an inline element has no effect.
 
 As we start nesting elements in the page, a block-level element can be used to constrain the bounds of its descendant elements:
 
@@ -261,13 +261,19 @@ And the result, while the cursor hovers over the first item:
 
 <img src="images/figure5-14.png"/>
 
-There is a fair bit of styling here that I slipped in here to make things look nice.  Don't worry too much about that, as we will walk through that more in later chapters.  For now, just make sure you understand why we put the three `display` declarations where we did.  You can remove every other declaration but those three, and still have a functional dropdown menu (try it!).
+There is a fair bit of styling here that I slipped in here to make things look nice.  Don't worry too much about that yet, as we will walk through that more in later chapters.  For now, just make sure you understand why we put the three `display` declarations where we did.  You can remove every other declaration but those three, and still have a functional dropdown menu (try it!).
+
+There is still one problem with this menu.  It looks fine on its own, but as soon as we add more content below it, that content will shift up and down on the screen as we open and close the menu.  This is because we're adding and removing the menu to the document flow when we toggle its `display` value.  We need to be able to show and hide it, without adding it into the document flow.  We can do this with the `position` property, but that is a can of worms for another chapter.
 
 ### Inline-block
 
-Another important display values is `inline-block`.  This makes an element into a sort of hybrid between inline and block-level.  The element will flow inline and its vertical-alignment can be set like an inline element, but you can also set its height and width like a block-level element.
+Another important display value is `inline-block`.  This makes an element into a sort of hybrid between inline and block-level.  The element will flow inline and its vertical-alignment can be set like an inline element, but you can also set its height and width like a block-level element.
 
-Inline block elements are a common alternative to floats for creating multi-column layouts.
+A handful of elements are inline block by default, mostly the form fields&mdash;`input`, `select`, `textarea`, and `button`&mdash;but this varies between browsers.  If you want to specify a height and width for one of these, it's best to explicitly set `display: inline-block` to ensure a consistant appearance in all browsers.  The `<img>` tag is similar.  Some browsers indicate that it is inline, but it behaves effectively like an inline block.
+
+Most of these elements are known as "replaced elements", because the browser represents them with special rules outside the scope of CSS.  With no styles applied, they have a very particular appearance.  An `<img>` is replaced with a downloaded image, and the form fields vary depending on the browser and operating system.  Certain parts of these replaced elements can be styled using CSS, and some cannot.  The size and vertical alignment can be styled, however, so you can generally think of them as inline-block elements.
+
+Inline block elements are an alternative to floats for creating multi-column layouts.  Floats come with a lot of complexity, so some developers were glad when browsers began implementing `inline-block`.
 
 ```css
 .left,
@@ -289,7 +295,19 @@ Inline block elements are a common alternative to floats for creating multi-colu
 
 Just be aware that, because they flow inline with the text, any white space between inline-block elements is treated the same as between inline elements; it collapses to a single space.  You can see this gap in the screenshot above.  That means if two inline-block elements add up to 100% width, they will typically only fit on the same line if there is no white space between them.  Often, HTML is formatted with line breaks and indentation, so this will render as a space character.
 
-There are a few ways to get around this.  One is to remove the whitespace when it is unwanted, including newlines, beginning one element immediately following the other.  You can also fill this space with an HTML comment:
+It is for this reason that I generally do not use `inline-block` for laying out precise columns unless it is the only option for a particular design need.  I will show you three workarounds for this spacing issue, but I think every one of them is bad practice.
+
+The first fix is to remove the whitespace where it is unwanted, including newlines, beginning one element immediately following the other:
+
+```html
+<div class="left">
+  ...
+</div><div class="right">
+  ...
+</div>
+```
+
+The second fix is similar.  You can fill this space with an HTML comment, making sure that the comment begins and ends immediately after one element and before the next with no white space:
 
 ```html
 <div class="container">
@@ -301,6 +319,8 @@ There are a few ways to get around this.  One is to remove the whitespace when i
   </div>
 </div>
 ```
+
+I do not like either of these options because they tightly couple the HTML to the CSS.  When you are editing the HTML, you have to be aware of how the CSS is doing its layout and you have to be careful to maintain these particular white space restrictions.  This is a violation of the principle of **encapsulation**.  The HTML should not have to know about the inner-workings of the CSS, but in order to enact either of these fixes, it must.
 
 A third option is to set the text-size to zero on the containing element and then re-set it to the desired size on the inline-block elements.
 
@@ -314,13 +334,12 @@ A third option is to set the text-size to zero on the containing element and the
 }
 ```
 
-This only works if you know that the inline-block elements are the only children of the container.  It also means you cannot use ems for the font size, since any em value would be multiplied by zero, resulting in zero.
+This only works if you ensure that the specified inline-block elements are the only children of the container.  This too is a violation of encapsulation.  Furthermore, it also means you cannot use ems or percent for the font size of the child elements, since any em value would be multiplied by zero, resulting in zero.
 
-All three of these approaches are fragile for various reasons.  Using inline-block for multi-column layouts is tempting, but you should beware the difficulties you will run into when you do so.
+All three of these approaches are fragile for various reasons.  Using inline-block for multi-column layouts is tempting, but I think it should be a last resort if you cannot use floats or `display: table` to accomplish what you need.
 
-### Other Display Values
+It is much more useful in cases where you don't need to fill the container width exactly.  Then you can allow the whitespace to flow naturally, and let items line wrap wherever they fall.
 
-<!--
-inline-block
-table, table-row, table-cell
--->
+### Table
+
+You can also use the `display` property to make elements layout like an HTML table, using the values `table`, `table-row`, or `table-cell`.  A table or table-row element, like a block-level element, will fill the width of its container.  Table-cells will spread out to collectively fill the width of their container, unless you set explicit widths on them that do not add up to 100%.

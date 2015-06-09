@@ -4,16 +4,16 @@
   * common styles: basic fonts, links, hex colors, borders, etc
   * cascade, specificity, & inheritance
   * units
-  * box model
   * display property (inline vs block, document flow, etc)
+  * box model
   * browser dev tools
 * Walking
   * selectors: combinators, pseudo-selectors
-  * floats
+  * position-property (warning: fixed on mobile)
   * backgrounds
   * styling forms
   * styling lists
-  * position-property (warning: fixed on mobile)
+  * floats
   * Cross-browser development (incl. resets)
 * Running
   * inline-block
@@ -49,3 +49,4 @@ Other misc to sort:
 * nav menus (l/r border, -1px margin size trick)
 * bootstrap, et al.
 * advanced units: angles (deg, grad, rad, turn), time (s, ms), resolution (dpi, dpcm, dppx), frequency (hz, khz)
+* visibility

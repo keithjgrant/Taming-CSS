@@ -67,4 +67,4 @@ In fact, this is another motivator for me in writing this book.  A lot of older 
 
 I love CSS.  I have been working with it since browsers first started supporting it in the mid-90s, and have enjoyed the explosion of new features we've seen in recent years with CSS3, as well as the wide array of novel approaches to code organization.
 
-When developers joke about the difficulty of CSS or write it off as inscrutible, part of me shakes my head.  I understand their pain, because I've wrestled through it before.  And yes, there a few complex corners to wrap your head around.  But CSS isn't the problem; lack of understanding of CSS is the problem.  It is a widespread problem, and one we need to fix.
+When developers joke about the difficulty of CSS or write it off as inscrutable, part of me shakes my head.  I understand their pain, because I've wrestled through it before.  And yes, there a few complex corners to wrap your head around.  But CSS isn't the problem; lack of understanding of CSS is the problem.  It is a widespread problem, and one we need to fix.

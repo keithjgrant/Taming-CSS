@@ -13,7 +13,7 @@
   * backgrounds
   * styling forms
   * styling lists
-  * floats
+  * floats (& strengths of inline-block, display table)
   * Cross-browser development (incl. resets)
 * Running
   * inline-block

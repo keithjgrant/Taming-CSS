@@ -342,4 +342,37 @@ It is much more useful in cases where you don't need to fill the container width
 
 ### Table
 
-You can also use the `display` property to make elements layout like an HTML table, using the values `table`, `table-row`, or `table-cell`.  A table or table-row element, like a block-level element, will fill the width of its container.  Table-cells will spread out to collectively fill the width of their container, unless you set explicit widths on them that do not add up to 100%.
+You can also use the `display` property to make elements layout like an HTML table, using the values `table`, `table-row`, or `table-cell`.  A table or table-row element, like a block-level element, will fill the width of its container.  A series of table-cells will spread out to fill the width of their container.  Even though an HTML table requires `<table>`, `<tr>`, and `<td>` elements, you don't necessarily need to nest equivelent elements in this same structure when using CSS table layouts.  I often just need a series of `table-cells` inside of one `table`, with no `table-row` in between them in the hierarchy:
+
+```css
+.container {
+  display: table;
+}
+.item {
+  display: table-cell;
+}
+```
+
+You can specify the cell widths directly, or allow the browser to size them dynamically based on how much content is in each.  If you want to ensure that they are each the same width, you can do that by setting two more properties on the container:
+
+```css
+.container {
+  display: table;
+  width: 100%; /* set a width (any works) */
+  table-layout: fixed;
+}
+```
+
+There are also a series of other table display values.  I have never had a need to use them, but for the sake of completeness, here they are:
+
+ * `inline-table`: Similar to `table`, but behaves like `inline-block` instead of block-level
+ * `table-caption`: Behaves like a `<caption>` element
+ * `table-column`: Behaves like a `<col>` element
+ * `table-column-group`: Behaves like a `<colgroup>` element
+ * `table-header-group`: Behaves like a `<thead>` element
+ * `table-row-group`: Behaves like a `<tbody>` element
+ * `table-footer-group`: Behaves like a `<tfoot>` element
+
+Now, unless you are fairly new to web development circles, you have surely heard that it is a bad practice to use HTML tables for layout.  Many websites into the early 2000s laid out their sites using `<table>`.  It can be much simpler to lay out many designs using tables instead of fighting with floats (which was the only other viable alternative at the time).  Eventually there was a lot of backlash against the use of tables for layout, because doing so meant using unsemantic HTML.  Instead of the HTML tags representing what content they contained, they were simply doing the work of layout&mdash;something CSS should be responsible for.
+
+Browsers now support table display for elements other than `<table>`, so we can now enjoy the benefits of table layout while maintaining semantic markup.  It is not a "holy grail" solution, however.  There is also no equivalent to the HTML table attributes "colspan" and "rowspan".  There are also still things floats and inline-block can do that this cannot.

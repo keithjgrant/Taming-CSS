@@ -2,7 +2,7 @@
 
 <img src="logo.png"/>
 
- This is a book taking a comprehensive look at how to write and maintain CSS.  It is written primarily for web developers, but I start with the basics so anybody should be able to pick up and follow along.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the Introduction.
+ This is a book taking a comprehensive look at how to write and maintain CSS.  It is written primarily for web developers, but I start with the basics so anybody should be able to pick up and follow along.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the [Introduction](introduction.md).
 
  Follow [@TamingCSS](http://twitter.com/TamingCSS) on Twitter for updates.
 
@@ -15,8 +15,8 @@
   * [Chapter 2: Styling Essentials](Crawling/chapter2.md)
   * [Chapter 3: Cascade, Specificity, & Inheritance](Crawling/chapter3.md)
   * [Chapter 4: Data Types & Units](Crawling/chapter4.md)
-  * Chapter 5: Document Flow -- draft in progress
-  * Chapter 6: The Box Model
+  * [Chapter 5: Document Flow](Crawling/chapter5.md)
+  * Chapter 6: The Box Model -- draft in progress
   * Chapter 7: Developer Tools Basics
 * Walking
   * Section Overview

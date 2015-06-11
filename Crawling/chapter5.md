@@ -3,7 +3,7 @@
 
 CSS has two primary responsibilities on a web page: styling and layout.  Styling pertains to the look and feel of the individual elements on the screen.  We have looked at a number of things like font size, backgrounds, and colors which are all about styling.  In this chapter, we will begin to turn our attention to layout.  Layout pertains to the position of elements on the page and in relation to one another.
 
-Think about the last webpage you visited.  Perhaps it had a navigational bar across the top of the screen, with links or even dropdown menus arranged horizontally.  Or maybe it had a menu down the side, with links stacked one atop another.  On some sites, the main navigation remains fixed on the screen as you scroll the page, on others it scrolls normally.  The page likely had a footer at the bottom, below both the main content and any sidebars; on some pages, the sidebar may have been longer than the content, but on others the content may have been longer than the sidebar.  Either way, the footer is below them both.  There are also less obvious elements in the design: modal dialog boxes, expanding search boxes, promotional sections that appear side by side or in a grid.  All of these things are part of the layout.
+Think about the last webpage you visited.  Perhaps it had a navigational bar across the top of the screen, with links or even dropdown menus arranged horizontally.  Or maybe it had a menu down the side, with links stacked one atop another.  On some sites, the main navigation remains fixed on the screen as you scroll the page, on others it scrolls normally.  The page likely had a footer at the bottom, below both the main content and any sidebars.  There are also less obvious elements in the design: modal dialog boxes, expanding search boxes, promotional sections that appear side by side or in a grid.  All of these things are part of the layout.
 
 Layout is one of your first major design concerns when designing a new site.  It can also become very complex, depending on what you wish to do.  Most questions I get about CSS concern troubles with layout.  There are countless ways to position and size elements on the page, and dozens of ways they can interact with each other.  Needless to say, it is essential to understand the parts of CSS that have to do with layout, and your knowledge of them needs to be thorough enough that you can understand and predict how they will interact with one another when mixed and matched in different ways.
 
@@ -37,7 +37,7 @@ In our original example with the image, there were no descenders, so it aligned 
 
 ## Inline vs Block-level elements
 
-This behavior belongs to **inline** elements.  Inline elements flow inline with the text of the page, almost as if they themselves are text (and usually, they are).  By default, the following elements are inline:
+This behavior belongs to **inline** elements.  Inline elements flow in the line of text on the page, almost as if they themselves are text (and usually, they are).  By default, the following elements are inline:
 
  * span
  * a
@@ -73,33 +73,17 @@ A block-level element appears on its own line, with a newline started both befor
 
 <img src="images/figure5-6.png"/>
 
-Because a block-level element is always on its own line, setting the `vertical-align` property on one has no effect.  Correspondingly, setting `height` or `width` on an inline element has no effect.
+Because a block-level element is always on its own line, setting the `vertical-align` property on one has no effect.  Correspondingly, setting `height` or `width` on an inline element has no effect, because those are determined by the flow of text.
 
 As we start nesting elements in the page, a block-level element can be used to constrain the bounds of its descendant elements:
 
 <img src="images/figure5-7.png"/>
 
-In this example, I have given the `<div>` a width of 50%, constraining document flow within.  I could also give the element a padding, further constraining the width of the inner content.  When we talk about the "container" of an element, we typically mean the nearest block-level ancestor.  The content inside our block here follows normal document flow, but it is constrained to the container's size.
-
-## Floats
-
-The normal document flow is limiting.  Sometimes we want our text on one side of the screen and a block-level element beside it.  Sometimes we want more than one block-level element beside one another.  One way we can accomplish this is with **floats**.
-
-Before we start building any fancy layouts with floats, we need to understand what they are, and exactly how they behave.  Countless developers have seen that floats are the most common tool for laying out webpages, and started using them, only to find themselves helpless down the road when things don't behave like they expect.
-
-<img src="images/figure5-8.png"/>
-
-We can float an element in either direction: `float: left` or `float: right`.  This takes the element out of the document flow and shifts it to the edge of the current line of text.  If the element is inline, it is changed to be block-level.  Now in its new location, a space is carved out of the normal document flow where the element is, so content will not overlap with the floated element.
-
-If we float multiple elements, they will stack up alongside one another.  Here are two elements floated left:
-
-<img src="images/figure5-9.png"/>
-
-If we were to put all of our content into two containers, we could float both containers and set their sizes appropriately to create a two-column layout for our page.  Go ahead and try this yourself.  We will look at an example of this in depth in the next chapter.
+In this example, I have given the `<div>` a width of 50%, constraining document flow of its contents within.  The text reaches the end of the parent element, and line wraps.  I could also give the element a padding, further constraining the width of the inner content.  When we talk about the "container" of an element, we typically mean the nearest block-level ancestor.  The content inside our block here follows normal document flow, but it is constrained to the container's size.
 
 ## The Display Property
 
-Floating implicitly changes inline elements to be block-level, but sometimes we want to do this explicitly.  We can do this with the `display` property:
+Sometimes we want to make an inline element behave like a block-level one, or vice versa.  We can do this with the `display` property:
 
 ```css
 .inline {
@@ -112,7 +96,9 @@ Floating implicitly changes inline elements to be block-level, but sometimes we 
 
 Typically, you should use a `<span>` when you need a generic inline element, and `<div>` when you need a generic block-level element.  With meaningful elements, we can't just swap for another, so we can use this to change their layout.
 
-A few chapters ago, we created a horizontal nav menu with a series of buttons.  At the time, we just used anchors in a `<p>` tag, but now that we know how to change the `display` property, we can use a different element, and explicitly change its display to `inline` so the links align horizontally.  Since we want to show a list of links, the most symantically correct element is an unordered list.  Let's rework the markup a bit to use `<li>`s for each button:
+A few chapters ago, we created a horizontal nav menu with a series of buttons.  At the time, we just used a series of anchors inside a `<p>` tag.  It did the job, but it felt a little sloppy.  A more **semantically** correct way to write that HTML would to use a list, since we are representing a list of links.  Unfortunately, list items normally don't appear on the same line.
+
+Now that we know how to change the `display` property, though, we can fix this.  Let's rework the markup a bit, so our paragraph becomes an unordered list, and each link is in a list item:
 
 ```html
 <ul class="nav">
@@ -148,17 +134,15 @@ A few chapters ago, we created a horizontal nav menu with a series of buttons.  
 }
 ```
 
-You may notice I put the colors and padding on the `<a>` tag inside the `<li>`.  I like to do that, because the anchor tag is the what the user must click to trigger the link.  If, instead, we put the padding and background color on the `<li>`, there would be an area around the `<a>` that looks like a button but does not behave like one.  This way, the `<a>` fills up the entire volume of the `<li>`, and is in fact is what determines the size of the `<li>`.
-
-I also made a few other updates based on things we've learned.  I changed to hex and HSL colors, as well as em units on the padding and border-radius.
+I made a few updates to our previous version, based on things we've learned since.  I changed to hex and HSL colors, as well as em units on the padding and border-radius.
 
 <img src="images/figure5-10.png"/>
 
-The result here looks very much like before, but we are now using more symantically correct markup and we have the added bonus that the padding and border radius will scale with the font size if the user changes that.
+The result here looks very much like before, but we are now using more semantically correct markup and we have the added bonus that the padding and border radius will scale with the font size if the user changes that.
 
-### Hiding an element
+## Hiding an element
 
-The `display` property has other values as well.  An important one is `none`, which will hide an element completely, removing it from the document flow.  This is useful for elements you want to show and hide with JavaScript, by toggling this value.  But you don't always need JavaScript to get your desired behavior like this.  We can show and hide an element by selecting on the `:hover` state of its parent.  Let's try this out by creating a dropdown menu.
+The `display` property has other values as well&mdash;quite a lot of them, actually.  An important one is `none`, which will hide an element completely, removing it from the document flow.  This is useful for elements you want to show and hide with JavaScript, by toggling this value.  But you don't always need JavaScript to get your desired behavior like this.  We can show and hide an element by selecting on the `:hover` state of its parent.  Let's try this out by creating a dropdown menu.
 
 Let's create a container and give it the class "dropdown".  It will have two children.  The first, "dropdown-label" will be the portion that is always visible, which we can hover over.  The second, the "dropdown-menu" will be portion that we will show and hide.
 
@@ -201,7 +185,7 @@ Now the "dropdown-menu" is hidden by default, but it's `display` value will chan
 
 <img src="images/figure5-12.png"/>
 
-It works!  It's far from perfect, though.  If we want to select an item from the menu, we have to hover directly over the text of the link.  The links are inline elements, so they take up as much space as the text needs.  That's easy enough to change, with `display: block`.  And while we're in there, let's a little padding and some colors.
+It works!  It's far from perfect, though.  If we want to select an item from the menu, we have to hover directly over the text of the link.  The links are inline elements, so they take up only as much space as the text needs.  That's easy enough to change, with `display: block`.  And while we're in there, let's a little padding and some colors.
 
 ```css
 .dropdown-menu a {
@@ -265,7 +249,32 @@ There is a fair bit of styling here that I slipped in here to make things look n
 
 There is still one problem with this menu.  It looks fine on its own, but as soon as we add more content below it, that content will shift up and down on the screen as we open and close the menu.  This is because we're adding and removing the menu to the document flow when we toggle its `display` value.  We need to be able to show and hide it, without adding it into the document flow.  We can do this with the `position` property, but that is a can of worms for another chapter.
 
-### Inline-block
+## Floats
+
+The normal document flow is limiting.  Sometimes we want our text on one side of the screen and a block-level element beside it.  Sometimes we want more than one block-level element beside one another.  One way we can accomplish this is with **floats**.
+
+Here is what a floated element looks like, in the middle of a paragraph of text:
+
+```css
+img {
+  float: right;
+}
+```
+
+<img src="images/figure5-8.png"/>
+
+We can float an element in either direction: `float: left` or `float: right`.  This takes the element out of the document flow and shifts it to the edge of the current line of text.  If the element is inline, it is changed to be block-level.  Now in its new location, a space is carved out of the normal document flow where the element is, so content will not overlap with the floated element.
+
+If we float multiple elements, they will stack up alongside one another.  Here are two elements floated left:
+
+<img src="images/figure5-9.png"/>
+
+If we were to put all of our content into two containers, we could float both containers and set their sizes appropriately to create a two-column layout for our page.  Go ahead and try this yourself.
+
+For a long time, floats were the only method we had to build complex layouts with CSS.  Unfortunately, they are also a bit tricky to work with, especially if you don't understand them completely.  We will spend an entire chapter looking at them in depth later on.  Thankfully, more features have been added to browsers since then, so we have some other simpler options we can look at in the meantime.  Floats are still very common, however, even if only out of a long-standing habit.
+
+
+## Inline-block
 
 Another important display value is `inline-block`.  This makes an element into a sort of hybrid between inline and block-level.  The element will flow inline and its vertical-alignment can be set like an inline element, but you can also set its height and width like a block-level element.
 
@@ -340,7 +349,7 @@ All three of these approaches are fragile for various reasons.  Using inline-blo
 
 It is much more useful in cases where you don't need to fill the container width exactly.  Then you can allow the whitespace to flow naturally, and let items line wrap wherever they fall.
 
-### Table
+## Table
 
 You can also use the `display` property to make elements layout like an HTML table, using the values `table`, `table-row`, or `table-cell`.  A table or table-row element, like a block-level element, will fill the width of its container.  A series of table-cells will spread out to fill the width of their container.  Even though an HTML table requires `<table>`, `<tr>`, and `<td>` elements, you don't necessarily need to nest equivelent elements in this same structure when using CSS table layouts.  I often just need a series of `table-cells` inside of one `table`, with no `table-row` in between them in the hierarchy:
 
@@ -375,4 +384,10 @@ There are also a series of other table display values.  I have never had a need 
 
 Now, unless you are fairly new to web development circles, you have surely heard that it is a bad practice to use HTML tables for layout.  Many websites into the early 2000s laid out their sites using `<table>`.  It can be much simpler to lay out many designs using tables instead of fighting with floats (which was the only other viable alternative at the time).  Eventually there was a lot of backlash against the use of tables for layout, because doing so meant using unsemantic HTML.  Instead of the HTML tags representing what content they contained, they were simply doing the work of layout&mdash;something CSS should be responsible for.
 
-Browsers now support table display for elements other than `<table>`, so we can now enjoy the benefits of table layout while maintaining semantic markup.  It is not a "holy grail" solution, however.  There is also no equivalent to the HTML table attributes "colspan" and "rowspan".  There are also still things floats and inline-block can do that this cannot.
+Browsers now support table display for all sorts of elements other than `<table>`, so we can now enjoy the benefits of table layout while maintaining semantic markup.  It is not a "holy grail" solution, however.  There is also no equivalent to the HTML table attributes "colspan" and "rowspan".  There are also still things floats and inline-block can do that this cannot.
+
+## Flexbox and Beyond
+
+One other `display` option you should know about is **Flexbox**.  This is a newer feature that provides a lot of flexibility in your layouts.  However, it is more complicated than the other display values we have covered, and it doesn't have quite as much browser support, so will come back to it in a later chapter.
+
+There are also an emerging specification for grid layout.  At the time of writing, this has virtually no browser support, but it is worth being aware of.

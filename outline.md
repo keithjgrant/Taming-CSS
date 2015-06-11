@@ -1,3 +1,6 @@
+This document is mostly notes to myself.  Portions of it may be out of date or inaccurate. For the official outline, see the [README](README.md).
+
+
 * Preface
 * Crawling
   * syntax, simple selectors, linking to stylesheets
@@ -8,6 +11,7 @@
   * box model
   * browser dev tools
 * Walking
+  * CSS First/CSS API/Reframing how we think about CSS
   * selectors: combinators, pseudo-selectors
   * position-property (warning: fixed on mobile)
   * backgrounds

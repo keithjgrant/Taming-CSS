@@ -271,3 +271,6 @@ If this is a bit confusing, that is okay.  It will come with practice.  When I s
 ```
 
 There are two final special keyword colors: `transparent` and `currentColor`.  Transparent sets a fully transparent color.  It is useful for overriding solid colors.  The `currentColor` keyword can be used to apply an element's calculated (or inherited) `color` value to other properies.  For instance, `border: 1px solid currentColor` will give an element a border that matches its text color.
+
+
+[&laquo; Chapter 3](chapter3.md) | [Chapter 5 &raquo;](chapter5.md)

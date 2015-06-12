@@ -216,3 +216,6 @@ Which, when we hover our cursor over it, becomes:
 Try some new things with these declarations.  Make the padding different on one side.  Change the border color and observe how it no longer blends in on the hover state.  Change the font or add a background image.
 
 When you are starting to feel comfortable with these attributes, add another button to the page with different styles.  Add a paragraph before or after the button and see how they look together.  If you play around with them long enough, you might even start to come up with new questions about why behave a certain way or how to do something new.  That's good!  You're learning, and there's plenty more to learn still.
+
+
+[&laquo; Chapter 1](chapter1.md) | [Chapter 3 &raquo;](chapter3.md)

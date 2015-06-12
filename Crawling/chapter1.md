@@ -205,3 +205,6 @@ The common convention is to indent each line inside braces.  This is for readabi
 The semi-colon after the final declaration in a block is optional, but I recommend you add it.  Then you won't accidentally introduce invalid syntax should you come back later and add another declaration on the line below it.  It also means you won't have two lines changed in version control history when you only made a meaningful change to one.
 
 I also prefer to split multiple selectors each onto their own line, so it is obvious to the reader.  Otherwise, it can be easy to mistake two distinct selectors (such as `li, .foo`) for one compound one (such as `li .foo` or `li.foo`).
+
+
+[&laquo; Section Overview](overview.md) | [Chapter 2 &raquo;](chapter2.md)

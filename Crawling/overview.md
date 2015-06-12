@@ -14,3 +14,6 @@ After laying that groundwork, I will introduce several fundamental concepts of C
 Understanding these is essential to becoming proficient in CSS.  Much of the rest of this book is built on the foundation of these concepts.  If you are already very familiar with them, feel free to skip ahead to *Section 2: Walking*.  If you are unsure, it may be worth your time to review; these are concepts that you may need to revisit a few times before you have a complete understanding.  If you find that these chapters simple rehash things you know, feel free to skip ahead as needed.
 
 If you are new to CSS, however, welcome!  I'm glad you've decided to learn.  CSS is a daunting topic to many, but I don't think it has to be.  Together, we will walk through everything you need to know.  Follow along with the examples.  Replicate the code in your browser, and tinker with things to see what happens.  I cannot stress that enough.  CSS is best learned through experience.  This book will walk you through the essentials, but seeing it in action on your screen will help you learn a lot faster.  And most of all, have fun!
+
+
+[&laquo; Introduction](../introduction.md) | [Chapter 1 &raquo;](chapter1.md)

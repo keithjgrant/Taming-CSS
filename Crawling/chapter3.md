@@ -249,3 +249,5 @@ The child font will now be inherited, and thus bold.
 ## Summing Up
 
 That might seem like a lot.  Let's review.  An element can be targeted by any number of selectors, and they may all specify values for the same attribute.  When this is the case, only declarations from the highest-priority origin are considered.  If this does not resolve the conflict, the one with the highest-specificity selector is applied.  If there this does not resolve it, the one appearing last in source order is used.  And in cases where an attribute is not set on an element, but it is a an attribute that can be inherited, then the value is taken from the nearest ancestor element where it is set.
+
+[&laquo; Chapter 2](chapter2.md) | [Chapter 4 &raquo;](chapter4.md)

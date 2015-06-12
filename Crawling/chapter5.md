@@ -391,3 +391,7 @@ Browsers now support table display for all sorts of elements other than `<table>
 One other `display` option you should know about is **Flexbox**.  This is a newer feature that provides a lot of flexibility in your layouts.  However, it is more complicated than the other display values we have covered, and it doesn't have quite as much browser support, so will come back to it in a later chapter.
 
 There are also an emerging specification for grid layout.  At the time of writing, this has virtually no browser support, but it is worth being aware of.
+
+**Update: More content will be added to this chapter soon*
+
+[&laquo; Chapter 4](chapter4.md) | Chapter 6 &mdash; draft in progress

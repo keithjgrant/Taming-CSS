@@ -49,9 +49,9 @@ Hey, what happened to our columns?  We did not change the `width`.  30% plus 70%
 
 <!--
 width problem (w/ floats)
+element size (based on children, etc.)
+height/width, min-*, max-*
 margin collapsing
 overflow
 negative margins
-element size (based on children, etc.)
-height/width, min-*, max-*
 -->

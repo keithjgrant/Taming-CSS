@@ -42,6 +42,8 @@ This document is mostly notes to myself.  Portions of it may be out of date or i
 
 Other misc to sort:
 
+* custom selectors & custom media queries ?
+* css variables
 * At-rules
 * build process & minification
 * submenus with :hover

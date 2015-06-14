@@ -10,3 +10,16 @@ IE8, not supported:
 * transform
 * transition (also IE9)
 * animation (also IE9)
+
+<!--
+graceful degradation
+  (form of "fault tolerance")
+  fallback values
+@supports
+  don't browser sniff
+Internet Explorer
+  conditional comments ie8, ie9 classes on <html>
+  IE8 not supported features
+Developing with Cutting-Edge Features
+  browser prefixes
+-->

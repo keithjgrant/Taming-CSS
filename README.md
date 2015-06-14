@@ -17,40 +17,39 @@
   * [Chapter 4: Data Types & Units](Crawling/chapter4.md)
   * [Chapter 5: Document Flow](Crawling/chapter5.md)
   * Chapter 6: The Box Model -- draft in progress
-  * Chapter 7: Developer Tools Basics
+  * Chapter 7: Introduction to Developer Tools
 * Walking
   * Section Overview
-  * Selectors: Combinators & Pseudo-Classes
-  * Floats
-  * Backgrounds
-  * Forms
+  * More Selectors
   * Lists
-  * Position Property
-  * Cross-Browser Development
+  * Backgrounds
+  * Floats Revisited
+  * Organizational Methodologies
+  * Forms
+  * The Position Property
 * Running
   * Section Overview
-  * Inline-Block
-  * Pseudo-Elements
-  * Organizational Methodologies
-  * Learning from OOP
-  * Preprocessors
+  * Cross-Browser Development
+  * Preprocessors and Postprocessors
   * Responsive Design
+  * Transitions
+  * Pseudo-Elements
+  * Performance
 * Flying
   * Section Overview
-  * Colors in Depth
+  * Colors Theory
   * Typography
-  * Advanced Styling
+  * Building a Consistenc User Experience
   * Animation
-  * SVG
-  * Z-index & Stacking Contexts
+  * Advanced Styling
   * Flexbox layout
-* Appendix A: Selectors
+  * The Future of CSS
 
-(This is a very rough outline.  Chapters will certainly shift around as I work through the draft.)
+Mind the overhead bins.  Chapters my shift during flight.
 
 ## Publishing
 
-For now, I am releasing these books here as drafts, free to read.  I would like to eventually publish them, but I need to first prove to myself I can stick with it through the end.
+For now, I am releasing these books here as drafts, free to read.  I would like to eventually publish them, but I'll cross that bridge when I get to it.
 
 ## Contributing
 

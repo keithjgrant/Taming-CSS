@@ -1,5 +1,5 @@
 # Taming CSS
-# Chapter 7: More Selectors
+# Chapter 10: More Selectors
 
 
 

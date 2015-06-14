@@ -45,7 +45,7 @@
   * Flexbox layout
   * The Future of CSS
 
-Mind the overhead bins.  Chapters my shift during flight.
+Mind the overhead bins.  Chapters may shift during flight.
 
 ## Publishing
 

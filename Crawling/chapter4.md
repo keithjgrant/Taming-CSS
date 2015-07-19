@@ -122,7 +122,7 @@ The viewport-relative lengths are great for things like making a large hero imag
 
 ## Percent
 
-**Percentages** are another data type.  It are very similar to a length, in that it is a number followed by a unit (e.g. `50%`), and it behaves very much like a relative length unit.  Strictly speaking, though, it is not considered one, as there are some places where lengths are a legal value but percentages are not (such as `border-width`).
+**Percentages** are another data type.  They are very similar to a length, in that it is a number followed by a unit (e.g. `50%`), and it behaves very much like a relative length unit.  Strictly speaking, though, it is not considered one, as there are some places where lengths are a legal value but percentages are not (such as `border-width`).
 
 Percent refers to the size of the containing block.  If the property it specifies is horizontal in nature, like `padding-left`, it refers to the container's width; if vertical in nature, like `padding-top`, it refers to the container's height.  Percent are particularly useful for sizing blocks according to their parent container:
 

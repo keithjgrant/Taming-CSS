@@ -1,68 +1,69 @@
-# Taming CSS
+# CSS in Action
 
-<img src="logo.png"/>
+ **Update**: *I'm excited to announce that I have signed with Manning Publications. “Taming CSS” is now “CSS in Action”. I am keeping the early drafts of these first chapters here for now, but be aware that these are rough; they have come a long way since. As of 7 December 2015, the book is about 1/3 draft complete, and the [MEAP](https://www.manning.com/meap-catalog) should be available soon.*
 
- This is a book taking a comprehensive look at how to write and maintain CSS.  It is written primarily for web developers, but I start with the basics so anybody should be able to pick up and follow along.  For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the [Introduction](introduction.md).
+ Follow [@css_in_action](http://twitter.com/css_in_action) on Twitter for updates.
 
- Follow [@TamingCSS](http://twitter.com/TamingCSS) on Twitter for updates.
+<img src="cover.png" height="300"/>
 
-## Table of Contents
+ This is a book taking a comprehensive look at how to write and maintain CSS.  It is written primarily for web developers, but I start with the basics so anybody should be able to pick up and follow along. For more on why I am writing it and what sets it apart from other CSS books out there, I invite you to read the [Introduction](introduction.md).
+
+## Initial drafts
+These are not the newest versions of these chapters; these are **very rough** drafts as I've had them here on GitHub. Note the chapter numbers don't align with the current Table of Contents.
 
 * [Introduction](introduction.md)
-* Crawling
-  * [Section Overview](Crawling/overview.md)
-  * [Chapter 1: Getting Started](Crawling/chapter1.md)
-  * [Chapter 2: Styling Essentials](Crawling/chapter2.md)
-  * [Chapter 3: Cascade, Specificity, & Inheritance](Crawling/chapter3.md)
-  * [Chapter 4: Data Types & Units](Crawling/chapter4.md)
-  * [Chapter 5: Document Flow](Crawling/chapter5.md)
-  * Chapter 6: The Box Model -- draft in progress
-  * Chapter 7: Introduction to Developer Tools
-* Walking
-  * Section Overview
-  * More Selectors
-  * Lists
-  * Backgrounds
-  * Floats Revisited
-  * Organizational Methodologies
-  * Forms
-  * The Position Property
-* Running
-  * Section Overview
-  * Cross-Browser Development
-  * Preprocessors and Postprocessors
-  * Responsive Design
-  * Transitions
-  * Pseudo-Elements
-  * Performance
-* Flying
-  * Section Overview
-  * Colors Theory
-  * Typography
-  * Building a Consistenc User Experience
-  * Animation
-  * Advanced Styling
-  * Flexbox layout
-  * The Future of CSS
+* [Getting Started](Crawling/chapter1.md)
+* [Styling Essentials](Crawling/chapter2.md)
+* [Cascade, Specificity, & Inheritance](Crawling/chapter3.md)
+* [Data Types & Units](Crawling/chapter4.md)
+* [Document Flow](Crawling/chapter5.md)
+
+## Table of Contents
+**Part I: Fundamentals**
+<ol>
+  <li>Cascading style sheets</li>
+  <li>Getting started</li>
+  <li>Styling Essentials</li>
+  <li>Cascade, specificity, and inheritance</li>
+  <li>Data types and units</li>
+  <li>Document flow</li>
+  <li>The box model and element sizing</li>
+  <li>Development workflow</li>
+  <li>Cross-browser development</li>
+</ol>
+
+**Part II: Going deeper**
+<ol start="10">
+  <li>Advanced selectors</li>
+  <li>Organization methodology</li>
+  <li>Floats</li>
+  <li>Flexbox</li>
+  <li>The position property</li>
+  <li>Pseudo-elements</li>
+  <li>Lists</li>
+  <li>Backgrounds</li>
+  <li>Forms</li>
+  <li>Preprocessors</li>
+  <li>Responsive design</li>
+</ol>
+
+**Part III: From good to great**
+<ol start="21">
+  <li>Transitions</li>
+  <li>Animations and transformations</li>
+  <li>Performance</li>
+  <li>Color</li>
+  <li>Typography</li>
+  <li>Building a cohesive user experienc</li>
+  <li>What next?</li>
+</ol>
 
 Mind the overhead bins.  Chapters may shift during flight.
 
-## Publishing
-
-For now, I am releasing these books here as drafts, free to read.  I would like to eventually publish them, but I'll cross that bridge when I get to it.
-
 ## Contributing
 
-Use [the issues page](https://github.com/keithjgrant/Taming-CSS/issues) to give feedback or find ways to help.
-
-Any contributions you would like to make are certainly welcome.  I welcome help editing, correcting typos, or making improvements to the examples.
-
-If you have content to contribute, you may, though note that in doing so, you are giving me a non-exclusive license to use that content should I publish these books.  Also know that I may edit or rephase it as necessary to fit the voice of the rest of the book.  My overall outline is also subject to change as the project continues, especially in these earlier stages... so, your contribution may be moved, split into separate sections, or even altogether cut.  Regardless, I will certainly mention you by name in the thank-yous!
+I welcome feedback. It is still a work in progress, and I want to make it as helpful as possible. There will be a forum for feedback & suggestions on manning.com as soon as the MEAP is available. I will update this page with more information when available.
 
 ## License & Copyright
 
-These contents are all copyright &copy; 2015, Keith J Grant.
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
-
-The Taming CSS logo is derived from the HTML5 and CSS3 logos by the <abbr title="World Wide Web Consortium">W3C</abbr>, <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> license.
+These drafts were initially published here under <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>. This obviously will not extend to the final published version of the book.

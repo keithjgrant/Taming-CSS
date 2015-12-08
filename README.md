@@ -56,11 +56,11 @@ These are not the newest versions of these chapters; these are **very rough** dr
   <li>Performance</li>
   <li>Color</li>
   <li>Typography</li>
-  <li>Building a cohesive user experienc</li>
+  <li>Building a cohesive user experience</li>
   <li>What next?</li>
 </ol>
 
-Mind the overhead bins.  Chapters may shift during flight.
+Mind the overhead bins. Chapters may shift during flight.
 
 ## Contributing
 

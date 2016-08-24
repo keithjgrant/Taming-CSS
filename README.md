@@ -1,10 +1,10 @@
-# CSS in Action
+# CSS in Depth
 
- **Update**: *I'm excited to announce that I have signed with Manning Publications. “Taming CSS” is now “CSS in Action”. I am keeping the early drafts of these first chapters here for now, but be aware that these are rough; they have come a long way since. As of 7 December 2015, the book is about 1/3 draft complete, and the [MEAP](https://www.manning.com/meap-catalog) should be available soon.*
+ **Update**: *I'm excited to announce that I have signed with Manning Publications. “Taming CSS” is now “CSS in Depth”. I am keeping the early drafts of these first chapters here for now, but be aware that these are rough; they have come a long way since. The book is available for sale as a <abbr title="Manning Early Access Program">MEAP</abbr> at <a href="https://manning.com/books/css-in-depth">manning.com</a>*
 
  *This does mean that further updates to the manuscript will not be available here on GitHub. For that, I am sorry. But after consideration, I have decided that working with the publisher will help me to produce a much higher-quality book in the end, and hopefully enable the book to reach a larger audience.*
 
- Follow [@css_in_action](http://twitter.com/css_in_action) on Twitter for updates.
+ Follow [@CSSinDepth](http://twitter.com/CSSinDepth) on Twitter for updates.
 
 <img src="cover.png" height="300"/>
 
@@ -59,6 +59,11 @@ These are not the newest versions of these chapters; these are **very rough** dr
   <li>Building a cohesive user experience</li>
   <li>What next?</li>
 </ol>
+
+**Appendices**
+* A: Intro to Node and NPM
+* B: Setting up a Gulp build process
+
 
 Mind the overhead bins. Chapters may shift during flight.
 

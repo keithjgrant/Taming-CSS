@@ -1,6 +1,6 @@
 # CSS in Depth
 
- **Update**: *I'm excited to announce that I have signed with Manning Publications. “Taming CSS” is now “CSS in Depth”. I am keeping the early drafts of these first chapters here for now, but be aware that these are rough; they have come a long way since. The book is available for sale as a <abbr title="Manning Early Access Program">MEAP</abbr> at <a href="https://manning.com/books/css-in-depth">manning.com</a>*
+ **Update**: *I'm excited to announce that I have signed with Manning Publications. “Taming CSS” is now “CSS in Depth”. I am keeping the early drafts of these first chapters here for now, but be aware that these are rough; they have come a long way since. The book is available for sale at <a href="https://manning.com/books/css-in-depth">manning.com</a>*
 
  *This does mean that further updates to the manuscript will not be available here on GitHub. For that, I am sorry. But after consideration, I have decided that working with the publisher will help me to produce a much higher-quality book in the end, and hopefully enable the book to reach a larger audience.*
 
